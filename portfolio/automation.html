@@ -79,7 +79,7 @@
   }
   .cover-particles .p-dot {
     position: absolute; border-radius: 50%; opacity: 0;
-    animation: particle-float 6s ease-in-out infinite;
+    animation: particle-float 6s ease-in-out 1;
   }
   @keyframes particle-float {
     0% { opacity: 0; transform: translateY(20px) scale(0.5); }
@@ -133,7 +133,7 @@
     font-size: 8px; font-weight: 600; color: #fff; padding: 6px 12px;
     border-radius: 6px; border: 1px solid rgba(167,139,250,0.3);
     background: rgba(167,139,250,0.1);
-    animation: pipe-pulse 3s ease-in-out infinite;
+    animation: pipe-pulse 3s ease-in-out 2;
   }
   .pipe-node:nth-child(3) .pipe-box { animation-delay: 0.5s; }
   .pipe-node:nth-child(5) .pipe-box { animation-delay: 1s; }
@@ -162,7 +162,7 @@
     background: linear-gradient(135deg, var(--accent), var(--accent-2));
     display: flex; align-items: center; justify-content: center;
     font-size: 7px; font-weight: 700; color: #fff; text-align: center;
-    animation: hub-rotate-glow 4s ease-in-out infinite;
+    animation: hub-rotate-glow 4s ease-in-out 2;
     position: relative; z-index: 2;
   }
   @keyframes hub-rotate-glow {
@@ -280,7 +280,7 @@
     position: absolute; width: 50px; height: 1px; top: 50%; left: 50%;
     background: linear-gradient(90deg, rgba(34,211,238,0.6), transparent);
     transform-origin: left center;
-    animation: radar-spin 4s linear infinite;
+    animation: radar-spin 4s linear 2;
   }
   @keyframes radar-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
   .radar-dot {
@@ -560,34 +560,125 @@
     word-break: break-all;
   }
 
-  /* ========== PRINT ========== */
+  /* ========== PRINT - lighter theme for PDF readability ========== */
   @media print {
     html, body {
-      background: #0e0e12 !important;
+      background: #f5f5f8 !important;
+      color: #1a1a2e !important;
       -webkit-print-color-adjust: exact !important;
       print-color-adjust: exact !important;
       padding: 0 !important; margin: 0 !important;
     }
-    .top-nav, .back-to-top, .modal-overlay { display: none !important; }
+    .top-nav, .back-to-top, .modal-overlay, .cover-particles { display: none !important; }
     .fade-section { opacity: 1 !important; transform: none !important; }
-    .pdf-cta-banner { display: block !important; }
-    .cover { padding: 20px 0 12px; }
-    .cover h1 { font-size: 28px !important; }
-    .subtitle { font-size: 13px !important; margin-bottom: 10px !important; }
-    .section { padding: 10px 0 6px; }
-    .section-title { font-size: 18px !important; margin-bottom: 4px !important; }
-    .section-subtitle { font-size: 11px !important; margin-bottom: 8px !important; }
-    .auto-grid, .pricing-grid, .agent-grid { gap: 8px !important; }
-    .auto-card, .price-card, .agent-card { padding: 10px !important; }
-    .auto-preview { height: 80px !important; }
-    .stat-counters { gap: 8px !important; }
-    .stat-card { padding: 10px !important; }
-    .step { padding: 10px 14px !important; }
-    .tech-badge { padding: 4px 10px !important; font-size: 11px !important; }
-    .cta-section { padding: 16px !important; margin-top: 10px !important; }
-    .cta-section h2 { font-size: 18px !important; }
-    .footer { padding: 8px 0 !important; margin-top: 6px !important; }
-    .divider { margin: 4px 0 !important; }
+    .pdf-cta-banner {
+      display: block !important;
+      background: linear-gradient(135deg, #eee8ff, #e8f0ff) !important;
+      border-color: #c4b5fd !important;
+    }
+    .pdf-cta-banner p { color: #555 !important; }
+    .pdf-cta-banner a { color: #7c3aed !important; }
+
+    /* Cover - FULL PAGE for PDF */
+    .cover {
+      min-height: 100vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0 40px !important;
+      background: linear-gradient(135deg, #0f0a1e 0%, #1a1040 30%, #0d1a30 60%, #0f0a1e 100%) !important;
+      break-after: page !important;
+    }
+    .cover .page {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .cover h1 { font-size: 42px !important; margin-bottom: 14px !important; }
+    .cover h1 span { background: linear-gradient(135deg, #a78bfa, #60a5fa, #22d3ee) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; }
+    .subtitle { font-size: 16px !important; margin-bottom: 28px !important; color: #b0b0c0 !important; }
+    .cover-badge { background: rgba(255,255,255,0.08) !important; color: #d0d0e0 !important; font-size: 12px !important; padding: 8px 16px !important; border: 1px solid rgba(255,255,255,0.12) !important; }
+    .cover-badges { gap: 12px !important; margin-bottom: 32px !important; }
+    .pdf-cta-banner {
+      display: block !important;
+      margin-top: 24px !important;
+      background: rgba(255,255,255,0.06) !important;
+      border: 1px solid rgba(167,139,250,0.3) !important;
+      padding: 14px 24px !important;
+      max-width: 500px !important;
+    }
+    .pdf-cta-banner p { color: #999 !important; font-size: 11px !important; }
+    .pdf-cta-banner a { color: #a78bfa !important; font-size: 13px !important; }
+
+    /* Page background and cards */
+    .page { background: transparent !important; }
+    .section { padding: 10px 0 6px !important; }
+    .section-title { font-size: 17px !important; color: #1a1a2e !important; margin-bottom: 4px !important; }
+    .section-subtitle { font-size: 10px !important; color: #666 !important; margin-bottom: 8px !important; }
+
+    /* Cards - light theme */
+    .auto-card, .agent-card, .stat-card, .step, .wf-category {
+      background: #ffffff !important;
+      border: 1px solid #e2e2ea !important;
+      color: #1a1a2e !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+    }
+    .auto-card h3, .agent-card h3 { color: #1a1a2e !important; }
+    .auto-card p, .agent-card p, .step p { color: #555 !important; }
+    .auto-preview { background: #f0eef8 !important; }
+
+    /* Tech badges */
+    .tech-badge {
+      background: #eee8ff !important;
+      color: #5b21b6 !important;
+      border-color: #c4b5fd !important;
+      padding: 3px 8px !important;
+      font-size: 9px !important;
+    }
+
+    /* Pricing - keep accent colors */
+    .price-card {
+      background: #ffffff !important;
+      border: 1px solid #e2e2ea !important;
+      color: #1a1a2e !important;
+    }
+    .price-card.featured { border: 2px solid #7c3aed !important; }
+    .price-amount { color: #7c3aed !important; }
+    .price-card li { color: #444 !important; }
+
+    /* ElektraOS showcase */
+    .elektra-showcase {
+      background: #1a1a2e !important;
+      border-color: #3b3366 !important;
+    }
+    .elektra-visual { border-color: rgba(167,139,250,0.2) !important; }
+
+    /* CTA */
+    .cta-section {
+      background: linear-gradient(135deg, #eee8ff, #e8f0ff) !important;
+      border-color: #c4b5fd !important;
+      padding: 14px !important;
+      margin-top: 8px !important;
+    }
+    .cta-section h2 { color: #1a1a2e !important; font-size: 17px !important; }
+    .cta-section p { color: #555 !important; }
+    .cta-btn { background: #7c3aed !important; }
+
+    /* Footer */
+    .footer { color: #888 !important; padding: 6px 0 !important; margin-top: 4px !important; }
+    .divider { background: #e2e2ea !important; margin: 4px 0 !important; }
+
+    /* Spacing */
+    .auto-grid, .pricing-grid, .agent-grid { gap: 6px !important; }
+    .auto-card, .price-card, .agent-card { padding: 8px !important; }
+    .auto-preview { height: 70px !important; }
+    .stat-counters { gap: 6px !important; }
+    .stat-card { padding: 8px !important; }
+    .step { padding: 8px 12px !important; }
+
+    /* Page breaks */
     * { break-inside: avoid; }
     .auto-grid, .pricing-grid, .agent-grid, .stat-counters { break-inside: auto; }
     .auto-card, .price-card, .agent-card, .stat-card, .step, .elektra-showcase, .cta-section { break-inside: avoid; }
@@ -634,14 +725,13 @@
       <div class="cover-badge">31 Workflows Built</div>
       <div class="cover-badge">624+ API Endpoints</div>
     </div>
+    <!-- CTA inside cover -->
+    <div class="pdf-cta-banner">
+      <p>View the full interactive portfolio with live demos and animations</p>
+      <a href="https://yoggi-sheandelle.github.io/Catalogue/portfolio/automation.html" target="_blank" style="display:inline-block;background:linear-gradient(135deg, var(--accent), var(--accent-2));color:#fff;font-size:14px;font-weight:600;padding:11px 28px;border-radius:8px;text-decoration:none;letter-spacing:0.5px;transition:transform 0.2s,box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 24px rgba(167,139,250,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">View Interactive Portfolio</a>
+    </div>
   </div>
 </header>
-
-<!-- PDF-only CTA banner -->
-<div class="pdf-cta-banner">
-  <p>View the full interactive portfolio with live demos and animations:</p>
-  <a href="https://yoggi-sheandelle.github.io/Catalogue/portfolio/automation.html">yoggi-sheandelle.github.io/Catalogue/portfolio/automation.html</a>
-</div>
 
 <div class="page">
 
@@ -1118,7 +1208,7 @@
   /* ===== Particles ===== */
   var pContainer = document.getElementById('particles');
   var colors = ['rgba(167,139,250,0.4)', 'rgba(96,165,250,0.3)', 'rgba(34,211,238,0.3)', 'rgba(52,211,153,0.3)'];
-  for (var i = 0; i < 30; i++) {
+  for (var i = 0; i < 10; i++) {
     var dot = document.createElement('div');
     dot.className = 'p-dot';
     dot.style.left = Math.random() * 100 + '%';
