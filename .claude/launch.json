@@ -1,0 +1,11 @@
+{
+  "version": "0.0.1",
+  "configurations": [
+    {
+      "name": "ayla-site",
+      "runtimeExecutable": "python",
+      "runtimeArgs": ["-m", "http.server", "3456", "--directory", "C:\\Users\\benza\\OneDrive\\Документы\\AYLA"],
+      "port": 3456
+    }
+  ]
+}
