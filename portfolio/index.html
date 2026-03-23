@@ -369,14 +369,22 @@
       padding: 0 !important;
       margin: 0 !important;
     }
-    .top-nav, .back-to-top, .style-modal-overlay, .page-break { display: none !important; }
+    .top-nav, .back-to-top, .style-modal-overlay { display: none !important; }
     .cover-cta { display: inline-block !important; }
     .fade-section { opacity: 1 !important; transform: none !important; }
     .sheandelle-card, .mealshift-card, .freshmarket-card { display: none !important; }
     .print-view-more { display: block !important; }
-    .section, .style-card, .included-item, .ayla-card, .price-card, .pricing-grid, .project-card, .tech-badges { break-inside: avoid; }
-    .pricing-grid { break-before: avoid; }
-    #pricing { break-inside: avoid; }
+    /* Page 1: Cover + Styles */
+    .cover { padding: 28px 0 18px; }
+    .section { padding: 16px 0 10px; }
+    .styles-grid { gap: 10px; }
+    .style-preview { height: 95px; }
+    /* Page 2: Included + AYLA */
+    #included { break-before: page; }
+    /* Page 3: Tech + Pricing + CTA */
+    #tech { break-before: page; }
+    .page-break { display: none; }
+    .divider { display: none; }
   }
   @page { size: A4; margin: 0; }
 </style>
