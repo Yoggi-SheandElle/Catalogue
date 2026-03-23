@@ -1,0 +1,1157 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Web Design Portfolio - Yossra Benzad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Playfair+Display:wght@400;600;700&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+  :root {
+    --bg: #0e0e12;
+    --surface: #16161d;
+    --surface-2: #1e1e28;
+    --border: #2a2a38;
+    --text: #e8e8ed;
+    --text-dim: #9898a8;
+    --accent: #a78bfa;
+    --accent-2: #60a5fa;
+    --gold: #d4a853;
+    --green: #34d399;
+  }
+
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+  }
+
+  .page {
+    max-width: 850px;
+    margin: 0 auto;
+    padding: 0 32px;
+  }
+
+  /* ========== COVER HEADER ========== */
+  .cover {
+    background: linear-gradient(135deg, #0e0e12 0%, #1a1028 40%, #0e1a2e 70%, #0e0e12 100%);
+    padding: 64px 0 48px;
+    text-align: center;
+    position: relative;
+    overflow: hidden;
+    border-bottom: 1px solid var(--border);
+  }
+  .cover::before {
+    content: '';
+    position: absolute;
+    top: -50%;
+    left: -50%;
+    width: 200%;
+    height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(167,139,250,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(96,165,250,0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .cover h1 {
+    font-size: 36px;
+    font-weight: 700;
+    letter-spacing: -0.5px;
+    margin-bottom: 8px;
+    position: relative;
+  }
+  .cover h1 span {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    background-clip: text;
+  }
+  .cover .subtitle {
+    font-size: 15px;
+    color: var(--text-dim);
+    font-weight: 400;
+    margin-bottom: 20px;
+    position: relative;
+  }
+  .cover-badges {
+    display: flex;
+    justify-content: center;
+    gap: 24px;
+    position: relative;
+    flex-wrap: wrap;
+  }
+  .cover-badge {
+    font-size: 12px;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .cover-badge .dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--green);
+    display: inline-block;
+  }
+
+  /* ========== SECTION HEADERS ========== */
+  .section {
+    padding: 40px 0 24px;
+  }
+  .section-title {
+    font-size: 22px;
+    font-weight: 600;
+    margin-bottom: 6px;
+    letter-spacing: -0.3px;
+  }
+  .section-subtitle {
+    font-size: 13px;
+    color: var(--text-dim);
+    margin-bottom: 28px;
+  }
+
+  /* ========== DESIGN STYLE CARDS ========== */
+  .styles-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 16px;
+    margin-bottom: 8px;
+  }
+  .style-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    overflow: hidden;
+    background: var(--surface);
+  }
+  .style-preview {
+    height: 130px;
+    position: relative;
+    overflow: hidden;
+  }
+  .style-info {
+    padding: 14px 16px;
+    border-top: 1px solid var(--border);
+  }
+  .style-info h3 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 3px;
+  }
+  .style-info p {
+    font-size: 11px;
+    color: var(--text-dim);
+    line-height: 1.4;
+  }
+
+  /* --- Luxury Preview --- */
+  .preview-luxury {
+    background: linear-gradient(160deg, #0a0a0a, #1a1510);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    gap: 8px;
+    padding: 20px;
+  }
+  .preview-luxury .lux-nav {
+    display: flex;
+    gap: 20px;
+    font-family: 'Playfair Display', serif;
+    font-size: 9px;
+    letter-spacing: 2px;
+    text-transform: uppercase;
+    color: var(--gold);
+    opacity: 0.7;
+  }
+  .preview-luxury .lux-hero {
+    font-family: 'Playfair Display', serif;
+    font-size: 22px;
+    color: var(--gold);
+    letter-spacing: 1px;
+  }
+  .preview-luxury .lux-line {
+    width: 40px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.4;
+  }
+  .preview-luxury .lux-sub {
+    font-size: 8px;
+    letter-spacing: 3px;
+    text-transform: uppercase;
+    color: #8a7a5a;
+  }
+
+  /* --- Minimalist Preview --- */
+  .preview-minimal {
+    background: #fafafa;
+    padding: 18px 22px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .preview-minimal .min-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .preview-minimal .min-logo {
+    font-size: 13px;
+    font-weight: 700;
+    color: #111;
+    letter-spacing: -0.5px;
+  }
+  .preview-minimal .min-links {
+    display: flex;
+    gap: 14px;
+    font-size: 8px;
+    color: #888;
+  }
+  .preview-minimal .min-body {
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+  }
+  .preview-minimal .min-h {
+    font-size: 16px;
+    font-weight: 600;
+    color: #111;
+    letter-spacing: -0.3px;
+  }
+  .preview-minimal .min-p {
+    font-size: 8px;
+    color: #999;
+    max-width: 70%;
+    line-height: 1.5;
+  }
+  .preview-minimal .min-btn {
+    display: inline-block;
+    font-size: 7px;
+    padding: 4px 14px;
+    border: 1px solid #111;
+    color: #111;
+    border-radius: 2px;
+    width: fit-content;
+    margin-top: 4px;
+  }
+
+  /* --- Bold Preview --- */
+  .preview-bold {
+    background: linear-gradient(135deg, #667eea, #764ba2, #f093fb);
+    padding: 18px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+  }
+  .preview-bold .bold-nav {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .preview-bold .bold-logo {
+    font-size: 12px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .preview-bold .bold-cta-sm {
+    font-size: 7px;
+    background: rgba(255,255,255,0.2);
+    padding: 3px 10px;
+    border-radius: 20px;
+    color: #fff;
+  }
+  .preview-bold .bold-center {
+    text-align: center;
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 6px;
+  }
+  .preview-bold .bold-h {
+    font-size: 16px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .preview-bold .bold-p {
+    font-size: 8px;
+    color: rgba(255,255,255,0.7);
+  }
+  .preview-bold .bold-btn {
+    display: inline-block;
+    background: #fff;
+    color: #764ba2;
+    font-size: 8px;
+    font-weight: 600;
+    padding: 5px 18px;
+    border-radius: 20px;
+    width: fit-content;
+    margin: 4px auto 0;
+  }
+
+  /* --- Corporate Preview --- */
+  .preview-corp {
+    background: #f4f6f9;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .preview-corp .corp-bar {
+    background: #1e3a5f;
+    padding: 8px 16px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .preview-corp .corp-logo {
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .preview-corp .corp-nav {
+    display: flex;
+    gap: 12px;
+    font-size: 7px;
+    color: rgba(255,255,255,0.7);
+  }
+  .preview-corp .corp-body {
+    flex: 1;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 8px;
+    padding: 12px 16px;
+  }
+  .preview-corp .corp-card {
+    background: #fff;
+    border-radius: 4px;
+    padding: 10px;
+    border: 1px solid #e2e8f0;
+  }
+  .preview-corp .corp-card-h {
+    font-size: 8px;
+    font-weight: 600;
+    color: #1e3a5f;
+    margin-bottom: 3px;
+  }
+  .preview-corp .corp-card-bar {
+    height: 3px;
+    background: #e2e8f0;
+    border-radius: 2px;
+    margin-top: 4px;
+  }
+  .preview-corp .corp-card-bar span {
+    display: block;
+    height: 100%;
+    background: #3b82f6;
+    border-radius: 2px;
+  }
+
+  /* --- E-commerce Preview --- */
+  .preview-ecom {
+    background: #fafaf7;
+    padding: 0;
+    display: flex;
+    flex-direction: column;
+  }
+  .preview-ecom .ecom-bar {
+    background: #111;
+    padding: 6px 14px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+  }
+  .preview-ecom .ecom-logo {
+    font-size: 10px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: 2px;
+  }
+  .preview-ecom .ecom-icons {
+    display: flex;
+    gap: 10px;
+    font-size: 8px;
+    color: rgba(255,255,255,0.7);
+  }
+  .preview-ecom .ecom-content {
+    flex: 1;
+    display: flex;
+    gap: 0;
+  }
+  .preview-ecom .ecom-sidebar {
+    width: 60px;
+    background: #fff;
+    border-right: 1px solid #eee;
+    padding: 8px 6px;
+    display: flex;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .ecom-filter {
+    font-size: 6px;
+    color: #999;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+    font-weight: 600;
+  }
+  .ecom-filter-item {
+    font-size: 6px;
+    color: #555;
+    padding: 2px 0;
+  }
+  .ecom-filter-item.active {
+    color: #111;
+    font-weight: 700;
+    border-left: 2px solid #111;
+    padding-left: 4px;
+  }
+  .preview-ecom .ecom-grid {
+    flex: 1;
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 5px;
+    padding: 8px;
+  }
+  .ecom-item {
+    background: #fff;
+    border-radius: 4px;
+    padding: 5px;
+    text-align: center;
+    border: 1px solid #f0f0f0;
+    position: relative;
+  }
+  .ecom-item .ecom-img {
+    width: 100%;
+    height: 38px;
+    border-radius: 3px;
+    margin-bottom: 3px;
+    position: relative;
+    overflow: hidden;
+  }
+  .ecom-item:nth-child(1) .ecom-img { background: linear-gradient(135deg, #f5e6d3, #e8d5c0); }
+  .ecom-item:nth-child(2) .ecom-img { background: linear-gradient(135deg, #d4e5f7, #bcd4ea); }
+  .ecom-item:nth-child(3) .ecom-img { background: linear-gradient(135deg, #e8e0f0, #d5c8e8); }
+  .ecom-item .ecom-heart {
+    position: absolute;
+    top: 3px;
+    right: 3px;
+    font-size: 7px;
+    color: #ccc;
+  }
+  .ecom-item .ecom-name {
+    font-size: 6px;
+    color: #333;
+    font-weight: 500;
+  }
+  .ecom-item .ecom-price {
+    font-size: 8px;
+    color: #111;
+    font-weight: 700;
+  }
+  .ecom-item .ecom-old-price {
+    font-size: 6px;
+    color: #bbb;
+    text-decoration: line-through;
+    margin-left: 2px;
+  }
+  .ecom-item .ecom-tag {
+    position: absolute;
+    top: 3px;
+    left: 3px;
+    font-size: 5px;
+    background: #e53e3e;
+    color: #fff;
+    padding: 1px 4px;
+    border-radius: 2px;
+    font-weight: 700;
+    letter-spacing: 0.3px;
+  }
+  .ecom-item .ecom-stars {
+    font-size: 6px;
+    color: #f59e0b;
+    letter-spacing: 1px;
+  }
+
+  /* --- Creative Preview --- */
+  .preview-creative {
+    background: #0f0f0f;
+    display: grid;
+    grid-template-columns: 2fr 1fr;
+    grid-template-rows: 1fr 1fr;
+    gap: 4px;
+    padding: 10px;
+  }
+  .creative-block {
+    border-radius: 6px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  .creative-block.a {
+    grid-row: 1 / 3;
+    background: linear-gradient(180deg, #ff6b6b, #ee5a24);
+    font-size: 14px;
+    font-weight: 700;
+    color: #fff;
+    letter-spacing: -0.5px;
+    padding: 12px;
+    text-align: center;
+    line-height: 1.2;
+  }
+  .creative-block.b {
+    background: #1a1a1a;
+    border: 1px solid #333;
+    flex-direction: column;
+    gap: 4px;
+  }
+  .creative-block.b .cr-h {
+    font-size: 7px;
+    color: #ff6b6b;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+  }
+  .creative-block.b .cr-num {
+    font-size: 18px;
+    font-weight: 700;
+    color: #fff;
+  }
+  .creative-block.c {
+    background: linear-gradient(135deg, #1a1a2e, #16213e);
+    flex-direction: column;
+    gap: 3px;
+  }
+  .creative-block.c .cr-line {
+    width: 30px;
+    height: 2px;
+    border-radius: 1px;
+  }
+  .creative-block.c .cr-line:nth-child(1) { background: #ff6b6b; width: 35px; }
+  .creative-block.c .cr-line:nth-child(2) { background: #feca57; width: 25px; }
+  .creative-block.c .cr-line:nth-child(3) { background: #48dbfb; width: 30px; }
+
+  /* ========== INCLUDED / CHECKLIST ========== */
+  .included-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 10px 24px;
+  }
+  .included-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 14px;
+    background: var(--surface);
+    border-radius: 8px;
+    border: 1px solid var(--border);
+  }
+  .included-icon {
+    width: 32px;
+    height: 32px;
+    border-radius: 8px;
+    background: rgba(167,139,250,0.1);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 15px;
+  }
+  .included-text {
+    font-size: 13px;
+    font-weight: 500;
+  }
+
+  /* ========== AYLA SHOWCASE ========== */
+  .ayla-card {
+    background: linear-gradient(160deg, #1a1510, #0a0a0a);
+    border: 1px solid #2a2418;
+    border-radius: 14px;
+    overflow: hidden;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 0;
+  }
+  .ayla-visual {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    gap: 10px;
+    border-right: 1px solid #2a2418;
+    background: radial-gradient(circle at 50% 50%, rgba(212,168,83,0.05) 0%, transparent 70%);
+  }
+  .ayla-visual .ayla-brand {
+    font-family: 'Playfair Display', serif;
+    font-size: 32px;
+    color: var(--gold);
+    letter-spacing: 4px;
+  }
+  .ayla-visual .ayla-tagline {
+    font-size: 9px;
+    letter-spacing: 4px;
+    text-transform: uppercase;
+    color: #8a7a5a;
+  }
+  .ayla-visual .ayla-line {
+    width: 50px;
+    height: 1px;
+    background: var(--gold);
+    opacity: 0.3;
+  }
+  .ayla-visual .ayla-preview-row {
+    display: flex;
+    gap: 6px;
+    margin-top: 8px;
+  }
+  .ayla-preview-swatch {
+    width: 20px;
+    height: 20px;
+    border-radius: 4px;
+  }
+  .ayla-details {
+    padding: 28px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+  }
+  .ayla-details h3 {
+    font-size: 16px;
+    font-weight: 600;
+  }
+  .ayla-details .ayla-desc {
+    font-size: 12px;
+    color: var(--text-dim);
+    line-height: 1.6;
+  }
+  .ayla-tag-row {
+    display: flex;
+    gap: 6px;
+    flex-wrap: wrap;
+  }
+  .ayla-tag {
+    font-size: 10px;
+    padding: 3px 10px;
+    background: rgba(212,168,83,0.1);
+    border: 1px solid rgba(212,168,83,0.2);
+    border-radius: 4px;
+    color: var(--gold);
+  }
+  .ayla-link {
+    font-size: 12px;
+    color: var(--accent);
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .ayla-link:hover { text-decoration: underline; }
+
+  /* ========== TECH STACK ========== */
+  .tech-badges {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+  .tech-badge {
+    font-size: 12px;
+    font-weight: 500;
+    padding: 6px 16px;
+    border-radius: 6px;
+    border: 1px solid var(--border);
+    background: var(--surface);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .tech-badge .td {
+    width: 8px;
+    height: 8px;
+    border-radius: 2px;
+  }
+
+  /* ========== PRICING ========== */
+  .pricing-grid {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    gap: 14px;
+    margin-top: 4px;
+  }
+  .price-card {
+    border: 1px solid var(--border);
+    border-radius: 12px;
+    padding: 24px 20px;
+    text-align: center;
+    background: var(--surface);
+    position: relative;
+  }
+  .price-card.featured {
+    border-color: var(--accent);
+    background: linear-gradient(180deg, rgba(167,139,250,0.06), var(--surface));
+  }
+  .price-card.featured::before {
+    content: 'POPULAR';
+    position: absolute;
+    top: -10px;
+    left: 50%;
+    transform: translateX(-50%);
+    font-size: 9px;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    background: var(--accent);
+    color: #fff;
+    padding: 2px 12px;
+    border-radius: 4px;
+  }
+  .price-card h4 {
+    font-size: 14px;
+    font-weight: 600;
+    margin-bottom: 4px;
+  }
+  .price-amount {
+    font-size: 32px;
+    font-weight: 700;
+    margin: 8px 0;
+    letter-spacing: -1px;
+  }
+  .price-amount span {
+    font-size: 14px;
+    font-weight: 400;
+    color: var(--text-dim);
+  }
+  .price-features {
+    list-style: none;
+    text-align: left;
+    margin-top: 14px;
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+  }
+  .price-features li {
+    font-size: 11px;
+    color: var(--text-dim);
+    display: flex;
+    align-items: center;
+    gap: 6px;
+  }
+  .price-features li::before {
+    content: '';
+    width: 4px;
+    height: 4px;
+    background: var(--green);
+    border-radius: 50%;
+    flex-shrink: 0;
+  }
+
+  /* ========== FOOTER ========== */
+  .footer {
+    text-align: center;
+    padding: 32px 0;
+    border-top: 1px solid var(--border);
+    margin-top: 32px;
+  }
+  .footer p {
+    font-size: 12px;
+    color: var(--text-dim);
+  }
+  .footer a {
+    color: var(--accent);
+    text-decoration: none;
+  }
+
+  /* ========== DIVIDER ========== */
+  .divider {
+    height: 1px;
+    background: var(--border);
+    margin: 8px 0;
+  }
+
+  /* ========== PRINT ========== */
+  @media print {
+    body {
+      background: #0e0e12 !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+    }
+    .page {
+      padding: 0 24px;
+    }
+    .cover {
+      padding: 24px 0 20px;
+    }
+    .section {
+      padding: 16px 0 10px;
+    }
+    .styles-grid {
+      gap: 10px;
+    }
+    .style-preview {
+      height: 100px;
+    }
+    .pricing-grid {
+      gap: 8px;
+    }
+    .ayla-card {
+      break-inside: avoid;
+    }
+    .price-card {
+      break-inside: avoid;
+    }
+    .page-break {
+      page-break-before: always;
+      margin: 0;
+      padding: 0;
+      height: 0;
+    }
+    .footer {
+      padding: 16px 0;
+      margin-top: 16px;
+    }
+  }
+
+  @page {
+    size: A4;
+    margin: 4mm 4mm;
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== COVER ===== -->
+<header class="cover">
+  <div class="page">
+    <h1><span>Web Design Portfolio</span></h1>
+    <div class="subtitle">Yossra Benzad - Freelance Web Designer & Developer</div>
+    <div class="cover-badges">
+      <div class="cover-badge"><span class="dot"></span> Available for projects</div>
+      <div class="cover-badge">Copenhagen, Denmark</div>
+      <div class="cover-badge">5+ years experience</div>
+      <div class="cover-badge">15+ sites delivered</div>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- ===== DESIGN STYLES ===== -->
+  <section class="section">
+    <div class="section-title">Design Styles We Offer</div>
+    <div class="section-subtitle">Each style is tailored to your brand. Here's what we can build for you.</div>
+
+    <div class="styles-grid">
+
+      <!-- Luxury -->
+      <div class="style-card">
+        <div class="style-preview preview-luxury">
+          <div class="lux-nav"><span>Home</span><span>Collection</span><span>About</span></div>
+          <div class="lux-line"></div>
+          <div class="lux-hero">Maison Noir</div>
+          <div class="lux-line"></div>
+          <div class="lux-sub">Handcrafted since 1987</div>
+        </div>
+        <div class="style-info">
+          <h3>Luxury / Premium</h3>
+          <p>Dark palettes, gold accents, serif typography. Built for high-end brands, jewelry, fashion, real estate.</p>
+        </div>
+      </div>
+
+      <!-- Minimalist -->
+      <div class="style-card">
+        <div class="style-preview preview-minimal">
+          <div class="min-nav">
+            <div class="min-logo">studio.</div>
+            <div class="min-links"><span>Work</span><span>About</span><span>Contact</span></div>
+          </div>
+          <div class="min-body">
+            <div class="min-h">Less is more.</div>
+            <div class="min-p">We believe great design speaks through simplicity and intention.</div>
+            <div class="min-btn">EXPLORE</div>
+          </div>
+        </div>
+        <div class="style-info">
+          <h3>Modern Minimalist</h3>
+          <p>Clean layouts, generous whitespace, sans-serif type. Perfect for SaaS, portfolios, personal brands.</p>
+        </div>
+      </div>
+
+      <!-- Bold -->
+      <div class="style-card">
+        <div class="style-preview preview-bold">
+          <div class="bold-nav">
+            <div class="bold-logo">launchpad</div>
+            <div class="bold-cta-sm">Get Started</div>
+          </div>
+          <div class="bold-center">
+            <div class="bold-h">Ship faster.</div>
+            <div class="bold-p">The platform built for modern teams.</div>
+            <div class="bold-btn">Start Free Trial</div>
+          </div>
+        </div>
+        <div class="style-info">
+          <h3>Bold & Colorful</h3>
+          <p>Vibrant gradients, punchy copy, high energy. Ideal for startups, apps, tech products, landing pages.</p>
+        </div>
+      </div>
+
+      <!-- Corporate -->
+      <div class="style-card">
+        <div class="style-preview preview-corp">
+          <div class="corp-bar">
+            <div class="corp-logo">VERTEX GROUP</div>
+            <div class="corp-nav"><span>Solutions</span><span>Industries</span><span>About</span><span>Contact</span></div>
+          </div>
+          <div class="corp-body">
+            <div class="corp-card">
+              <div class="corp-card-h">Revenue Growth</div>
+              <div class="corp-card-bar"><span style="width:72%"></span></div>
+            </div>
+            <div class="corp-card">
+              <div class="corp-card-h">Client Retention</div>
+              <div class="corp-card-bar"><span style="width:89%"></span></div>
+            </div>
+          </div>
+        </div>
+        <div class="style-info">
+          <h3>Corporate Professional</h3>
+          <p>Navy blues, structured grids, data cards. Built for consulting firms, B2B, finance, enterprise.</p>
+        </div>
+      </div>
+
+      <!-- E-commerce -->
+      <div class="style-card">
+        <div class="style-preview preview-ecom">
+          <div class="ecom-bar">
+            <div class="ecom-logo">MAISON</div>
+            <div class="ecom-icons"><span>&#128269;</span><span>&#9825;</span><span>&#128722; 3</span></div>
+          </div>
+          <div class="ecom-content">
+            <div class="ecom-sidebar">
+              <div class="ecom-filter">FILTERS</div>
+              <div class="ecom-filter-item active">All</div>
+              <div class="ecom-filter-item">Candles</div>
+              <div class="ecom-filter-item">Ceramics</div>
+              <div class="ecom-filter-item">Textiles</div>
+              <div class="ecom-filter">PRICE</div>
+              <div class="ecom-filter-item">$0 - $50</div>
+              <div class="ecom-filter-item">$50+</div>
+            </div>
+            <div class="ecom-grid">
+              <div class="ecom-item">
+                <div class="ecom-img"></div>
+                <div class="ecom-heart">&#9825;</div>
+                <div class="ecom-name">Amber Candle Set</div>
+                <div class="ecom-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="ecom-price">$34</div>
+              </div>
+              <div class="ecom-item">
+                <div class="ecom-img"></div>
+                <div class="ecom-tag">-30%</div>
+                <div class="ecom-heart">&#9825;</div>
+                <div class="ecom-name">Ceramic Vase</div>
+                <div class="ecom-stars">&#9733;&#9733;&#9733;&#9733;&#9734;</div>
+                <div class="ecom-price">$36 <span class="ecom-old-price">$52</span></div>
+              </div>
+              <div class="ecom-item">
+                <div class="ecom-img"></div>
+                <div class="ecom-heart">&#9825;</div>
+                <div class="ecom-name">Linen Throw</div>
+                <div class="ecom-stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
+                <div class="ecom-price">$78</div>
+              </div>
+            </div>
+          </div>
+        </div>
+        <div class="style-info">
+          <h3>E-commerce</h3>
+          <p>Product grids, cart UI, filters, quick view. Optimized for WooCommerce, Shopify, custom stores.</p>
+        </div>
+      </div>
+
+      <!-- Creative -->
+      <div class="style-card">
+        <div class="style-preview preview-creative">
+          <div class="creative-block a">We make brands unforgettable.</div>
+          <div class="creative-block b">
+            <div class="cr-h">Projects</div>
+            <div class="cr-num">147</div>
+          </div>
+          <div class="creative-block c">
+            <div class="cr-line"></div>
+            <div class="cr-line"></div>
+            <div class="cr-line"></div>
+          </div>
+        </div>
+        <div class="style-info">
+          <h3>Creative / Agency</h3>
+          <p>Asymmetric grids, parallax, scroll animations. For agencies, studios, photographers, artists.</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== WHAT'S INCLUDED ===== -->
+  <section class="section">
+    <div class="section-title">What's Included</div>
+    <div class="section-subtitle">Every project ships with these essentials. No hidden costs.</div>
+
+    <div class="included-grid">
+      <div class="included-item">
+        <div class="included-icon">&#x1F4F1;</div>
+        <div class="included-text">Responsive mobile-first design</div>
+      </div>
+      <div class="included-item">
+        <div class="included-icon">&#x2728;</div>
+        <div class="included-text">Custom animations & interactions</div>
+      </div>
+      <div class="included-item">
+        <div class="included-icon">&#x1F50D;</div>
+        <div class="included-text">SEO-optimized structure</div>
+      </div>
+      <div class="included-item">
+        <div class="included-icon">&#x1F4E9;</div>
+        <div class="included-text">Contact forms & integrations</div>
+      </div>
+      <div class="included-item">
+        <div class="included-icon">&#x1F680;</div>
+        <div class="included-text">Deployment & hosting setup</div>
+      </div>
+      <div class="included-item">
+        <div class="included-icon">&#x1F4BB;</div>
+        <div class="included-text">Full source code ownership</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- page break for print -->
+  <div class="page-break"></div>
+
+  <!-- ===== AYLA SHOWCASE ===== -->
+  <section class="section">
+    <div class="section-title">Live Project: AYLA - Esprit D'Elegance</div>
+    <div class="section-subtitle">A luxury jewelry brand site built from scratch with custom HTML, CSS, and JavaScript.</div>
+
+    <div class="ayla-card">
+      <div class="ayla-visual">
+        <div class="ayla-brand">AYLA</div>
+        <div class="ayla-line"></div>
+        <div class="ayla-tagline">Esprit D'Elegance</div>
+        <div class="ayla-preview-row">
+          <div class="ayla-preview-swatch" style="background:#d4a853;"></div>
+          <div class="ayla-preview-swatch" style="background:#1a1510;"></div>
+          <div class="ayla-preview-swatch" style="background:#2c1810;"></div>
+          <div class="ayla-preview-swatch" style="background:#f5f0e8;"></div>
+          <div class="ayla-preview-swatch" style="background:#8a7a5a;"></div>
+        </div>
+      </div>
+      <div class="ayla-details">
+        <h3>Hand-coded luxury jewelry site</h3>
+        <div class="ayla-desc">
+          Premium jewelry brand with cinematic hero, particle animations, interactive shop with collection filters, product detail modals, custom cursor, parallax scrolling, frosted glass nav, and full mobile responsiveness. 4 pages, 9 products across 3 collections.
+        </div>
+        <div class="ayla-tag-row">
+          <span class="ayla-tag">HTML5</span>
+          <span class="ayla-tag">CSS3</span>
+          <span class="ayla-tag">Vanilla JS</span>
+          <span class="ayla-tag">Responsive</span>
+          <span class="ayla-tag">GitHub Pages</span>
+        </div>
+        <a class="ayla-link" href="https://yoggi-sheandelle.github.io/Catalogue/ayla/" target="_blank">
+          View live site &#8594;
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== TECH STACK ===== -->
+  <section class="section">
+    <div class="section-title">Tech Stack</div>
+    <div class="section-subtitle">Tools and technologies we work with daily.</div>
+
+    <div class="tech-badges">
+      <div class="tech-badge"><span class="td" style="background:#e44d26;"></span>HTML5</div>
+      <div class="tech-badge"><span class="td" style="background:#264de4;"></span>CSS3</div>
+      <div class="tech-badge"><span class="td" style="background:#f7df1e;"></span>JavaScript</div>
+      <div class="tech-badge"><span class="td" style="background:#61dafb;"></span>React</div>
+      <div class="tech-badge"><span class="td" style="background:#06b6d4;"></span>Tailwind CSS</div>
+      <div class="tech-badge"><span class="td" style="background:#21759b;"></span>WordPress</div>
+      <div class="tech-badge"><span class="td" style="background:#7952b3;"></span>Bootstrap</div>
+      <div class="tech-badge"><span class="td" style="background:#000;"></span>Next.js</div>
+      <div class="tech-badge"><span class="td" style="background:#ff6f00;"></span>Figma to Code</div>
+      <div class="tech-badge"><span class="td" style="background:#34d399;"></span>SEO</div>
+      <div class="tech-badge"><span class="td" style="background:#96bf48;"></span>Shopify</div>
+      <div class="tech-badge"><span class="td" style="background:#7b42bc;"></span>WooCommerce</div>
+      <div class="tech-badge"><span class="td" style="background:#FF4785;"></span>Animations</div>
+      <div class="tech-badge"><span class="td" style="background:#f97316;"></span>Git & Deployment</div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== PRICING ===== -->
+  <section class="section">
+    <div class="section-title">Pricing Quick Reference</div>
+    <div class="section-subtitle">Transparent pricing. All tiers include revisions, source code, and deployment.</div>
+
+    <div class="pricing-grid">
+      <div class="price-card">
+        <h4>Landing Page</h4>
+        <div class="price-amount">$250 <span>USD</span></div>
+        <ul class="price-features">
+          <li>Single page design</li>
+          <li>Mobile responsive</li>
+          <li>Contact form</li>
+          <li>SEO basics</li>
+          <li>2 revision rounds</li>
+          <li>3 day delivery</li>
+        </ul>
+      </div>
+
+      <div class="price-card featured">
+        <h4>Multi-Page Site</h4>
+        <div class="price-amount">$650 <span>USD</span></div>
+        <ul class="price-features">
+          <li>Up to 5 pages</li>
+          <li>Custom animations</li>
+          <li>CMS integration</li>
+          <li>Full SEO setup</li>
+          <li>4 revision rounds</li>
+          <li>7 day delivery</li>
+        </ul>
+      </div>
+
+      <div class="price-card">
+        <h4>Full Brand Site</h4>
+        <div class="price-amount">$1,500 <span>USD</span></div>
+        <ul class="price-features">
+          <li>Unlimited pages</li>
+          <li>E-commerce ready</li>
+          <li>Advanced interactions</li>
+          <li>Blog & CMS</li>
+          <li>6+ revision rounds</li>
+          <li>14 day delivery</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== FOOTER ===== -->
+  <footer class="footer">
+    <p>Ready to start? <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank">Hire me on Upwork</a> or reach out directly.</p>
+    <p style="margin-top: 6px; font-size: 11px;">yossra.benzad@gmail.com - Copenhagen, Denmark - 2026</p>
+  </footer>
+
+</div>
+
+</body>
+</html>
