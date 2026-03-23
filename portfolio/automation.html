@@ -540,6 +540,26 @@
   }
   .modal-body .modal-cta:hover { background: #9574f0; }
 
+  /* ========== PDF CTA BANNER (print only) ========== */
+  .pdf-cta-banner {
+    display: none;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(96,165,250,0.1));
+    border: 1px solid rgba(167,139,250,0.25);
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin: 8px auto 0;
+    max-width: 700px;
+  }
+  .pdf-cta-banner p { font-size: 11px; color: var(--text-dim); margin-bottom: 4px; }
+  .pdf-cta-banner a {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    word-break: break-all;
+  }
+
   /* ========== PRINT ========== */
   @media print {
     html, body {
@@ -550,12 +570,29 @@
     }
     .top-nav, .back-to-top, .modal-overlay { display: none !important; }
     .fade-section { opacity: 1 !important; transform: none !important; }
-    .cover { padding: 28px 0 18px; }
-    .section { padding: 16px 0 10px; }
-    #tech { break-before: page; }
-    .divider { display: none; }
+    .pdf-cta-banner { display: block !important; }
+    .cover { padding: 20px 0 12px; }
+    .cover h1 { font-size: 28px !important; }
+    .subtitle { font-size: 13px !important; margin-bottom: 10px !important; }
+    .section { padding: 10px 0 6px; }
+    .section-title { font-size: 18px !important; margin-bottom: 4px !important; }
+    .section-subtitle { font-size: 11px !important; margin-bottom: 8px !important; }
+    .auto-grid, .pricing-grid, .agent-grid { gap: 8px !important; }
+    .auto-card, .price-card, .agent-card { padding: 10px !important; }
+    .auto-preview { height: 80px !important; }
+    .stat-counters { gap: 8px !important; }
+    .stat-card { padding: 10px !important; }
+    .step { padding: 10px 14px !important; }
+    .tech-badge { padding: 4px 10px !important; font-size: 11px !important; }
+    .cta-section { padding: 16px !important; margin-top: 10px !important; }
+    .cta-section h2 { font-size: 18px !important; }
+    .footer { padding: 8px 0 !important; margin-top: 6px !important; }
+    .divider { margin: 4px 0 !important; }
+    * { break-inside: avoid; }
+    .auto-grid, .pricing-grid, .agent-grid, .stat-counters { break-inside: auto; }
+    .auto-card, .price-card, .agent-card, .stat-card, .step, .elektra-showcase, .cta-section { break-inside: avoid; }
   }
-  @page { size: A4; margin: 0; }
+  @page { size: A4; margin: 4mm; }
 
   /* ========== RESPONSIVE ========== */
   @media (max-width: 640px) {
@@ -599,6 +636,12 @@
     </div>
   </div>
 </header>
+
+<!-- PDF-only CTA banner -->
+<div class="pdf-cta-banner">
+  <p>View the full interactive portfolio with live demos and animations:</p>
+  <a href="https://yoggi-sheandelle.github.io/Catalogue/portfolio/automation.html">yoggi-sheandelle.github.io/Catalogue/portfolio/automation.html</a>
+</div>
 
 <div class="page">
 
