@@ -1,0 +1,1166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Workflow Automation Portfolio - Yossra Benzad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  :root {
+    --bg: #0e0e12;
+    --surface: #16161d;
+    --surface-2: #1e1e28;
+    --border: #2a2a38;
+    --text: #e8e8ed;
+    --text-dim: #9898a8;
+    --accent: #a78bfa;
+    --accent-2: #60a5fa;
+    --gold: #d4a853;
+    --green: #34d399;
+    --cyan: #22d3ee;
+    --orange: #f97316;
+  }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    padding-top: 56px;
+  }
+  .page { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+
+  /* ========== STICKY NAV ========== */
+  .top-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    height: 56px; display: flex; align-items: center; justify-content: center;
+    background: rgba(14,14,18,0.85);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(42,42,56,0.5);
+    transition: box-shadow 0.3s ease;
+  }
+  .top-nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+  .top-nav-inner {
+    max-width: 850px; width: 100%; padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand {
+    font-size: 15px; font-weight: 600;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; letter-spacing: -0.3px;
+  }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a {
+    font-size: 12px; color: var(--text-dim); text-decoration: none;
+    letter-spacing: 0.5px; text-transform: uppercase; font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ========== COVER HEADER ========== */
+  .cover {
+    background: linear-gradient(135deg, #0e0e12 0%, #1a1028 40%, #0e1a2e 70%, #0e0e12 100%);
+    padding: 48px 0 36px; text-align: center; position: relative;
+    overflow: hidden; border-bottom: 1px solid var(--border);
+  }
+  .cover::before {
+    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(167,139,250,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(96,165,250,0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .cover-particles {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; overflow: hidden;
+  }
+  .cover-particles .p-dot {
+    position: absolute; border-radius: 50%; opacity: 0;
+    animation: particle-float 6s ease-in-out infinite;
+  }
+  @keyframes particle-float {
+    0% { opacity: 0; transform: translateY(20px) scale(0.5); }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-40px) scale(0.3); }
+  }
+  .cover h1 { font-size: 38px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 10px; position: relative; }
+  .cover h1 span {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--cyan));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .cover .subtitle { font-size: 15px; color: var(--text-dim); font-weight: 400; margin-bottom: 22px; position: relative; }
+  .cover-badges { display: flex; justify-content: center; gap: 24px; position: relative; flex-wrap: wrap; }
+  .cover-badge { font-size: 12px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+  .cover-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse-dot 2s ease-in-out infinite; }
+  @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* ========== SECTIONS ========== */
+  .section { padding: 20px 0 12px; }
+  .section-title { font-size: 22px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.3px; }
+  .section-subtitle { font-size: 13px; color: var(--text-dim); margin-bottom: 14px; }
+  .divider { height: 1px; background: var(--border); margin: 4px 0; }
+
+  /* ========== FADE-IN ANIMATIONS ========== */
+  .fade-section { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-section.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* ========== AUTOMATION CARDS (What I Automate) ========== */
+  .auto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
+  .auto-card {
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    background: var(--surface); cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .auto-card:hover { transform: scale(1.02); box-shadow: 0 8px 32px rgba(167,139,250,0.12); }
+  .auto-preview { height: 140px; position: relative; overflow: hidden; }
+  .auto-info { padding: 14px 16px; border-top: 1px solid var(--border); }
+  .auto-info h3 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+  .auto-info p { font-size: 11px; color: var(--text-dim); line-height: 1.4; }
+
+  /* -- Card 1: Content Pipeline -- */
+  .preview-pipeline {
+    background: linear-gradient(160deg, #0f1520, #0a0e1a);
+    display: flex; align-items: center; justify-content: center; gap: 0; padding: 20px 16px;
+  }
+  .pipe-node {
+    display: flex; flex-direction: column; align-items: center; gap: 4px; position: relative;
+  }
+  .pipe-box {
+    font-size: 8px; font-weight: 600; color: #fff; padding: 6px 12px;
+    border-radius: 6px; border: 1px solid rgba(167,139,250,0.3);
+    background: rgba(167,139,250,0.1);
+    animation: pipe-pulse 3s ease-in-out infinite;
+  }
+  .pipe-node:nth-child(3) .pipe-box { animation-delay: 0.5s; }
+  .pipe-node:nth-child(5) .pipe-box { animation-delay: 1s; }
+  .pipe-node:nth-child(7) .pipe-box { animation-delay: 1.5s; border-color: rgba(52,211,153,0.4); background: rgba(52,211,153,0.1); }
+  @keyframes pipe-pulse {
+    0%, 100% { box-shadow: 0 0 0 rgba(167,139,250,0); }
+    50% { box-shadow: 0 0 12px rgba(167,139,250,0.3); }
+  }
+  .pipe-arrow {
+    width: 24px; height: 2px; background: linear-gradient(90deg, var(--accent), var(--accent-2));
+    position: relative; margin: 0 4px;
+  }
+  .pipe-arrow::after {
+    content: ''; position: absolute; right: -3px; top: -3px;
+    width: 0; height: 0; border-left: 5px solid var(--accent-2); border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+  }
+  .pipe-wp { font-size: 10px; color: #21759b; font-weight: 700; margin-top: 2px; }
+
+  /* -- Card 2: Social Media -- */
+  .preview-social {
+    background: linear-gradient(160deg, #0f1520, #0a0e1a);
+    display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;
+  }
+  .social-hub {
+    width: 44px; height: 44px; border-radius: 50%;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    display: flex; align-items: center; justify-content: center;
+    font-size: 7px; font-weight: 700; color: #fff; text-align: center;
+    animation: hub-rotate-glow 4s ease-in-out infinite;
+    position: relative; z-index: 2;
+  }
+  @keyframes hub-rotate-glow {
+    0%, 100% { box-shadow: 0 0 0 rgba(167,139,250,0); }
+    50% { box-shadow: 0 0 20px rgba(167,139,250,0.4); }
+  }
+  .social-node {
+    position: absolute; width: 32px; height: 32px; border-radius: 50%;
+    border: 1px solid var(--border); background: var(--surface-2);
+    display: flex; align-items: center; justify-content: center;
+    font-size: 9px; font-weight: 700; z-index: 2;
+  }
+  .social-node.sn-li { top: 18px; left: calc(50% - 80px); color: #0077b5; }
+  .social-node.sn-ig { bottom: 18px; left: calc(50% - 80px); color: #e4405f; }
+  .social-node.sn-pi { top: 18px; right: calc(50% - 80px); color: #e60023; }
+  .social-node.sn-tw { bottom: 18px; right: calc(50% - 80px); color: #1da1f2; }
+  .social-line {
+    position: absolute; top: 50%; left: 50%; width: 50px; height: 1px;
+    background: linear-gradient(90deg, rgba(167,139,250,0.4), transparent);
+    transform-origin: left center; z-index: 1;
+  }
+  .social-line.sl-1 { transform: rotate(-150deg); }
+  .social-line.sl-2 { transform: rotate(-210deg); }
+  .social-line.sl-3 { transform: rotate(-30deg); }
+  .social-line.sl-4 { transform: rotate(30deg); }
+  .social-node::after {
+    content: ''; position: absolute; width: 4px; height: 4px; border-radius: 50%;
+    background: var(--green); bottom: -2px; right: -2px;
+    animation: pulse-dot 2s ease-in-out infinite;
+  }
+
+  /* -- Card 3: E-commerce -- */
+  .preview-ecommerce {
+    background: linear-gradient(160deg, #0f1520, #0a0e1a);
+    display: flex; align-items: center; justify-content: center; gap: 20px; padding: 20px;
+  }
+  .ecom-cart-icon {
+    width: 48px; height: 48px; border-radius: 10px;
+    border: 2px solid rgba(249,115,22,0.4); background: rgba(249,115,22,0.08);
+    display: flex; align-items: center; justify-content: center; font-size: 22px;
+    position: relative;
+  }
+  .ecom-badge {
+    position: absolute; top: -6px; right: -6px; width: 16px; height: 16px;
+    border-radius: 50%; background: #e53e3e; font-size: 8px; font-weight: 700;
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    animation: badge-bounce 2s ease-in-out infinite;
+  }
+  @keyframes badge-bounce { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+  .ecom-recovery {
+    display: flex; flex-direction: column; align-items: center; gap: 6px;
+  }
+  .ecom-abandoned {
+    font-size: 8px; color: var(--text-dim); padding: 6px 10px;
+    border: 1px dashed rgba(239,68,68,0.4); border-radius: 6px; text-align: center;
+  }
+  .ecom-recover-arrow {
+    width: 24px; height: 2px; background: var(--green); position: relative;
+    animation: arrow-pulse 2s ease-in-out infinite;
+  }
+  .ecom-recover-arrow::after {
+    content: ''; position: absolute; right: -3px; top: -3px;
+    border-left: 5px solid var(--green); border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+  }
+  @keyframes arrow-pulse {
+    0%, 100% { opacity: 0.5; } 50% { opacity: 1; }
+  }
+  .ecom-recovered {
+    font-size: 8px; color: var(--green); padding: 6px 10px;
+    border: 1px solid rgba(52,211,153,0.3); border-radius: 6px;
+    background: rgba(52,211,153,0.06);
+  }
+
+  /* -- Card 4: Sales & Outreach -- */
+  .preview-sales {
+    background: linear-gradient(160deg, #0f1520, #0a0e1a);
+    display: flex; align-items: center; justify-content: center; padding: 20px 16px;
+  }
+  .crm-pipeline { display: flex; align-items: center; gap: 0; }
+  .crm-stage {
+    display: flex; flex-direction: column; align-items: center; gap: 4px;
+  }
+  .crm-box {
+    font-size: 7px; font-weight: 600; padding: 8px 10px; border-radius: 6px;
+    text-align: center; color: #fff; position: relative;
+  }
+  .crm-box.s-lead { background: rgba(96,165,250,0.15); border: 1px solid rgba(96,165,250,0.3); }
+  .crm-box.s-contact { background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.3); }
+  .crm-box.s-qual { background: rgba(249,115,22,0.15); border: 1px solid rgba(249,115,22,0.3); }
+  .crm-box.s-won { background: rgba(52,211,153,0.15); border: 1px solid rgba(52,211,153,0.3); }
+  .crm-count { font-size: 14px; font-weight: 700; }
+  .crm-label { font-size: 7px; color: var(--text-dim); }
+  .crm-arrow {
+    width: 18px; height: 2px; margin: 0 3px;
+    background: linear-gradient(90deg, rgba(167,139,250,0.4), rgba(52,211,153,0.4));
+    position: relative;
+  }
+  .crm-arrow::after {
+    content: ''; position: absolute; right: -3px; top: -3px;
+    border-left: 5px solid rgba(52,211,153,0.4); border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+  }
+
+  /* -- Card 5: AI Intelligence -- */
+  .preview-intel {
+    background: linear-gradient(160deg, #0f1520, #0a0e1a);
+    display: flex; align-items: center; justify-content: center; padding: 20px; position: relative;
+  }
+  .radar-ring {
+    position: absolute; border-radius: 50%; border: 1px solid rgba(34,211,238,0.1);
+  }
+  .radar-ring.r1 { width: 60px; height: 60px; }
+  .radar-ring.r2 { width: 100px; height: 100px; }
+  .radar-ring.r3 { width: 140px; height: 140px; }
+  .radar-sweep {
+    position: absolute; width: 50px; height: 1px; top: 50%; left: 50%;
+    background: linear-gradient(90deg, rgba(34,211,238,0.6), transparent);
+    transform-origin: left center;
+    animation: radar-spin 4s linear infinite;
+  }
+  @keyframes radar-spin { 0% { transform: rotate(0deg); } 100% { transform: rotate(360deg); } }
+  .radar-dot {
+    position: absolute; width: 5px; height: 5px; border-radius: 50%;
+    background: var(--cyan); box-shadow: 0 0 6px var(--cyan);
+    animation: radar-blip 4s ease-in-out infinite;
+  }
+  .radar-dot.rd1 { top: 30%; left: 35%; animation-delay: 0s; }
+  .radar-dot.rd2 { top: 55%; right: 30%; animation-delay: 1s; }
+  .radar-dot.rd3 { bottom: 28%; left: 42%; animation-delay: 2s; }
+  .radar-dot.rd4 { top: 38%; right: 38%; animation-delay: 3s; }
+  @keyframes radar-blip {
+    0%, 80%, 100% { opacity: 0; transform: scale(0); }
+    20%, 60% { opacity: 1; transform: scale(1); }
+  }
+  .radar-center {
+    width: 8px; height: 8px; border-radius: 50%; background: var(--cyan);
+    box-shadow: 0 0 12px var(--cyan); position: relative; z-index: 2;
+  }
+
+  /* -- Card 6: Operations -- */
+  .preview-ops {
+    background: linear-gradient(160deg, #0f1520, #0a0e1a);
+    display: flex; align-items: center; justify-content: center; gap: 12px; padding: 20px;
+  }
+  .ops-input { display: flex; flex-direction: column; gap: 5px; }
+  .ops-doc {
+    width: 28px; height: 34px; border-radius: 4px; border: 1px solid var(--border);
+    background: var(--surface-2); display: flex; align-items: center; justify-content: center;
+    font-size: 10px; position: relative;
+    animation: ops-slide-in 3s ease-in-out infinite;
+  }
+  .ops-doc:nth-child(2) { animation-delay: 0.3s; }
+  .ops-doc:nth-child(3) { animation-delay: 0.6s; }
+  @keyframes ops-slide-in {
+    0%, 100% { transform: translateX(0); opacity: 0.6; }
+    50% { transform: translateX(6px); opacity: 1; }
+  }
+  .ops-processor {
+    width: 48px; height: 48px; border-radius: 10px;
+    border: 2px solid rgba(167,139,250,0.3); background: rgba(167,139,250,0.08);
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    font-size: 16px; position: relative;
+  }
+  .ops-proc-label { font-size: 6px; color: var(--text-dim); margin-top: 2px; font-weight: 600; }
+  .ops-output { display: flex; flex-direction: column; gap: 4px; }
+  .ops-out-item {
+    font-size: 7px; padding: 4px 8px; border-radius: 4px;
+    font-weight: 600;
+  }
+  .ops-out-item.o-data { background: rgba(96,165,250,0.1); border: 1px solid rgba(96,165,250,0.25); color: var(--accent-2); }
+  .ops-out-item.o-tag { background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); color: var(--green); }
+  .ops-out-item.o-alert { background: rgba(249,115,22,0.1); border: 1px solid rgba(249,115,22,0.25); color: var(--orange); }
+
+  /* ========== ELEKTRAOS SHOWCASE ========== */
+  .elektra-showcase {
+    border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(160deg, #14121a, #0a090c); border-color: rgba(167,139,250,0.15);
+  }
+  .elektra-showcase:hover { transform: scale(1.01); box-shadow: 0 8px 32px rgba(167,139,250,0.10); }
+  .elektra-visual {
+    padding: 28px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 12px; border-right: 1px solid rgba(167,139,250,0.15);
+    background: radial-gradient(circle at 50% 50%, rgba(167,139,250,0.06) 0%, transparent 70%);
+  }
+  .elektra-brand {
+    font-family: 'Space Mono', monospace; font-size: 30px; font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--cyan));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    letter-spacing: 3px;
+  }
+  .elektra-sub { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); font-family: 'Space Mono', monospace; }
+  .elektra-terminal {
+    width: 100%; max-width: 200px; background: rgba(0,0,0,0.4); border-radius: 8px; padding: 10px; border: 1px solid rgba(167,139,250,0.15);
+  }
+  .term-bar { display: flex; gap: 4px; margin-bottom: 8px; }
+  .term-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .term-dot.td-r { background: #ff5f57; }
+  .term-dot.td-y { background: #ffbd2e; }
+  .term-dot.td-g { background: #28ca41; }
+  .term-line { font-family: 'Space Mono', monospace; font-size: 7px; color: var(--green); margin-bottom: 3px; opacity: 0.8; }
+  .term-line.dim { color: var(--text-dim); }
+
+  .elektra-details { padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+  .elektra-details h3 { font-size: 16px; font-weight: 600; }
+  .elektra-desc { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+
+  .stat-counters { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+  .stat-counter {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px; text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .stat-counter:hover { transform: scale(1.04); box-shadow: 0 4px 16px rgba(167,139,250,0.1); }
+  .stat-num { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+  .stat-num.c-purple { color: var(--accent); }
+  .stat-num.c-blue { color: var(--accent-2); }
+  .stat-num.c-green { color: var(--green); }
+  .stat-num.c-cyan { color: var(--cyan); }
+  .stat-label { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+
+  /* ========== TECH BADGES ========== */
+  .tech-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tech-badge {
+    font-size: 12px; font-weight: 500; padding: 6px 16px; border-radius: 6px;
+    border: 1px solid var(--border); background: var(--surface);
+    display: flex; align-items: center; gap: 6px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .tech-badge:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(167,139,250,0.08); }
+  .tech-badge .td { width: 8px; height: 8px; border-radius: 2px; }
+
+  /* ========== WORKFLOW CATEGORIES ========== */
+  .wf-categories { display: flex; flex-direction: column; gap: 10px; }
+  .wf-category {
+    border: 1px solid var(--border); border-radius: 12px; background: var(--surface);
+    overflow: hidden; transition: box-shadow 0.3s ease;
+  }
+  .wf-category:hover { box-shadow: 0 4px 16px rgba(167,139,250,0.06); }
+  .wf-header {
+    padding: 14px 18px; display: flex; align-items: center; justify-content: space-between;
+    cursor: pointer; user-select: none; transition: background 0.2s ease;
+  }
+  .wf-header:hover { background: var(--surface-2); }
+  .wf-header-left { display: flex; align-items: center; gap: 12px; }
+  .wf-icon {
+    width: 32px; height: 32px; border-radius: 8px; display: flex; align-items: center; justify-content: center;
+    font-size: 15px; flex-shrink: 0;
+  }
+  .wf-header-text h4 { font-size: 14px; font-weight: 600; }
+  .wf-header-text .wf-count { font-size: 11px; color: var(--text-dim); }
+  .wf-toggle {
+    font-size: 16px; color: var(--text-dim); transition: transform 0.3s ease;
+  }
+  .wf-category.open .wf-toggle { transform: rotate(180deg); }
+  .wf-body {
+    max-height: 0; overflow: hidden; transition: max-height 0.4s ease;
+    border-top: 0 solid var(--border);
+  }
+  .wf-category.open .wf-body { max-height: 600px; border-top-width: 1px; }
+  .wf-list { padding: 12px 18px; display: flex; flex-wrap: wrap; gap: 6px; }
+  .wf-item {
+    font-size: 11px; padding: 5px 12px; border-radius: 6px;
+    background: var(--surface-2); border: 1px solid var(--border); color: var(--text-dim);
+  }
+
+  /* ========== AGENT TEAMS ========== */
+  .agent-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 12px; }
+  .agent-grid .agent-card:last-child:nth-child(odd) {
+    grid-column: 1 / -1; max-width: calc(50% - 6px);
+    justify-self: center;
+  }
+  .agent-card {
+    border: 1px solid var(--border); border-radius: 12px; background: var(--surface);
+    padding: 16px; transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .agent-card:hover { transform: scale(1.02); box-shadow: 0 6px 24px rgba(167,139,250,0.1); }
+  .agent-card-header { display: flex; align-items: center; gap: 10px; margin-bottom: 10px; }
+  .agent-icon {
+    width: 36px; height: 36px; border-radius: 10px; display: flex; align-items: center;
+    justify-content: center; font-size: 18px; flex-shrink: 0;
+  }
+  .agent-card-header h4 { font-size: 13px; font-weight: 600; }
+  .agent-card-header .agent-count { font-size: 10px; color: var(--text-dim); }
+  .agent-list { display: flex; flex-wrap: wrap; gap: 4px; }
+  .agent-name {
+    font-size: 10px; padding: 3px 8px; border-radius: 4px;
+    background: var(--surface-2); border: 1px solid var(--border);
+    color: var(--text-dim); font-family: 'Space Mono', monospace;
+  }
+
+  /* ========== TIMELINE (How I Work) ========== */
+  .timeline { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 10px; top: 8px; bottom: 8px;
+    width: 2px; background: linear-gradient(180deg, var(--accent), var(--accent-2), var(--green));
+    border-radius: 1px;
+  }
+  .tl-step { position: relative; padding: 14px 0; }
+  .tl-dot {
+    position: absolute; left: -22px; top: 18px; width: 12px; height: 12px;
+    border-radius: 50%; border: 2px solid var(--accent);
+    background: var(--bg);
+  }
+  .tl-step:last-child .tl-dot { border-color: var(--green); }
+  .tl-step h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .tl-step p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+  /* ========== PRICING ========== */
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 4px; }
+  .price-card {
+    border: 1px solid var(--border); border-radius: 12px; padding: 16px 14px;
+    text-align: center; background: var(--surface); position: relative; cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .price-card:hover { transform: scale(1.03); box-shadow: 0 8px 32px rgba(167,139,250,0.12); }
+  .price-card.featured { border-color: var(--accent); background: linear-gradient(180deg, rgba(167,139,250,0.06), var(--surface)); }
+  .price-card.featured::before {
+    content: 'POPULAR'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+    background: var(--accent); color: #fff; padding: 2px 12px; border-radius: 4px;
+  }
+  .price-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .price-amount { font-size: 26px; font-weight: 700; margin: 4px 0; letter-spacing: -1px; }
+  .price-amount span { font-size: 14px; font-weight: 400; color: var(--text-dim); }
+  .price-features { list-style: none; text-align: left; margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .price-features li { font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+  .price-features li::before { content: ''; width: 4px; height: 4px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+
+  /* ========== FOOTER ========== */
+  .footer { text-align: center; padding: 16px 0; border-top: 1px solid var(--border); margin-top: 12px; }
+  .footer p { font-size: 12px; color: var(--text-dim); }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  /* ========== BACK TO TOP ========== */
+  .back-to-top {
+    position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.3);
+    backdrop-filter: blur(8px); color: var(--accent); font-size: 20px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease; z-index: 999;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; }
+  .back-to-top:hover { background: rgba(167,139,250,0.3); transform: translateY(-2px); }
+
+  /* ========== MODAL ========== */
+  .modal-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.75); backdrop-filter: blur(6px); z-index: 2000;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .modal-box {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    max-width: 520px; width: 90%; max-height: 85vh; overflow-y: auto;
+    padding: 0; position: relative; transform: scale(0.95); transition: transform 0.3s ease;
+  }
+  .modal-overlay.open .modal-box { transform: scale(1); }
+  .modal-close {
+    position: absolute; top: 14px; right: 18px; background: none; border: none;
+    color: var(--text-dim); font-size: 22px; cursor: pointer; z-index: 10; transition: color 0.2s ease;
+  }
+  .modal-close:hover { color: var(--text); }
+  .modal-preview-area { height: 200px; border-radius: 16px 16px 0 0; overflow: hidden; }
+  .modal-body { padding: 24px; }
+  .modal-body h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+  .modal-body .modal-desc { font-size: 12px; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6; }
+  .modal-body .modal-tools { font-size: 11px; color: var(--accent); margin-bottom: 18px; }
+  .modal-body .modal-cta {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600;
+    padding: 10px 24px; border-radius: 8px; background: var(--accent); color: #fff;
+    text-decoration: none; transition: background 0.2s ease;
+  }
+  .modal-body .modal-cta:hover { background: #9574f0; }
+
+  /* ========== PRINT ========== */
+  @media print {
+    html, body {
+      background: #0e0e12 !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      padding: 0 !important; margin: 0 !important;
+    }
+    .top-nav, .back-to-top, .modal-overlay { display: none !important; }
+    .fade-section { opacity: 1 !important; transform: none !important; }
+    .cover { padding: 28px 0 18px; }
+    .section { padding: 16px 0 10px; }
+    #tech { break-before: page; }
+    .divider { display: none; }
+  }
+  @page { size: A4; margin: 0; }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 640px) {
+    .auto-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .agent-grid { grid-template-columns: 1fr; }
+    .agent-grid .agent-card:last-child:nth-child(odd) { max-width: 100%; }
+    .stat-counters { grid-template-columns: 1fr 1fr; }
+    .elektra-showcase { grid-template-columns: 1fr; }
+    .elektra-visual { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.15); }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== STICKY NAV ===== -->
+<nav class="top-nav" id="topNav">
+  <div class="top-nav-inner">
+    <div class="nav-brand">Yossra Benzad</div>
+    <div class="nav-links">
+      <a href="#automate">Automate</a>
+      <a href="#system">System</a>
+      <a href="#workflows">Workflows</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== COVER ===== -->
+<header class="cover">
+  <div class="cover-particles" id="particles"></div>
+  <div class="page">
+    <h1><span>AI Workflow Automation</span></h1>
+    <div class="subtitle">Intelligent systems that run your business while you sleep</div>
+    <div class="cover-badges">
+      <div class="cover-badge"><span class="dot"></span> Copenhagen, Denmark</div>
+      <div class="cover-badge">31 Workflows Built</div>
+      <div class="cover-badge">624+ API Endpoints</div>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- ===== WHAT I AUTOMATE ===== -->
+  <section class="section fade-section" id="automate">
+    <div class="section-title">What I Automate</div>
+    <div class="section-subtitle">Click any card to see the full breakdown.</div>
+    <div class="auto-grid">
+
+      <!-- Card 1: Content Pipeline -->
+      <div class="auto-card" data-title="Content Pipeline" data-desc="Auto-generate blog posts with AI, run them through SEO optimization, add internal links, generate meta descriptions, and publish directly to WordPress. Includes quality gates, keyword targeting, and content scoring before anything goes live." data-tools="n8n, WordPress API, Groq, Anthropic, DSPy, OpenLIT">
+        <div class="auto-preview preview-pipeline">
+          <div class="pipe-node"><div class="pipe-box">Draft</div></div>
+          <div class="pipe-arrow"></div>
+          <div class="pipe-node"><div class="pipe-box">Review</div></div>
+          <div class="pipe-arrow"></div>
+          <div class="pipe-node"><div class="pipe-box">Optimize</div></div>
+          <div class="pipe-arrow"></div>
+          <div class="pipe-node"><div class="pipe-box" style="border-color:rgba(52,211,153,0.4);background:rgba(52,211,153,0.1);">Publish</div><div class="pipe-wp">WP</div></div>
+        </div>
+        <div class="auto-info">
+          <h3>Content Pipeline</h3>
+          <p>Auto-generate, review, SEO-optimize, and publish blog posts to WordPress</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Social Media -->
+      <div class="auto-card" data-title="Social Media" data-desc="Schedule and cross-post content across LinkedIn, Instagram, Pinterest, and Twitter from one centralized system. Includes platform-specific formatting, hashtag optimization, image resizing, and analytics tracking. One post, all platforms." data-tools="n8n, Buffer API, LinkedIn API, Instagram Graph API, Pinterest API">
+        <div class="auto-preview preview-social">
+          <div class="social-line sl-1"></div>
+          <div class="social-line sl-2"></div>
+          <div class="social-line sl-3"></div>
+          <div class="social-line sl-4"></div>
+          <div class="social-hub">Sched-<br>uler</div>
+          <div class="social-node sn-li">in</div>
+          <div class="social-node sn-ig">IG</div>
+          <div class="social-node sn-pi">Pi</div>
+          <div class="social-node sn-tw">X</div>
+        </div>
+        <div class="auto-info">
+          <h3>Social Media</h3>
+          <p>Schedule and cross-post content across all platforms from one system</p>
+        </div>
+      </div>
+
+      <!-- Card 3: E-commerce -->
+      <div class="auto-card" data-title="E-commerce" data-desc="Recover abandoned carts with automated follow-up emails, generate SEO-optimized product descriptions, send order notification alerts, and monitor competitor pricing. Integrates with Shopify, WooCommerce, and custom stores." data-tools="n8n, Shopify API, WooCommerce, Twilio, OpenAI">
+        <div class="auto-preview preview-ecommerce">
+          <div class="ecom-cart-icon">
+            &#128722;
+            <div class="ecom-badge">3</div>
+          </div>
+          <div class="ecom-recovery">
+            <div class="ecom-abandoned">Abandoned</div>
+            <div class="ecom-recover-arrow"></div>
+            <div class="ecom-recovered">Recovered</div>
+          </div>
+        </div>
+        <div class="auto-info">
+          <h3>E-commerce</h3>
+          <p>Cart recovery, product descriptions, order alerts, price monitoring</p>
+        </div>
+      </div>
+
+      <!-- Card 4: Sales & Outreach -->
+      <div class="auto-card" data-title="Sales & Outreach" data-desc="Sync leads from forms to HubSpot, trigger automated follow-up email sequences, monitor competitor activity on social media, and generate weekly sales summaries. Full CRM pipeline automation from lead capture to close." data-tools="n8n, HubSpot API, SendGrid, Twitter API, Google Sheets">
+        <div class="auto-preview preview-sales">
+          <div class="crm-pipeline">
+            <div class="crm-stage"><div class="crm-box s-lead"><div class="crm-count">24</div>Lead</div></div>
+            <div class="crm-arrow"></div>
+            <div class="crm-stage"><div class="crm-box s-contact"><div class="crm-count">18</div>Contact</div></div>
+            <div class="crm-arrow"></div>
+            <div class="crm-stage"><div class="crm-box s-qual"><div class="crm-count">12</div>Qualified</div></div>
+            <div class="crm-arrow"></div>
+            <div class="crm-stage"><div class="crm-box s-won"><div class="crm-count">8</div>Won</div></div>
+          </div>
+        </div>
+        <div class="auto-info">
+          <h3>Sales & Outreach</h3>
+          <p>Lead sync, follow-up sequences, competitor monitoring, CRM integration</p>
+        </div>
+      </div>
+
+      <!-- Card 5: AI Intelligence -->
+      <div class="auto-card" data-title="AI Intelligence" data-desc="Automated AI-powered news scanning across industry verticals, real-time market research, customer sentiment analysis from reviews and social media, and trend detection dashboards. Uses multiple LLM providers for accuracy." data-tools="Groq, Anthropic, OpenAI, ChromaDB, mem0, Selenium">
+        <div class="auto-preview preview-intel">
+          <div class="radar-ring r1"></div>
+          <div class="radar-ring r2"></div>
+          <div class="radar-ring r3"></div>
+          <div class="radar-sweep"></div>
+          <div class="radar-dot rd1"></div>
+          <div class="radar-dot rd2"></div>
+          <div class="radar-dot rd3"></div>
+          <div class="radar-dot rd4"></div>
+          <div class="radar-center"></div>
+        </div>
+        <div class="auto-info">
+          <h3>AI Intelligence</h3>
+          <p>News scanning, market research, sentiment analysis, trend detection</p>
+        </div>
+      </div>
+
+      <!-- Card 6: Operations -->
+      <div class="auto-card" data-title="Operations" data-desc="Parse invoices and receipts with OCR, auto-file them to Notion databases, generate daily email digests from multiple inboxes, and transcribe voice notes to text. Turns manual admin work into hands-free workflows." data-tools="n8n, Notion API, Google Cloud Vision, Whisper, Gmail API">
+        <div class="auto-preview preview-ops">
+          <div class="ops-input">
+            <div class="ops-doc">&#128196;</div>
+            <div class="ops-doc">&#128231;</div>
+            <div class="ops-doc">&#127908;</div>
+          </div>
+          <div class="ops-processor">
+            &#9881;
+            <div class="ops-proc-label">AI</div>
+          </div>
+          <div class="ops-output">
+            <div class="ops-out-item o-data">Data</div>
+            <div class="ops-out-item o-tag">Tagged</div>
+            <div class="ops-out-item o-alert">Alerts</div>
+          </div>
+        </div>
+        <div class="auto-info">
+          <h3>Operations</h3>
+          <p>Invoice parsing, receipt OCR, email digests, voice transcription</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== LIVE SYSTEM: ELEKTRAOS ===== -->
+  <section class="section fade-section" id="system">
+    <div class="section-title">Live System: ElektraOS</div>
+    <div class="section-subtitle">A real production automation platform I built and operate daily.</div>
+
+    <div class="elektra-showcase">
+      <div class="elektra-visual">
+        <div class="elektra-brand">ElektraOS</div>
+        <div class="elektra-sub">Operator Console</div>
+        <div class="elektra-terminal">
+          <div class="term-bar"><span class="term-dot td-r"></span><span class="term-dot td-y"></span><span class="term-dot td-g"></span></div>
+          <div class="term-line">$ uvicorn main:app --port 8000</div>
+          <div class="term-line dim">INFO: 624 routes loaded</div>
+          <div class="term-line dim">INFO: 31 agents registered</div>
+          <div class="term-line">&#9679; System online</div>
+        </div>
+      </div>
+      <div class="elektra-details">
+        <h3>Production-grade AI automation platform</h3>
+        <div class="elektra-desc">ElektraOS is a full-stack automation system running 31 AI agents, 31 n8n workflows, and 624+ API endpoints. It handles content generation, SEO optimization, social media scheduling, job pipeline tracking, market intelligence, and e-commerce operations - all from a single dashboard.</div>
+      </div>
+    </div>
+
+    <div class="stat-counters" style="margin-top: 14px;">
+      <div class="stat-counter"><div class="stat-num c-purple" data-target="31" data-suffix="">0</div><div class="stat-label">Workflows</div></div>
+      <div class="stat-counter"><div class="stat-num c-blue" data-target="31" data-suffix="">0</div><div class="stat-label">AI Agents</div></div>
+      <div class="stat-counter"><div class="stat-num c-green" data-target="624" data-suffix="+">0</div><div class="stat-label">Endpoints</div></div>
+      <div class="stat-counter"><div class="stat-num c-cyan" data-target="9" data-suffix="">0</div><div class="stat-label">LLM Providers</div></div>
+    </div>
+
+    <div style="margin-top: 14px;">
+      <div style="font-size: 12px; font-weight: 600; margin-bottom: 8px;">Tech Stack</div>
+      <div class="tech-badges">
+        <div class="tech-badge"><span class="td" style="background:#ff6d00;"></span>n8n</div>
+        <div class="tech-badge"><span class="td" style="background:#009688;"></span>FastAPI</div>
+        <div class="tech-badge"><span class="td" style="background:#3776ab;"></span>Python</div>
+        <div class="tech-badge"><span class="td" style="background:#f55036;"></span>Groq</div>
+        <div class="tech-badge"><span class="td" style="background:#10a37f;"></span>OpenAI</div>
+        <div class="tech-badge"><span class="td" style="background:#d97706;"></span>Anthropic</div>
+        <div class="tech-badge"><span class="td" style="background:#fff;"></span>Ollama</div>
+        <div class="tech-badge"><span class="td" style="background:#6366f1;"></span>DSPy</div>
+        <div class="tech-badge"><span class="td" style="background:#22d3ee;"></span>ChromaDB</div>
+        <div class="tech-badge"><span class="td" style="background:#8b5cf6;"></span>mem0</div>
+        <div class="tech-badge"><span class="td" style="background:#2496ed;"></span>Docker</div>
+        <div class="tech-badge"><span class="td" style="background:#003b57;"></span>SQLite</div>
+        <div class="tech-badge"><span class="td" style="background:#f97316;"></span>OpenLIT</div>
+        <div class="tech-badge"><span class="td" style="background:#43b02a;"></span>Selenium</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== WORKFLOW CATEGORIES ===== -->
+  <section class="section fade-section" id="workflows">
+    <div class="section-title">Workflow Categories</div>
+    <div class="section-subtitle">31 production workflows across 5 categories. Click to expand.</div>
+    <div class="wf-categories">
+
+      <div class="wf-category">
+        <div class="wf-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="wf-header-left">
+            <div class="wf-icon" style="background:rgba(167,139,250,0.1);">&#9997;</div>
+            <div class="wf-header-text"><h4>Content & Social</h4><div class="wf-count">9 workflows</div></div>
+          </div>
+          <div class="wf-toggle">&#9662;</div>
+        </div>
+        <div class="wf-body">
+          <div class="wf-list">
+            <div class="wf-item">Multi-Platform Publisher</div>
+            <div class="wf-item">Blog-to-Social</div>
+            <div class="wf-item">LinkedIn Poster</div>
+            <div class="wf-item">Content Repurposer</div>
+            <div class="wf-item">Instagram Visual Creator</div>
+            <div class="wf-item">Pinterest Analytics</div>
+            <div class="wf-item">Blog-to-LinkedIn+Twitter</div>
+            <div class="wf-item">YouTube-to-Blog</div>
+            <div class="wf-item">Auto-Tag Posts</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wf-category">
+        <div class="wf-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="wf-header-left">
+            <div class="wf-icon" style="background:rgba(249,115,22,0.1);">&#128722;</div>
+            <div class="wf-header-text"><h4>E-Commerce</h4><div class="wf-count">5 workflows</div></div>
+          </div>
+          <div class="wf-toggle">&#9662;</div>
+        </div>
+        <div class="wf-body">
+          <div class="wf-list">
+            <div class="wf-item">Lead-to-HubSpot Sync</div>
+            <div class="wf-item">Follow-Up Email Sequences</div>
+            <div class="wf-item">Abandoned Cart Recovery</div>
+            <div class="wf-item">Product Description Generator</div>
+            <div class="wf-item">Shopify Order SMS</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wf-category">
+        <div class="wf-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="wf-header-left">
+            <div class="wf-icon" style="background:rgba(52,211,153,0.1);">&#128640;</div>
+            <div class="wf-header-text"><h4>Sales & Outreach</h4><div class="wf-count">3 workflows</div></div>
+          </div>
+          <div class="wf-toggle">&#9662;</div>
+        </div>
+        <div class="wf-body">
+          <div class="wf-list">
+            <div class="wf-item">Weekly Sales Summary</div>
+            <div class="wf-item">Auto-DM Twitter Followers</div>
+            <div class="wf-item">Instagram Competitor Monitor</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wf-category">
+        <div class="wf-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="wf-header-left">
+            <div class="wf-icon" style="background:rgba(96,165,250,0.1);">&#9881;</div>
+            <div class="wf-header-text"><h4>Operations & AI</h4><div class="wf-count">8 workflows</div></div>
+          </div>
+          <div class="wf-toggle">&#9662;</div>
+        </div>
+        <div class="wf-body">
+          <div class="wf-list">
+            <div class="wf-item">Twitter-to-Notion</div>
+            <div class="wf-item">Currency Rate Monitor</div>
+            <div class="wf-item">Competitor Price Scraper</div>
+            <div class="wf-item">Voice Note Transcription</div>
+            <div class="wf-item">Customer Sentiment Analysis</div>
+            <div class="wf-item">Ticket Urgency Classification</div>
+            <div class="wf-item">OCR Receipts-to-Notion</div>
+            <div class="wf-item">Daily Email Digest</div>
+          </div>
+        </div>
+      </div>
+
+      <div class="wf-category">
+        <div class="wf-header" onclick="this.parentElement.classList.toggle('open')">
+          <div class="wf-header-left">
+            <div class="wf-icon" style="background:rgba(212,168,83,0.1);">&#11088;</div>
+            <div class="wf-header-text"><h4>Premium AI</h4><div class="wf-count">5 workflows</div></div>
+          </div>
+          <div class="wf-toggle">&#9662;</div>
+        </div>
+        <div class="wf-body">
+          <div class="wf-list">
+            <div class="wf-item">Content Repurposing Factory</div>
+            <div class="wf-item">SEO Listicle Writer</div>
+            <div class="wf-item">AI Newsletter Generator</div>
+            <div class="wf-item">UGC E-Commerce Video Generator</div>
+            <div class="wf-item">Meta Ad Audit + Sales Deck</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== AGENT SYSTEM ===== -->
+  <section class="section fade-section" id="agents">
+    <div class="section-title">Agent System</div>
+    <div class="section-subtitle">31 AI agents organized into specialized teams.</div>
+    <div class="agent-grid">
+
+      <div class="agent-card">
+        <div class="agent-card-header">
+          <div class="agent-icon" style="background:rgba(52,211,153,0.1);">&#128176;</div>
+          <div><h4>Revenue Team</h4><div class="agent-count">6 agents</div></div>
+        </div>
+        <div class="agent-list">
+          <span class="agent-name">pipeline-hunter</span>
+          <span class="agent-name">outreach-closer</span>
+          <span class="agent-name">workflow-builder</span>
+          <span class="agent-name">workflow-seller</span>
+        </div>
+      </div>
+
+      <div class="agent-card">
+        <div class="agent-card-header">
+          <div class="agent-icon" style="background:rgba(167,139,250,0.1);">&#9997;</div>
+          <div><h4>Content Team</h4><div class="agent-count">5 agents</div></div>
+        </div>
+        <div class="agent-list">
+          <span class="agent-name">content-agent</span>
+          <span class="agent-name">social-agent</span>
+          <span class="agent-name">seo-agent</span>
+          <span class="agent-name">content-publisher</span>
+        </div>
+      </div>
+
+      <div class="agent-card">
+        <div class="agent-card-header">
+          <div class="agent-icon" style="background:rgba(34,211,238,0.1);">&#128270;</div>
+          <div><h4>Intel Team</h4><div class="agent-count">6 agents</div></div>
+        </div>
+        <div class="agent-list">
+          <span class="agent-name">ai-news-scanner</span>
+          <span class="agent-name">ai-intel-scout</span>
+          <span class="agent-name">market-agent</span>
+          <span class="agent-name">competitor-scout</span>
+        </div>
+      </div>
+
+      <div class="agent-card">
+        <div class="agent-card-header">
+          <div class="agent-icon" style="background:rgba(96,165,250,0.1);">&#127760;</div>
+          <div><h4>WordPress Team</h4><div class="agent-count">5 agents</div></div>
+        </div>
+        <div class="agent-list">
+          <span class="agent-name">wp-blog-optimizer</span>
+          <span class="agent-name">wp-seo-agent</span>
+          <span class="agent-name">sheandelle-content-agent</span>
+        </div>
+      </div>
+
+      <div class="agent-card">
+        <div class="agent-card-header">
+          <div class="agent-icon" style="background:rgba(249,115,22,0.1);">&#128188;</div>
+          <div><h4>Job Pipeline Team</h4><div class="agent-count">7 agents</div></div>
+        </div>
+        <div class="agent-list">
+          <span class="agent-name">jobspy-scanner</span>
+          <span class="agent-name">resume-optimizer</span>
+          <span class="agent-name">application-tracker</span>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== HOW I WORK ===== -->
+  <section class="section fade-section" id="process">
+    <div class="section-title">How I Work</div>
+    <div class="section-subtitle">From discovery to deployment in 4 clear steps.</div>
+    <div class="timeline">
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <h4>1. Discovery</h4>
+        <p>Map your current workflows, identify repetitive tasks, and find the highest-impact automation opportunities.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <h4>2. Design</h4>
+        <p>Architect the system with error handling, retry logic, monitoring alerts, and clear data flow diagrams.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <h4>3. Build</h4>
+        <p>Implement workflows in n8n, Make, or Zapier with full end-to-end testing and edge case coverage.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <h4>4. Deploy</h4>
+        <p>Launch with documentation, a monitoring dashboard, and hands-on training so your team owns the system.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== PRICING ===== -->
+  <section class="section fade-section" id="pricing">
+    <div class="section-title">Pricing</div>
+    <div class="section-subtitle">Transparent pricing. All tiers include testing, documentation, and support.</div>
+    <div class="pricing-grid">
+      <div class="price-card" onclick="window.open('https://www.upwork.com/freelancers/~01eddb5df59f03b475','_blank')">
+        <h4>Starter</h4>
+        <div class="price-amount">$150 <span>USD</span></div>
+        <ul class="price-features">
+          <li>1 workflow</li>
+          <li>2-3 app connections</li>
+          <li>Error handling</li>
+          <li>3-day delivery</li>
+        </ul>
+      </div>
+      <div class="price-card featured" onclick="window.open('https://www.upwork.com/freelancers/~01eddb5df59f03b475','_blank')">
+        <h4>Standard</h4>
+        <div class="price-amount">$400 <span>USD</span></div>
+        <ul class="price-features">
+          <li>3-5 workflows</li>
+          <li>API integrations</li>
+          <li>Scheduling & triggers</li>
+          <li>Documentation</li>
+          <li>7-day delivery</li>
+        </ul>
+      </div>
+      <div class="price-card" onclick="window.open('https://www.upwork.com/freelancers/~01eddb5df59f03b475','_blank')">
+        <h4>Advanced</h4>
+        <div class="price-amount">$900 <span>USD</span></div>
+        <ul class="price-features">
+          <li>Full automation system</li>
+          <li>AI agents</li>
+          <li>Monitoring dashboard</li>
+          <li>Retry logic</li>
+          <li>14-day delivery</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="fade-section" style="text-align:center; padding: 20px 0 8px;">
+    <div style="background: linear-gradient(135deg, var(--surface), var(--surface-2)); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px;">
+      <div style="font-size: 22px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.3px;">Ready to automate your business?</div>
+      <div style="font-size: 13px; color: var(--text-dim); margin-bottom: 16px; max-width: 480px; margin-left: auto; margin-right: auto;">Stop doing manually what a machine can do in seconds. Let's build your automation stack.</div>
+      <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" style="display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; font-size: 14px; font-weight: 600; padding: 11px 28px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 24px rgba(167,139,250,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">Hire Me on Upwork</a>
+      <div style="margin-top: 8px; font-size: 11px; color: var(--text-dim);">or email: yossra.benzad@gmail.com</div>
+    </div>
+  </section>
+
+  <footer class="footer" style="padding: 10px 0; margin-top: 6px;">
+    <p>Yossra Benzad - Copenhagen, Denmark - 2026</p>
+  </footer>
+
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="cardModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div class="modal-preview-area" id="modalPreview"></div>
+    <div class="modal-body">
+      <h3 id="modalTitle"></h3>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-tools" id="modalTools"></div>
+      <a class="modal-cta" href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank">Get This Automated &#8594;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  /* ===== Particles ===== */
+  var pContainer = document.getElementById('particles');
+  var colors = ['rgba(167,139,250,0.4)', 'rgba(96,165,250,0.3)', 'rgba(34,211,238,0.3)', 'rgba(52,211,153,0.3)'];
+  for (var i = 0; i < 30; i++) {
+    var dot = document.createElement('div');
+    dot.className = 'p-dot';
+    dot.style.left = Math.random() * 100 + '%';
+    dot.style.top = Math.random() * 100 + '%';
+    dot.style.width = dot.style.height = (2 + Math.random() * 4) + 'px';
+    dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+    dot.style.animationDelay = (Math.random() * 6) + 's';
+    dot.style.animationDuration = (4 + Math.random() * 4) + 's';
+    pContainer.appendChild(dot);
+  }
+
+  /* ===== Scroll: nav shadow + back-to-top ===== */
+  var nav = document.getElementById('topNav');
+  var backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    var y = window.scrollY || window.pageYOffset;
+    nav.classList.toggle('scrolled', y > 20);
+    backBtn.classList.toggle('visible', y > 400);
+  });
+  backBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  /* ===== Fade-in on scroll ===== */
+  var fs = document.querySelectorAll('.fade-section');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    fs.forEach(function(el) { obs.observe(el); });
+  } else { fs.forEach(function(el) { el.classList.add('is-visible'); }); }
+
+  /* ===== Animated counters ===== */
+  var counters = document.querySelectorAll('.stat-num[data-target]');
+  var counterDone = false;
+  var counterObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && !counterDone) {
+        counterDone = true;
+        counters.forEach(function(c) {
+          var target = parseInt(c.getAttribute('data-target'));
+          var suffix = c.getAttribute('data-suffix') || '';
+          var start = 0;
+          var duration = 1200;
+          var startTime = null;
+          function animate(ts) {
+            if (!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var ease = 1 - Math.pow(1 - progress, 3);
+            c.textContent = Math.floor(ease * target) + suffix;
+            if (progress < 1) requestAnimationFrame(animate);
+          }
+          requestAnimationFrame(animate);
+        });
+        counterObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  if (counters.length > 0) counterObs.observe(counters[0].closest('.stat-counters'));
+
+  /* ===== Card modal ===== */
+  var overlay = document.getElementById('cardModal');
+  var mClose = document.getElementById('modalClose');
+  var mPrev = document.getElementById('modalPreview');
+  var mTitle = document.getElementById('modalTitle');
+  var mDesc = document.getElementById('modalDesc');
+  var mTools = document.getElementById('modalTools');
+
+  document.querySelectorAll('.auto-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      mTitle.textContent = card.getAttribute('data-title');
+      mDesc.textContent = card.getAttribute('data-desc');
+      mTools.textContent = 'Tools: ' + card.getAttribute('data-tools');
+      mPrev.innerHTML = '';
+      var clone = card.querySelector('.auto-preview').cloneNode(true);
+      clone.style.height = '200px';
+      clone.style.borderRadius = '0';
+      mPrev.appendChild(clone);
+      overlay.classList.add('open');
+    });
+  });
+
+  function closeModal() { overlay.classList.remove('open'); }
+  mClose.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+})();
+</script>
+</body>
+</html>
