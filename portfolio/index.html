@@ -199,7 +199,8 @@
   .included-text { font-size: 13px; font-weight: 500; }
 
   /* ========== PROJECT SHOWCASE ========== */
-  .projects-grid { display: flex; flex-direction: column; gap: 14px; }
+  .projects-grid { display: flex; flex-direction: column; gap: 12px; }
+  .project-visual img { max-height: 220px; }
   .project-card {
     border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
     display: grid; grid-template-columns: 1fr 1fr; gap: 0;
@@ -238,29 +239,29 @@
   }
 
   /* SheandElle */
-  .sheandelle-card { background: linear-gradient(160deg, #1a1412, #0a0908); border-color: rgba(226,114,91,0.3); }
+  .sheandelle-card { background: linear-gradient(160deg, #14121a, #0a090c); border-color: rgba(167,139,250,0.15); }
   .sheandelle-card .project-visual {
     padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;
     gap: 10px; border-right: 1px solid rgba(226,114,91,0.25);
     background: radial-gradient(circle at 50% 50%, rgba(226,114,91,0.06) 0%, transparent 70%);
   }
-  .sheandelle-card .project-tag { background: rgba(226,114,91,0.1); border: 1px solid rgba(226,114,91,0.2); color: #e2725b; }
+  .sheandelle-card .project-tag { background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.2); color: var(--accent); }
   /* MealShift */
-  .mealshift-card { background: linear-gradient(160deg, #1a0e0e, #0a0a0a); border-color: rgba(232,107,107,0.25); }
+  .mealshift-card { background: linear-gradient(160deg, #14121a, #0a090c); border-color: rgba(167,139,250,0.15); }
   .mealshift-card .project-visual {
     padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;
     gap: 10px; border-right: 1px solid rgba(232,107,107,0.2);
     background: radial-gradient(circle at 50% 50%, rgba(232,107,107,0.08) 0%, transparent 70%);
   }
-  .mealshift-card .project-tag { background: rgba(232,107,107,0.1); border: 1px solid rgba(232,107,107,0.2); color: #E86B6B; }
+  .mealshift-card .project-tag { background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.2); color: var(--accent); }
   /* FreshMarket */
-  .freshmarket-card { background: linear-gradient(160deg, #0d1a0e, #0a0a0a); border-color: rgba(27,94,32,0.25); }
+  .freshmarket-card { background: linear-gradient(160deg, #14121a, #0a090c); border-color: rgba(167,139,250,0.15); }
   .freshmarket-card .project-visual {
     padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;
     gap: 10px; border-right: 1px solid rgba(27,94,32,0.2);
     background: radial-gradient(circle at 50% 50%, rgba(27,94,32,0.06) 0%, transparent 70%);
   }
-  .freshmarket-card .project-tag { background: rgba(76,175,80,0.15); border: 1px solid rgba(76,175,80,0.3); color: #66bb6a; }
+  .freshmarket-card .project-tag { background: rgba(167,139,250,0.08); border: 1px solid rgba(167,139,250,0.2); color: var(--accent); }
 
   .pv-brand { font-size: 26px; font-weight: 700; letter-spacing: 2px; }
   .sheandelle-card .pv-brand { font-family: 'Playfair Display', serif; color: #e2725b; }
@@ -409,6 +410,7 @@
       <div class="cover-badge">Marketing & Tech background</div>
       <div class="cover-badge">Full-stack web builds</div>
     </div>
+    <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" style="display: inline-block; margin-top: 18px; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; font-size: 13px; font-weight: 600; padding: 10px 28px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 20px rgba(167,139,250,0.35)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">View Full Portfolio & Hire Me</a>
   </div>
 </header>
 
@@ -695,16 +697,16 @@
   </section>
 
   <!-- ===== CTA ===== -->
-  <section class="section fade-section" style="text-align:center; padding: 32px 0 20px;">
-    <div style="background: linear-gradient(135deg, var(--surface), var(--surface-2)); border: 1px solid var(--border); border-radius: 16px; padding: 36px 28px;">
-      <div style="font-size: 24px; font-weight: 700; margin-bottom: 8px; letter-spacing: -0.3px;">Ready to build something amazing?</div>
-      <div style="font-size: 14px; color: var(--text-dim); margin-bottom: 20px; max-width: 500px; margin-left: auto; margin-right: auto;">Let's turn your vision into a high-converting, beautifully designed website. First consultation is free.</div>
-      <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" style="display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; font-size: 14px; font-weight: 600; padding: 12px 32px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 24px rgba(167,139,250,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">Hire Me on Upwork</a>
-      <div style="margin-top: 12px; font-size: 12px; color: var(--text-dim);">or email directly: yossra.benzad@gmail.com</div>
+  <section class="fade-section" style="text-align:center; padding: 20px 0 8px;">
+    <div style="background: linear-gradient(135deg, var(--surface), var(--surface-2)); border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px;">
+      <div style="font-size: 22px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.3px;">Ready to build something amazing?</div>
+      <div style="font-size: 13px; color: var(--text-dim); margin-bottom: 16px; max-width: 480px; margin-left: auto; margin-right: auto;">Let's turn your vision into a high-converting, beautifully designed website. First consultation is free.</div>
+      <a href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank" style="display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; font-size: 14px; font-weight: 600; padding: 11px 28px; border-radius: 8px; text-decoration: none; letter-spacing: 0.5px; transition: transform 0.2s, box-shadow 0.2s;" onmouseover="this.style.transform='translateY(-2px)';this.style.boxShadow='0 6px 24px rgba(167,139,250,0.3)'" onmouseout="this.style.transform='none';this.style.boxShadow='none'">Hire Me on Upwork</a>
+      <div style="margin-top: 8px; font-size: 11px; color: var(--text-dim);">or email: yossra.benzad@gmail.com</div>
     </div>
   </section>
 
-  <footer class="footer">
+  <footer class="footer" style="padding: 10px 0; margin-top: 6px;">
     <p>Yossra Benzad - Copenhagen, Denmark - 2026</p>
   </footer>
 
