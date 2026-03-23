@@ -368,18 +368,42 @@
     .page { padding: 0 24px; }
     .cover { padding: 20px 0 14px; }
     .section { padding: 10px 0 6px; }
-    .styles-grid { gap: 10px; }
-    .style-preview { height: 90px; }
+    .styles-grid { gap: 8px; }
+    .style-preview { height: 80px; }
+    .style-info { padding: 6px 10px; }
+    .style-info h3 { font-size: 11px; }
+    .style-info p { font-size: 9px; }
     .pricing-grid { gap: 6px; }
-    .price-card { padding: 10px 8px; }
+    .price-card { padding: 8px 6px; }
+    .price-amount { font-size: 20px; margin: 2px 0; }
+    .price-features { margin-top: 4px; gap: 2px; }
+    .price-features li { font-size: 9px; }
+    .price-card h4 { font-size: 12px; }
     .project-card, .price-card { break-inside: avoid; }
-    .page-break { display: none; margin: 0; padding: 0; height: 0; }
-    .footer { padding: 10px 0; margin-top: 8px; }
+    .page-break { display: none; }
+    .footer { padding: 6px 0; margin-top: 4px; }
     .fade-section { opacity: 1 !important; transform: none !important; }
     .divider { margin: 2px 0; }
-    .section-subtitle { margin-bottom: 8px; }
-    .ayla-visual, .project-visual, .project-details { padding: 14px; }
-    .projects-grid { gap: 12px; }
+    .section-subtitle { margin-bottom: 6px; font-size: 11px; }
+    .section-title { font-size: 18px; }
+    .sheandelle-card, .mealshift-card, .freshmarket-card { display: none !important; }
+    .print-view-more { display: block !important; }
+    .project-details { padding: 10px !important; }
+    .project-details h3 { font-size: 13px; }
+    .project-desc { font-size: 10px; }
+    .projects-grid { gap: 8px; }
+    .ayla-visual { padding: 12px !important; }
+    .ayla-visual .ayla-brand { font-size: 24px; }
+    .ayla-details { padding: 12px !important; gap: 6px !important; }
+    .ayla-details h3 { font-size: 13px; }
+    .ayla-details .ayla-desc { font-size: 10px; }
+    .included-grid { gap: 4px 8px; }
+    .included-item { padding: 5px 8px; }
+    .included-icon { width: 24px; height: 24px; font-size: 12px; }
+    .included-text { font-size: 11px; }
+    .tech-badges { gap: 4px; }
+    .tech-badge { padding: 3px 8px; font-size: 9px; }
+    .live-sample-btn { font-size: 10px !important; padding: 5px 14px !important; }
   }
   @page { size: A4; margin: 0; }
 </style>
@@ -639,6 +663,10 @@
         </div>
       </div>
 
+    </div>
+    <div class="print-view-more" style="display:none; text-align:center; margin-top: 14px;">
+      <div style="font-size: 13px; color: var(--text-dim); margin-bottom: 8px;">3 more live projects available online</div>
+      <a href="https://yoggi-sheandelle.github.io/Catalogue/portfolio/" style="display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-2)); color: #fff; font-size: 12px; font-weight: 600; padding: 8px 22px; border-radius: 6px; text-decoration: none;">View All Projects &#8594;</a>
     </div>
   </section>
 
