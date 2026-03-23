@@ -63,7 +63,7 @@
   /* ========== COVER HEADER ========== */
   .cover {
     background: linear-gradient(135deg, #0e0e12 0%, #1a1028 40%, #0e1a2e 70%, #0e0e12 100%);
-    padding: 64px 0 48px; text-align: center; position: relative;
+    padding: 36px 0 24px; text-align: center; position: relative;
     overflow: hidden; border-bottom: 1px solid var(--border);
   }
   .cover::before {
@@ -83,9 +83,9 @@
   .cover-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; }
 
   /* ========== SECTION HEADERS ========== */
-  .section { padding: 40px 0 24px; }
+  .section { padding: 20px 0 12px; }
   .section-title { font-size: 22px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.3px; }
-  .section-subtitle { font-size: 13px; color: var(--text-dim); margin-bottom: 28px; }
+  .section-subtitle { font-size: 13px; color: var(--text-dim); margin-bottom: 14px; }
 
   /* ========== FADE-IN ANIMATIONS ========== */
   .fade-section { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
@@ -208,7 +208,7 @@
   .project-card:hover { transform: scale(1.01); box-shadow: 0 8px 32px rgba(167,139,250,0.10); }
   .ayla-card { background: linear-gradient(160deg, #1a1510, #0a0a0a); border-color: #2a2418; }
   .ayla-visual {
-    padding: 28px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;
     gap: 10px; border-right: 1px solid #2a2418;
     background: radial-gradient(circle at 50% 50%, rgba(212,168,83,0.05) 0%, transparent 70%);
   }
@@ -217,7 +217,7 @@
   .ayla-visual .ayla-line { width: 50px; height: 1px; background: var(--gold); opacity: 0.3; }
   .ayla-visual .ayla-preview-row { display: flex; gap: 6px; margin-top: 8px; }
   .ayla-preview-swatch { width: 20px; height: 20px; border-radius: 4px; }
-  .project-details { padding: 28px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
+  .project-details { padding: 20px; display: flex; flex-direction: column; justify-content: center; gap: 12px; }
   .project-details h3 { font-size: 16px; font-weight: 600; }
   .project-desc { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
   .project-tag-row { display: flex; gap: 6px; flex-wrap: wrap; }
@@ -238,42 +238,42 @@
   }
 
   /* SheandElle */
-  .sheandelle-card { background: linear-gradient(160deg, #1a1210, #0a0908); border-color: rgba(139,69,19,0.3); }
+  .sheandelle-card { background: linear-gradient(160deg, #1a1412, #0a0908); border-color: rgba(226,114,91,0.3); }
   .sheandelle-card .project-visual {
-    padding: 28px; display: flex; flex-direction: column; justify-content: center; align-items: center;
-    gap: 10px; border-right: 1px solid rgba(139,69,19,0.25);
-    background: radial-gradient(circle at 50% 50%, rgba(210,105,30,0.06) 0%, transparent 70%);
+    padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 10px; border-right: 1px solid rgba(226,114,91,0.25);
+    background: radial-gradient(circle at 50% 50%, rgba(226,114,91,0.06) 0%, transparent 70%);
   }
-  .sheandelle-card .project-tag { background: rgba(210,105,30,0.1); border: 1px solid rgba(210,105,30,0.2); color: #D2691E; }
+  .sheandelle-card .project-tag { background: rgba(226,114,91,0.1); border: 1px solid rgba(226,114,91,0.2); color: #e2725b; }
   /* MealShift */
-  .mealshift-card { background: linear-gradient(160deg, #0a1a0e, #0a0a0a); border-color: rgba(34,197,94,0.25); }
+  .mealshift-card { background: linear-gradient(160deg, #0a1a0e, #0a0a0a); border-color: rgba(24,163,0,0.25); }
   .mealshift-card .project-visual {
-    padding: 28px; display: flex; flex-direction: column; justify-content: center; align-items: center;
-    gap: 10px; border-right: 1px solid rgba(34,197,94,0.2);
-    background: radial-gradient(circle at 50% 50%, rgba(34,197,94,0.06) 0%, transparent 70%);
+    padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 10px; border-right: 1px solid rgba(24,163,0,0.2);
+    background: radial-gradient(circle at 50% 50%, rgba(24,163,0,0.06) 0%, transparent 70%);
   }
-  .mealshift-card .project-tag { background: rgba(34,197,94,0.1); border: 1px solid rgba(34,197,94,0.2); color: #22c55e; }
+  .mealshift-card .project-tag { background: rgba(24,163,0,0.1); border: 1px solid rgba(24,163,0,0.2); color: #18a300; }
   /* FreshMarket */
-  .freshmarket-card { background: linear-gradient(160deg, #071a0e, #0a0a0a); border-color: rgba(22,163,74,0.25); }
+  .freshmarket-card { background: linear-gradient(160deg, #0d1a0e, #0a0a0a); border-color: rgba(27,94,32,0.25); }
   .freshmarket-card .project-visual {
-    padding: 28px; display: flex; flex-direction: column; justify-content: center; align-items: center;
-    gap: 10px; border-right: 1px solid rgba(22,163,74,0.2);
-    background: radial-gradient(circle at 50% 50%, rgba(22,163,74,0.06) 0%, transparent 70%);
+    padding: 20px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 10px; border-right: 1px solid rgba(27,94,32,0.2);
+    background: radial-gradient(circle at 50% 50%, rgba(27,94,32,0.06) 0%, transparent 70%);
   }
-  .freshmarket-card .project-tag { background: rgba(22,163,74,0.1); border: 1px solid rgba(22,163,74,0.2); color: #16a34a; }
+  .freshmarket-card .project-tag { background: rgba(27,94,32,0.1); border: 1px solid rgba(27,94,32,0.2); color: #1b5e20; }
 
   .pv-brand { font-size: 26px; font-weight: 700; letter-spacing: 2px; }
-  .sheandelle-card .pv-brand { font-family: 'Playfair Display', serif; color: #D2691E; }
-  .mealshift-card .pv-brand { font-family: 'DM Sans', sans-serif; font-size: 28px; letter-spacing: -0.5px; color: #22c55e; }
-  .freshmarket-card .pv-brand { font-family: 'DM Sans', sans-serif; color: #16a34a; letter-spacing: -0.3px; }
+  .sheandelle-card .pv-brand { font-family: 'Playfair Display', serif; color: #e2725b; }
+  .mealshift-card .pv-brand { font-family: 'DM Sans', sans-serif; font-size: 28px; letter-spacing: -0.5px; color: #18a300; }
+  .freshmarket-card .pv-brand { font-family: 'DM Sans', sans-serif; color: #1b5e20; letter-spacing: -0.3px; }
   .pv-line { width: 40px; height: 1px; opacity: 0.3; }
-  .sheandelle-card .pv-line { background: #D2691E; }
-  .mealshift-card .pv-line { height: 2px; border-radius: 1px; background: linear-gradient(90deg, #22c55e, #f97316); opacity: 0.5; }
-  .freshmarket-card .pv-line { background: #16a34a; }
+  .sheandelle-card .pv-line { background: #e2725b; }
+  .mealshift-card .pv-line { height: 2px; border-radius: 1px; background: linear-gradient(90deg, #18a300, #138200); opacity: 0.5; }
+  .freshmarket-card .pv-line { background: #1b5e20; }
   .pv-tagline { font-size: 8px; letter-spacing: 3px; text-transform: uppercase; }
-  .sheandelle-card .pv-tagline { color: #8B4513; }
-  .mealshift-card .pv-tagline { letter-spacing: 2px; color: #f97316; }
-  .freshmarket-card .pv-tagline { color: #065f46; }
+  .sheandelle-card .pv-tagline { color: #7a7676; }
+  .mealshift-card .pv-tagline { letter-spacing: 2px; color: #333333; }
+  .freshmarket-card .pv-tagline { color: #e65100; }
   .pv-swatches { display: flex; gap: 6px; margin-top: 6px; }
   .pv-swatch { width: 20px; height: 20px; border-radius: 4px; }
 
@@ -291,7 +291,7 @@
   /* ========== PRICING ========== */
   .pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 4px; }
   .price-card {
-    border: 1px solid var(--border); border-radius: 12px; padding: 24px 20px;
+    border: 1px solid var(--border); border-radius: 12px; padding: 16px 14px;
     text-align: center; background: var(--surface); position: relative; cursor: pointer;
     transition: transform 0.3s ease, box-shadow 0.3s ease;
   }
@@ -303,17 +303,17 @@
     background: var(--accent); color: #fff; padding: 2px 12px; border-radius: 4px;
   }
   .price-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
-  .price-amount { font-size: 32px; font-weight: 700; margin: 8px 0; letter-spacing: -1px; }
+  .price-amount { font-size: 26px; font-weight: 700; margin: 4px 0; letter-spacing: -1px; }
   .price-amount span { font-size: 14px; font-weight: 400; color: var(--text-dim); }
   .price-features { list-style: none; text-align: left; margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
   .price-features li { font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
   .price-features li::before { content: ''; width: 4px; height: 4px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
 
   /* ========== FOOTER ========== */
-  .footer { text-align: center; padding: 32px 0; border-top: 1px solid var(--border); margin-top: 32px; }
+  .footer { text-align: center; padding: 16px 0; border-top: 1px solid var(--border); margin-top: 12px; }
   .footer p { font-size: 12px; color: var(--text-dim); }
   .footer a { color: var(--accent); text-decoration: none; }
-  .divider { height: 1px; background: var(--border); margin: 8px 0; }
+  .divider { height: 1px; background: var(--border); margin: 4px 0; }
 
   /* ========== BACK TO TOP ========== */
   .back-to-top {
@@ -359,21 +359,27 @@
   .style-modal-body .modal-cta:hover { background: #9574f0; }
 
   /* ========== PRINT ========== */
+  .page-break { display: none; }
   @media print {
     body { background: #0e0e12 !important; -webkit-print-color-adjust: exact !important; print-color-adjust: exact !important; padding-top: 0; }
     .top-nav, .back-to-top, .style-modal-overlay { display: none !important; }
     .page { padding: 0 24px; }
-    .cover { padding: 24px 0 20px; }
-    .section { padding: 16px 0 10px; }
+    .cover { padding: 20px 0 14px; }
+    .section { padding: 10px 0 6px; }
     .styles-grid { gap: 10px; }
-    .style-preview { height: 100px; }
-    .pricing-grid { gap: 8px; }
+    .style-preview { height: 90px; }
+    .pricing-grid { gap: 6px; }
+    .price-card { padding: 10px 8px; }
     .project-card, .price-card { break-inside: avoid; }
-    .page-break { page-break-before: always; margin: 0; padding: 0; height: 0; }
-    .footer { padding: 16px 0; margin-top: 16px; }
+    .page-break { display: none; margin: 0; padding: 0; height: 0; }
+    .footer { padding: 10px 0; margin-top: 8px; }
     .fade-section { opacity: 1 !important; transform: none !important; }
+    .divider { margin: 2px 0; }
+    .section-subtitle { margin-bottom: 8px; }
+    .ayla-visual, .project-visual, .project-details { padding: 14px; }
+    .projects-grid { gap: 12px; }
   }
-  @page { size: A4; margin: 4mm 4mm; }
+  @page { size: A4; margin: 0; }
 </style>
 </head>
 <body>
@@ -400,8 +406,8 @@
     <div class="cover-badges">
       <div class="cover-badge"><span class="dot"></span> Available for projects</div>
       <div class="cover-badge">Copenhagen, Denmark</div>
-      <div class="cover-badge">5+ years experience</div>
-      <div class="cover-badge">15+ sites delivered</div>
+      <div class="cover-badge">Marketing & Tech background</div>
+      <div class="cover-badge">Full-stack web builds</div>
     </div>
   </div>
 </header>
@@ -592,11 +598,11 @@
           <div class="pv-line"></div>
           <div class="pv-tagline">Moroccan Artisan Rugs</div>
           <div class="pv-swatches">
-            <div class="pv-swatch" style="background:#8B4513;"></div>
-            <div class="pv-swatch" style="background:#D2691E;"></div>
-            <div class="pv-swatch" style="background:#F5DEB3;"></div>
-            <div class="pv-swatch" style="background:#2d1a0e;"></div>
-            <div class="pv-swatch" style="background:#fff8f0;"></div>
+            <div class="pv-swatch" style="background:#e2725b;"></div>
+            <div class="pv-swatch" style="background:#222222;"></div>
+            <div class="pv-swatch" style="background:#fcfbfa;border:1px solid #ddd;"></div>
+            <div class="pv-swatch" style="background:#7a7676;"></div>
+            <div class="pv-swatch" style="background:#c45a46;"></div>
           </div>
         </div>
         <div class="project-details">
@@ -616,11 +622,11 @@
           <div class="pv-line"></div>
           <div class="pv-tagline">Eat better. Waste less.</div>
           <div class="pv-swatches">
-            <div class="pv-swatch" style="background:#22c55e;"></div>
-            <div class="pv-swatch" style="background:#f97316;"></div>
-            <div class="pv-swatch" style="background:#fff;border:1px solid #ddd;"></div>
-            <div class="pv-swatch" style="background:#166534;"></div>
-            <div class="pv-swatch" style="background:#fef3c7;"></div>
+            <div class="pv-swatch" style="background:#18a300;"></div>
+            <div class="pv-swatch" style="background:#333333;"></div>
+            <div class="pv-swatch" style="background:#ffffff;border:1px solid #ddd;"></div>
+            <div class="pv-swatch" style="background:#138200;"></div>
+            <div class="pv-swatch" style="background:#e8f5e9;"></div>
           </div>
         </div>
         <div class="project-details">
@@ -640,11 +646,11 @@
           <div class="pv-line"></div>
           <div class="pv-tagline">Farm to table, delivered</div>
           <div class="pv-swatches">
-            <div class="pv-swatch" style="background:#16a34a;"></div>
-            <div class="pv-swatch" style="background:#065f46;"></div>
-            <div class="pv-swatch" style="background:#f0fdf4;border:1px solid #ddd;"></div>
-            <div class="pv-swatch" style="background:#166534;"></div>
-            <div class="pv-swatch" style="background:#dcfce7;"></div>
+            <div class="pv-swatch" style="background:#1b5e20;"></div>
+            <div class="pv-swatch" style="background:#e65100;"></div>
+            <div class="pv-swatch" style="background:#fdf6e3;border:1px solid #ddd;"></div>
+            <div class="pv-swatch" style="background:#2e7d32;"></div>
+            <div class="pv-swatch" style="background:#bf360c;"></div>
           </div>
         </div>
         <div class="project-details">
