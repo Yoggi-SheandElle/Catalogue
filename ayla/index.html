@@ -1,0 +1,353 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AYLA - Esprit D'Elegance | Fine Jewelry</title>
+  <meta name="description" content="AYLA - Esprit D'Elegance. Premium minimalist jewelry crafted with intention. Timeless pieces for the modern woman.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- Custom cursor -->
+  <div class="custom-cursor" id="cursor"></div>
+
+  <!-- ═══ Navigation ═══ -->
+  <nav class="nav" id="nav">
+    <ul class="nav-links">
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="#story">Story</a></li>
+    </ul>
+    <div class="nav-logo">
+      <a href="/">
+        <div class="nav-logo-text">AYLA</div>
+        <div class="nav-logo-sub">Esprit D'Elegance</div>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html">Contact</a></li>
+    </ul>
+    <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+  </nav>
+
+  <!-- ═══ Hero ═══ -->
+  <section class="hero" id="hero">
+    <div class="hero-video-bg"></div>
+    <div class="hero-particles" id="particles"></div>
+
+    <div class="hero-content">
+      <!-- SVG Logo: Crescent moon with star -->
+      <svg class="hero-moon-icon" viewBox="0 0 60 60" fill="none">
+        <path d="M30 5C18.5 5 10 15 10 27c0 12 8.5 22 20 22 4 0 7.5-1 10.5-3C36 49 30 42 30 33c0-9 6-16 10.5-19.5C37.5 10 34 5 30 5z" fill="none" stroke="#B8956A" stroke-width="0.8" opacity="0.8"/>
+        <circle cx="42" cy="12" r="1.5" fill="#B8956A" opacity="0.9"/>
+        <path d="M42 8v8M38 12h8" stroke="#B8956A" stroke-width="0.5" opacity="0.5"/>
+      </svg>
+
+      <h1 class="hero-title">AYLA</h1>
+      <p class="hero-tagline">Esprit D'Elegance</p>
+      <a href="#collections" class="hero-cta magnetic-btn">Discover the Collection</a>
+    </div>
+
+    <div class="hero-scroll-indicator">
+      <span>Scroll</span>
+      <div class="scroll-line"></div>
+    </div>
+  </section>
+
+  <!-- ═══ Marquee ═══ -->
+  <div class="marquee-section">
+    <div class="marquee-track">
+      <span class="marquee-item">Handcrafted <span class="marquee-dot"></span></span>
+      <span class="marquee-item">925 Silver <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Timeless Design <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Copenhagen <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Minimalist <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Heritage <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Everyday Luxury <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Sustainable <span class="marquee-dot"></span></span>
+      <!-- duplicate for seamless loop -->
+      <span class="marquee-item">Handcrafted <span class="marquee-dot"></span></span>
+      <span class="marquee-item">925 Silver <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Timeless Design <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Copenhagen <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Minimalist <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Heritage <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Everyday Luxury <span class="marquee-dot"></span></span>
+      <span class="marquee-item">Sustainable <span class="marquee-dot"></span></span>
+    </div>
+  </div>
+
+  <!-- ═══ Philosophy ═══ -->
+  <section class="philosophy">
+    <p class="philosophy-quote reveal">
+      Every piece tells a story of elegance, heritage, and intention.
+      Designed for women who carry their strength quietly
+      and wear their confidence like gold.
+    </p>
+    <p class="philosophy-attribution reveal reveal-delay-1">- The AYLA Philosophy</p>
+  </section>
+
+  <!-- ═══ Collections ═══ -->
+  <section class="collections" id="collections">
+    <div class="section-header">
+      <p class="section-label reveal">Curated for you</p>
+      <h2 class="section-title reveal reveal-delay-1">The Collections</h2>
+    </div>
+    <div class="collections-grid">
+      <div class="collection-card reveal">
+        <div class="collection-card-bg" style="background: url('https://images.unsplash.com/photo-1611591437281-460bfbe1220a?w=600&h=800&fit=crop&q=80') center/cover;"></div>
+        <div class="collection-card-overlay">
+          <span class="collection-count">12 Pieces</span>
+          <h3 class="collection-name">Luna</h3>
+          <div class="collection-explore">
+            Explore <span class="collection-explore-arrow"></span>
+          </div>
+        </div>
+      </div>
+      <div class="collection-card reveal reveal-delay-1">
+        <div class="collection-card-bg" style="background: url('https://images.unsplash.com/photo-1601121141461-9d6647bca1ed?w=600&h=800&fit=crop&q=80') center/cover;"></div>
+        <div class="collection-card-overlay">
+          <span class="collection-count">8 Pieces</span>
+          <h3 class="collection-name">Sahara</h3>
+          <div class="collection-explore">
+            Explore <span class="collection-explore-arrow"></span>
+          </div>
+        </div>
+      </div>
+      <div class="collection-card reveal reveal-delay-2">
+        <div class="collection-card-bg" style="background: url('https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=600&h=800&fit=crop&q=80') center/cover;"></div>
+        <div class="collection-card-overlay">
+          <span class="collection-count">10 Pieces</span>
+          <h3 class="collection-name">Noor</h3>
+          <div class="collection-explore">
+            Explore <span class="collection-explore-arrow"></span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Featured Products ═══ -->
+  <section class="products" id="bestsellers">
+    <div class="section-header">
+      <p class="section-label reveal">Most Loved</p>
+      <h2 class="section-title reveal reveal-delay-1">Bestsellers</h2>
+    </div>
+    <div class="products-grid">
+      <div class="product-card reveal">
+        <div class="product-image-wrap">
+          <div class="product-image-inner">
+            <img src="https://images.unsplash.com/photo-1602751584552-8ba73aad10e1?w=500&h=625&fit=crop&q=80" alt="Luna Crescent Pendant" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <span class="product-badge">New</span>
+          <div class="product-quick">Quick View</div>
+        </div>
+        <h3 class="product-name">Luna Crescent Pendant</h3>
+        <div class="product-meta">
+          <span class="product-price">890 MAD</span>
+          <span class="product-material">925 Silver</span>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-1">
+        <div class="product-image-wrap">
+          <div class="product-image-inner">
+            <img src="https://images.unsplash.com/photo-1598560917505-59a3ad559071?w=500&h=625&fit=crop&q=80" alt="Sahara Stacking Ring" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="product-quick">Quick View</div>
+        </div>
+        <h3 class="product-name">Sahara Stacking Ring</h3>
+        <div class="product-meta">
+          <span class="product-price">650 MAD</span>
+          <span class="product-material">925 Silver</span>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-2">
+        <div class="product-image-wrap">
+          <div class="product-image-inner">
+            <img src="https://images.unsplash.com/photo-1588444837495-c6cfeb53f32d?w=500&h=625&fit=crop&q=80" alt="Noor Drop Earrings" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <div class="product-quick">Quick View</div>
+        </div>
+        <h3 class="product-name">Noor Drop Earrings</h3>
+        <div class="product-meta">
+          <span class="product-price">1,200 MAD</span>
+          <span class="product-material">Sterling Silver</span>
+        </div>
+      </div>
+      <div class="product-card reveal reveal-delay-3">
+        <div class="product-image-wrap">
+          <div class="product-image-inner">
+            <img src="https://images.unsplash.com/photo-1611652022419-a9419f74343d?w=500&h=625&fit=crop&q=80" alt="Heritage Chain Bracelet" style="width:100%;height:100%;object-fit:cover;">
+          </div>
+          <span class="product-badge">Bestseller</span>
+          <div class="product-quick">Quick View</div>
+        </div>
+        <h3 class="product-name">Heritage Chain Bracelet</h3>
+        <div class="product-meta">
+          <span class="product-price">950 MAD</span>
+          <span class="product-material">925 Silver</span>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- ═══ Brand Story Split ═══ -->
+  <section class="story-split" id="story">
+    <div class="story-image">
+      <div class="story-image-bg" style="background: url('https://images.unsplash.com/photo-1617038220319-276d3cfab638?w=800&h=1000&fit=crop&q=80') center/cover;"></div>
+    </div>
+    <div class="story-content">
+      <p class="section-label reveal">Our Heritage</p>
+      <h2 class="story-headline reveal reveal-delay-1">Where moonlight<br>meets gold</h2>
+      <p class="story-text reveal reveal-delay-2">
+        Born in Casablanca where ancient medina gold workshops sit blocks from modern
+        boulevards, AYLA bridges Moroccan artistry and contemporary minimalism.
+        Each piece is crafted with intention - meant to be worn every day.
+      </p>
+      <p class="story-text reveal reveal-delay-2">
+        Founded by Aya El Harch, AYLA is built on the belief that luxury should be quiet.
+        Not loud logos, but the gentle gleam of gold that catches light when you move.
+      </p>
+      <a href="about.html" class="story-cta reveal reveal-delay-3">
+        Read Our Story <span class="story-cta-line"></span>
+      </a>
+    </div>
+  </section>
+
+  <!-- ═══ Newsletter ═══ -->
+  <section class="newsletter">
+    <div class="section-header">
+      <p class="section-label reveal">Stay Connected</p>
+      <h2 class="section-title reveal reveal-delay-1">Join the AYLA World</h2>
+    </div>
+    <form class="newsletter-form reveal reveal-delay-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thank You'; this.querySelector('input').value='';">
+      <input type="email" class="newsletter-input" placeholder="Enter your email" required>
+      <button type="submit" class="newsletter-btn">Subscribe</button>
+    </form>
+  </section>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="footer">
+    <div class="footer-top">
+      <div>
+        <div class="footer-brand-name">AYLA</div>
+        <div class="footer-brand-sub">Esprit D'Elegance</div>
+        <p class="footer-brand-text">Premium minimalist jewelry. Born in Casablanca, crafted with intention.</p>
+      </div>
+      <div class="footer-col">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="#">Luna Collection</a></li>
+          <li><a href="#">Sahara Collection</a></li>
+          <li><a href="#">Noor Collection</a></li>
+          <li><a href="#">Gift Cards</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="#">Craftsmanship</a></li>
+          <li><a href="#">Sustainability</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-col">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">Ring Size Guide</a></li>
+          <li><a href="#">Care Guide</a></li>
+          <li><a href="#">FAQ</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AYLA. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="#">Instagram</a>
+        <a href="#">Pinterest</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    // ── Custom cursor ──
+    const cursor = document.getElementById('cursor');
+    let cursorX = 0, cursorY = 0, currentX = 0, currentY = 0;
+
+    document.addEventListener('mousemove', e => {
+      cursorX = e.clientX;
+      cursorY = e.clientY;
+    });
+
+    function animateCursor() {
+      currentX += (cursorX - currentX) * 0.12;
+      currentY += (cursorY - currentY) * 0.12;
+      cursor.style.left = currentX + 'px';
+      cursor.style.top = currentY + 'px';
+      requestAnimationFrame(animateCursor);
+    }
+    animateCursor();
+
+    document.querySelectorAll('a, button, .collection-card, .product-card').forEach(el => {
+      el.addEventListener('mouseenter', () => cursor.classList.add('hovering'));
+      el.addEventListener('mouseleave', () => cursor.classList.remove('hovering'));
+    });
+
+    // ── Sticky nav ──
+    const nav = document.getElementById('nav');
+    window.addEventListener('scroll', () => {
+      nav.classList.toggle('solid', window.scrollY > 100);
+    });
+
+    // ── Floating particles ──
+    const particlesContainer = document.getElementById('particles');
+    for (let i = 0; i < 25; i++) {
+      const p = document.createElement('div');
+      p.classList.add('particle');
+      p.style.left = Math.random() * 100 + '%';
+      p.style.width = p.style.height = (Math.random() * 2 + 1) + 'px';
+      p.style.animationDuration = (Math.random() * 8 + 6) + 's';
+      p.style.animationDelay = (Math.random() * 5) + 's';
+      particlesContainer.appendChild(p);
+    }
+
+    // ── Scroll reveal ──
+    const revealObserver = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          entry.target.classList.add('visible');
+        }
+      });
+    }, { threshold: 0.15, rootMargin: '0px 0px -60px 0px' });
+
+    document.querySelectorAll('.reveal, .reveal-scale').forEach(el => revealObserver.observe(el));
+
+    // ── Smooth anchor scrolling ──
+    document.querySelectorAll('a[href^="#"]').forEach(a => {
+      a.addEventListener('click', e => {
+        e.preventDefault();
+        const target = document.querySelector(a.getAttribute('href'));
+        if (target) {
+          target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+        }
+      });
+    });
+
+    // ── Parallax on hero content ──
+    const heroContent = document.querySelector('.hero-content');
+    window.addEventListener('scroll', () => {
+      const scrolled = window.scrollY;
+      if (scrolled < window.innerHeight) {
+        heroContent.style.transform = `translateY(${scrolled * 0.3}px)`;
+        heroContent.style.opacity = 1 - (scrolled / window.innerHeight) * 1.2;
+      }
+    });
+  </script>
+</body>
+</html>
