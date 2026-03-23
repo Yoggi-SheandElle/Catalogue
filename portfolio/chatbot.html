@@ -1,0 +1,1128 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>AI Chatbot & Assistant Portfolio - Yossra Benzad</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=DM+Sans:ital,opsz,wght@0,9..40,300;0,9..40,400;0,9..40,500;0,9..40,600;0,9..40,700;1,9..40,400&family=Space+Mono:wght@400;700&display=swap" rel="stylesheet">
+<style>
+  *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  :root {
+    --bg: #0e0e12;
+    --surface: #16161d;
+    --surface-2: #1e1e28;
+    --border: #2a2a38;
+    --text: #e8e8ed;
+    --text-dim: #9898a8;
+    --accent: #a78bfa;
+    --accent-2: #60a5fa;
+    --gold: #d4a853;
+    --green: #34d399;
+    --cyan: #22d3ee;
+    --orange: #f97316;
+  }
+  body {
+    font-family: 'DM Sans', sans-serif;
+    background: var(--bg);
+    color: var(--text);
+    line-height: 1.5;
+    -webkit-print-color-adjust: exact;
+    print-color-adjust: exact;
+    padding-top: 56px;
+  }
+  .page { max-width: 920px; margin: 0 auto; padding: 0 16px; }
+
+  /* ========== STICKY NAV ========== */
+  .top-nav {
+    position: fixed; top: 0; left: 0; right: 0; z-index: 1000;
+    height: 56px; display: flex; align-items: center; justify-content: center;
+    background: rgba(14,14,18,0.85);
+    backdrop-filter: blur(12px); -webkit-backdrop-filter: blur(12px);
+    border-bottom: 1px solid rgba(42,42,56,0.5);
+    transition: box-shadow 0.3s ease;
+  }
+  .top-nav.scrolled { box-shadow: 0 4px 24px rgba(0,0,0,0.4); }
+  .top-nav-inner {
+    max-width: 850px; width: 100%; padding: 0 32px;
+    display: flex; align-items: center; justify-content: space-between;
+  }
+  .nav-brand {
+    font-size: 15px; font-weight: 600;
+    background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent;
+    background-clip: text; letter-spacing: -0.3px;
+  }
+  .nav-links { display: flex; gap: 24px; }
+  .nav-links a {
+    font-size: 12px; color: var(--text-dim); text-decoration: none;
+    letter-spacing: 0.5px; text-transform: uppercase; font-weight: 500;
+    transition: color 0.2s ease;
+  }
+  .nav-links a:hover { color: var(--text); }
+
+  /* ========== COVER HEADER ========== */
+  .cover {
+    background: linear-gradient(135deg, #0e0e12 0%, #1a1028 40%, #0e1a2e 70%, #0e0e12 100%);
+    padding: 48px 0 36px; text-align: center; position: relative;
+    overflow: hidden; border-bottom: 1px solid var(--border);
+  }
+  .cover::before {
+    content: ''; position: absolute; top: -50%; left: -50%; width: 200%; height: 200%;
+    background: radial-gradient(circle at 30% 50%, rgba(167,139,250,0.06) 0%, transparent 50%),
+                radial-gradient(circle at 70% 50%, rgba(96,165,250,0.05) 0%, transparent 50%);
+    pointer-events: none;
+  }
+  .cover-particles {
+    position: absolute; top: 0; left: 0; right: 0; bottom: 0; pointer-events: none; overflow: hidden;
+  }
+  .cover-particles .p-dot {
+    position: absolute; border-radius: 50%; opacity: 0;
+    animation: particle-float 6s ease-in-out 1;
+  }
+  @keyframes particle-float {
+    0% { opacity: 0; transform: translateY(20px) scale(0.5); }
+    20% { opacity: 1; }
+    80% { opacity: 1; }
+    100% { opacity: 0; transform: translateY(-40px) scale(0.3); }
+  }
+  .cover h1 { font-size: 38px; font-weight: 700; letter-spacing: -0.5px; margin-bottom: 10px; position: relative; }
+  .cover h1 span {
+    background: linear-gradient(135deg, var(--accent), var(--accent-2), var(--cyan));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+  }
+  .cover .subtitle { font-size: 15px; color: var(--text-dim); font-weight: 400; margin-bottom: 22px; position: relative; }
+  .cover-badges { display: flex; justify-content: center; gap: 24px; position: relative; flex-wrap: wrap; }
+  .cover-badge { font-size: 12px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+  .cover-badge .dot { width: 6px; height: 6px; border-radius: 50%; background: var(--green); display: inline-block; animation: pulse-dot 2s ease-in-out infinite; }
+  @keyframes pulse-dot { 0%, 100% { opacity: 1; } 50% { opacity: 0.4; } }
+
+  /* ========== SECTIONS ========== */
+  .section { padding: 20px 0 12px; }
+  .section-title { font-size: 22px; font-weight: 600; margin-bottom: 6px; letter-spacing: -0.3px; }
+  .section-subtitle { font-size: 13px; color: var(--text-dim); margin-bottom: 14px; }
+  .divider { height: 1px; background: var(--border); margin: 4px 0; }
+
+  /* ========== FADE-IN ANIMATIONS ========== */
+  .fade-section { opacity: 0; transform: translateY(28px); transition: opacity 0.7s ease, transform 0.7s ease; }
+  .fade-section.is-visible { opacity: 1; transform: translateY(0); }
+
+  /* ========== CHATBOT CARDS ========== */
+  .auto-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; margin-bottom: 8px; }
+  .auto-card {
+    border: 1px solid var(--border); border-radius: 12px; overflow: hidden;
+    background: var(--surface); cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .auto-card:hover { transform: scale(1.02); box-shadow: 0 8px 32px rgba(167,139,250,0.12); }
+  .auto-preview { height: 140px; position: relative; overflow: hidden; }
+  .auto-info { padding: 14px 16px; border-top: 1px solid var(--border); }
+  .auto-info h3 { font-size: 14px; font-weight: 600; margin-bottom: 3px; }
+  .auto-info p { font-size: 11px; color: var(--text-dim); line-height: 1.4; }
+
+  /* -- Card 1: Customer Support Chat Bubbles -- */
+  .preview-chat {
+    background: linear-gradient(160deg, #0f1520, #0a0e1a);
+    display: flex; flex-direction: column; justify-content: flex-end; padding: 14px 18px; gap: 6px;
+  }
+  .chat-row { display: flex; gap: 6px; align-items: flex-end; opacity: 0; }
+  .chat-row.user { justify-content: flex-end; }
+  .chat-row.bot { justify-content: flex-start; }
+  .chat-bubble {
+    font-size: 8px; padding: 6px 10px; border-radius: 10px; max-width: 70%; line-height: 1.4;
+  }
+  .chat-row.user .chat-bubble {
+    background: rgba(167,139,250,0.2); border: 1px solid rgba(167,139,250,0.3); color: var(--accent);
+    border-bottom-right-radius: 3px;
+  }
+  .chat-row.bot .chat-bubble {
+    background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); color: var(--green);
+    border-bottom-left-radius: 3px;
+  }
+  .chat-row:nth-child(1) { animation: chat-appear 0.4s ease-out 0.3s forwards; }
+  .chat-row:nth-child(2) { animation: chat-appear 0.4s ease-out 0.9s forwards; }
+  .chat-row:nth-child(3) { animation: chat-appear 0.4s ease-out 1.5s forwards; }
+  .chat-row:nth-child(4) { animation: chat-appear 0.4s ease-out 2.1s forwards; }
+  .typing-indicator { display: flex; gap: 3px; padding: 6px 10px; opacity: 0; animation: chat-appear 0.4s ease-out 2.5s forwards; }
+  .typing-indicator span {
+    width: 4px; height: 4px; border-radius: 50%; background: var(--green);
+    animation: typing-bounce 1.2s ease-in-out infinite;
+  }
+  .typing-indicator span:nth-child(2) { animation-delay: 0.2s; }
+  .typing-indicator span:nth-child(3) { animation-delay: 0.4s; }
+  @keyframes chat-appear {
+    0% { opacity: 0; transform: translateY(8px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  @keyframes typing-bounce {
+    0%, 60%, 100% { transform: translateY(0); opacity: 0.4; }
+    30% { transform: translateY(-4px); opacity: 1; }
+  }
+
+  /* -- Card 2: Knowledge Base / RAG -- */
+  .preview-rag {
+    background: linear-gradient(160deg, #0f1520, #0a0e1a);
+    display: flex; align-items: center; justify-content: center; gap: 16px; padding: 20px;
+  }
+  .rag-docs {
+    display: flex; flex-direction: column; gap: 4px; position: relative;
+  }
+  .rag-doc {
+    width: 36px; height: 44px; border-radius: 4px; border: 1px solid var(--border);
+    background: var(--surface-2); display: flex; align-items: center; justify-content: center;
+    font-size: 12px; position: relative;
+    animation: rag-stack 3s ease-in-out infinite;
+  }
+  .rag-doc:nth-child(1) { z-index: 3; }
+  .rag-doc:nth-child(2) { z-index: 2; margin-top: -36px; margin-left: 6px; animation-delay: 0.3s; }
+  .rag-doc:nth-child(3) { z-index: 1; margin-top: -36px; margin-left: 12px; animation-delay: 0.6s; }
+  @keyframes rag-stack {
+    0%, 100% { transform: translateY(0); opacity: 0.7; }
+    50% { transform: translateY(-3px); opacity: 1; }
+  }
+  .rag-search {
+    width: 48px; height: 48px; border-radius: 50%;
+    border: 2px solid rgba(96,165,250,0.3); background: rgba(96,165,250,0.08);
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+    animation: rag-glow 3s ease-in-out infinite;
+  }
+  @keyframes rag-glow {
+    0%, 100% { box-shadow: 0 0 0 rgba(96,165,250,0); }
+    50% { box-shadow: 0 0 18px rgba(96,165,250,0.3); }
+  }
+  .rag-results { display: flex; flex-direction: column; gap: 4px; }
+  .rag-result {
+    font-size: 7px; padding: 4px 8px; border-radius: 4px; font-weight: 600;
+    opacity: 0; animation: rag-result-in 0.5s ease-out forwards;
+  }
+  .rag-result:nth-child(1) { background: rgba(167,139,250,0.1); border: 1px solid rgba(167,139,250,0.25); color: var(--accent); animation-delay: 0.5s; }
+  .rag-result:nth-child(2) { background: rgba(52,211,153,0.1); border: 1px solid rgba(52,211,153,0.25); color: var(--green); animation-delay: 0.8s; }
+  .rag-result:nth-child(3) { background: rgba(34,211,238,0.1); border: 1px solid rgba(34,211,238,0.25); color: var(--cyan); animation-delay: 1.1s; }
+  @keyframes rag-result-in {
+    0% { opacity: 0; transform: translateX(-6px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+
+  /* -- Card 3: E-commerce Concierge -- */
+  .preview-concierge {
+    background: linear-gradient(160deg, #0f1520, #0a0e1a);
+    display: flex; align-items: center; justify-content: center; gap: 12px; padding: 20px;
+  }
+  .concierge-cart {
+    width: 44px; height: 44px; border-radius: 10px;
+    border: 2px solid rgba(249,115,22,0.4); background: rgba(249,115,22,0.08);
+    display: flex; align-items: center; justify-content: center; font-size: 20px;
+    position: relative;
+  }
+  .concierge-badge {
+    position: absolute; top: -6px; right: -6px; width: 16px; height: 16px;
+    border-radius: 50%; background: #e53e3e; font-size: 8px; font-weight: 700;
+    color: #fff; display: flex; align-items: center; justify-content: center;
+    animation: badge-bounce 2s ease-in-out infinite;
+  }
+  @keyframes badge-bounce { 0%, 100% { transform: scale(1); } 50% { transform: scale(1.2); } }
+  .concierge-suggestions {
+    display: flex; flex-direction: column; gap: 5px;
+  }
+  .concierge-item {
+    display: flex; align-items: center; gap: 6px; padding: 5px 8px; border-radius: 6px;
+    border: 1px solid var(--border); background: var(--surface-2);
+    opacity: 0; animation: suggest-slide 0.5s ease-out forwards;
+  }
+  .concierge-item:nth-child(1) { animation-delay: 0.4s; }
+  .concierge-item:nth-child(2) { animation-delay: 0.8s; }
+  .concierge-item:nth-child(3) { animation-delay: 1.2s; }
+  @keyframes suggest-slide {
+    0% { opacity: 0; transform: translateX(10px); }
+    100% { opacity: 1; transform: translateX(0); }
+  }
+  .concierge-thumb {
+    width: 22px; height: 22px; border-radius: 4px;
+  }
+  .concierge-meta { display: flex; flex-direction: column; }
+  .concierge-name { font-size: 7px; color: var(--text); font-weight: 600; }
+  .concierge-price { font-size: 7px; color: var(--green); font-weight: 700; }
+  .concierge-arrow {
+    width: 24px; height: 2px; background: linear-gradient(90deg, rgba(249,115,22,0.5), rgba(52,211,153,0.5));
+    position: relative; margin: 0 2px;
+  }
+  .concierge-arrow::after {
+    content: ''; position: absolute; right: -3px; top: -3px;
+    border-left: 5px solid rgba(52,211,153,0.5); border-top: 4px solid transparent; border-bottom: 4px solid transparent;
+  }
+
+  /* -- Card 4: Lead Qualification Funnel -- */
+  .preview-funnel {
+    background: linear-gradient(160deg, #0f1520, #0a0e1a);
+    display: flex; align-items: center; justify-content: center; padding: 16px 20px;
+  }
+  .funnel-container {
+    display: flex; flex-direction: column; align-items: center; gap: 0; width: 100%;
+  }
+  .funnel-stage {
+    display: flex; align-items: center; justify-content: center; position: relative;
+    padding: 6px 0; border-left: 2px solid transparent; border-right: 2px solid transparent;
+    text-align: center;
+  }
+  .funnel-bar {
+    height: 22px; border-radius: 4px; display: flex; align-items: center; justify-content: center;
+    font-size: 7px; font-weight: 700; color: #fff; position: relative;
+    transition: width 0.6s ease;
+  }
+  .funnel-bar.f-visitors {
+    width: 100%; background: linear-gradient(90deg, rgba(96,165,250,0.3), rgba(96,165,250,0.15));
+    border: 1px solid rgba(96,165,250,0.3);
+    animation: funnel-fill 2s ease-out 0.3s backwards;
+  }
+  .funnel-bar.f-qualified {
+    width: 65%; background: linear-gradient(90deg, rgba(167,139,250,0.3), rgba(167,139,250,0.15));
+    border: 1px solid rgba(167,139,250,0.3);
+    animation: funnel-fill 2s ease-out 0.7s backwards;
+  }
+  .funnel-bar.f-booked {
+    width: 35%; background: linear-gradient(90deg, rgba(52,211,153,0.3), rgba(52,211,153,0.15));
+    border: 1px solid rgba(52,211,153,0.3);
+    animation: funnel-fill 2s ease-out 1.1s backwards;
+  }
+  @keyframes funnel-fill {
+    0% { width: 0; opacity: 0; }
+    100% { opacity: 1; }
+  }
+  .funnel-label { font-size: 7px; color: var(--text-dim); margin-top: 1px; }
+  .funnel-count { font-size: 10px; font-weight: 700; margin-left: 6px; }
+  .funnel-bar.f-visitors .funnel-count { color: var(--accent-2); }
+  .funnel-bar.f-qualified .funnel-count { color: var(--accent); }
+  .funnel-bar.f-booked .funnel-count { color: var(--green); }
+
+  /* -- Card 5: Internal Team / Slack Bot -- */
+  .preview-slack {
+    background: linear-gradient(160deg, #0f1520, #0a0e1a);
+    display: flex; flex-direction: column; padding: 12px 16px; gap: 5px;
+  }
+  .slack-bar {
+    display: flex; align-items: center; gap: 8px; padding: 4px 8px;
+    background: rgba(96,165,250,0.06); border-radius: 4px; border-bottom: 1px solid var(--border);
+  }
+  .slack-hash { font-size: 11px; color: var(--accent-2); font-weight: 700; }
+  .slack-channel { font-size: 8px; color: var(--text-dim); font-weight: 600; }
+  .slack-msg {
+    display: flex; align-items: flex-start; gap: 6px; padding: 4px 0;
+    opacity: 0; animation: slack-msg-in 0.4s ease-out forwards;
+  }
+  .slack-msg:nth-child(2) { animation-delay: 0.4s; }
+  .slack-msg:nth-child(3) { animation-delay: 0.8s; }
+  .slack-msg:nth-child(4) { animation-delay: 1.2s; }
+  .slack-msg:nth-child(5) { animation-delay: 1.6s; }
+  @keyframes slack-msg-in {
+    0% { opacity: 0; transform: translateY(4px); }
+    100% { opacity: 1; transform: translateY(0); }
+  }
+  .slack-avatar {
+    width: 18px; height: 18px; border-radius: 4px; flex-shrink: 0;
+    display: flex; align-items: center; justify-content: center; font-size: 9px;
+  }
+  .slack-avatar.human { background: rgba(96,165,250,0.15); }
+  .slack-avatar.bot { background: rgba(167,139,250,0.15); }
+  .slack-body { display: flex; flex-direction: column; gap: 1px; }
+  .slack-author { font-size: 7px; font-weight: 700; }
+  .slack-author.human { color: var(--accent-2); }
+  .slack-author.bot { color: var(--accent); }
+  .slack-text { font-size: 7px; color: var(--text-dim); line-height: 1.3; }
+
+  /* -- Card 6: Voice & Multimodal -- */
+  .preview-voice {
+    background: linear-gradient(160deg, #0f1520, #0a0e1a);
+    display: flex; align-items: center; justify-content: center; gap: 20px; padding: 20px;
+  }
+  .voice-waveform {
+    display: flex; align-items: center; gap: 2px; height: 40px;
+  }
+  .wave-bar {
+    width: 3px; border-radius: 2px; background: linear-gradient(180deg, var(--cyan), var(--accent-2));
+    animation: wave-dance 1.2s ease-in-out infinite;
+  }
+  .wave-bar:nth-child(1) { height: 12px; animation-delay: 0s; }
+  .wave-bar:nth-child(2) { height: 24px; animation-delay: 0.1s; }
+  .wave-bar:nth-child(3) { height: 36px; animation-delay: 0.2s; }
+  .wave-bar:nth-child(4) { height: 18px; animation-delay: 0.3s; }
+  .wave-bar:nth-child(5) { height: 30px; animation-delay: 0.4s; }
+  .wave-bar:nth-child(6) { height: 14px; animation-delay: 0.5s; }
+  .wave-bar:nth-child(7) { height: 26px; animation-delay: 0.6s; }
+  .wave-bar:nth-child(8) { height: 20px; animation-delay: 0.7s; }
+  .wave-bar:nth-child(9) { height: 32px; animation-delay: 0.8s; }
+  .wave-bar:nth-child(10) { height: 16px; animation-delay: 0.9s; }
+  @keyframes wave-dance {
+    0%, 100% { transform: scaleY(0.4); opacity: 0.5; }
+    50% { transform: scaleY(1); opacity: 1; }
+  }
+  .voice-center {
+    width: 50px; height: 50px; border-radius: 50%;
+    border: 2px solid rgba(34,211,238,0.4); background: rgba(34,211,238,0.08);
+    display: flex; align-items: center; justify-content: center; flex-direction: column;
+    gap: 2px; position: relative;
+  }
+  .voice-center::after {
+    content: ''; position: absolute; width: 100%; height: 100%; border-radius: 50%;
+    border: 1px solid rgba(34,211,238,0.15);
+    animation: voice-ring 2s ease-out infinite;
+  }
+  @keyframes voice-ring {
+    0% { transform: scale(1); opacity: 0.6; }
+    100% { transform: scale(1.6); opacity: 0; }
+  }
+  .voice-icon { font-size: 16px; }
+  .voice-label { font-size: 5px; color: var(--cyan); font-weight: 700; text-transform: uppercase; letter-spacing: 0.5px; }
+  .voice-eye {
+    width: 40px; height: 40px; border-radius: 50%;
+    border: 2px solid rgba(167,139,250,0.3); background: rgba(167,139,250,0.06);
+    display: flex; align-items: center; justify-content: center; font-size: 18px;
+    animation: eye-blink 3s ease-in-out infinite;
+  }
+  @keyframes eye-blink {
+    0%, 42%, 48%, 100% { transform: scaleY(1); }
+    45% { transform: scaleY(0.1); }
+  }
+
+  /* ========== ELEKTRAOS SHOWCASE ========== */
+  .elektra-showcase {
+    border: 1px solid var(--border); border-radius: 14px; overflow: hidden;
+    display: grid; grid-template-columns: 1fr 1fr; gap: 0;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    background: linear-gradient(160deg, #14121a, #0a090c); border-color: rgba(167,139,250,0.15);
+  }
+  .elektra-showcase:hover { transform: scale(1.01); box-shadow: 0 8px 32px rgba(167,139,250,0.10); }
+  .elektra-visual {
+    padding: 28px 24px; display: flex; flex-direction: column; justify-content: center; align-items: center;
+    gap: 12px; border-right: 1px solid rgba(167,139,250,0.15);
+    background: radial-gradient(circle at 50% 50%, rgba(167,139,250,0.06) 0%, transparent 70%);
+  }
+  .elektra-brand {
+    font-family: 'Space Mono', monospace; font-size: 30px; font-weight: 700;
+    background: linear-gradient(135deg, var(--accent), var(--cyan));
+    -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text;
+    letter-spacing: 3px;
+  }
+  .elektra-sub { font-size: 9px; letter-spacing: 3px; text-transform: uppercase; color: var(--text-dim); font-family: 'Space Mono', monospace; }
+  .elektra-terminal {
+    width: 100%; max-width: 200px; background: rgba(0,0,0,0.4); border-radius: 8px; padding: 10px; border: 1px solid rgba(167,139,250,0.15);
+  }
+  .term-bar { display: flex; gap: 4px; margin-bottom: 8px; }
+  .term-dot { width: 6px; height: 6px; border-radius: 50%; }
+  .term-dot.td-r { background: #ff5f57; }
+  .term-dot.td-y { background: #ffbd2e; }
+  .term-dot.td-g { background: #28ca41; }
+  .term-line { font-family: 'Space Mono', monospace; font-size: 7px; color: var(--green); margin-bottom: 3px; opacity: 0.8; }
+  .term-line.dim { color: var(--text-dim); }
+
+  .elektra-details { padding: 24px; display: flex; flex-direction: column; justify-content: center; gap: 14px; }
+  .elektra-details h3 { font-size: 16px; font-weight: 600; }
+  .elektra-desc { font-size: 12px; color: var(--text-dim); line-height: 1.6; }
+
+  .stat-counters { display: grid; grid-template-columns: 1fr 1fr; gap: 10px; margin-top: 4px; }
+  .stat-counter {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 10px;
+    padding: 12px; text-align: center;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .stat-counter:hover { transform: scale(1.04); box-shadow: 0 4px 16px rgba(167,139,250,0.1); }
+  .stat-num { font-size: 22px; font-weight: 700; letter-spacing: -0.5px; }
+  .stat-num.c-purple { color: var(--accent); }
+  .stat-num.c-blue { color: var(--accent-2); }
+  .stat-num.c-green { color: var(--green); }
+  .stat-num.c-cyan { color: var(--cyan); }
+  .stat-label { font-size: 10px; color: var(--text-dim); margin-top: 2px; }
+
+  /* ========== TECH BADGES ========== */
+  .tech-badges { display: flex; flex-wrap: wrap; gap: 8px; }
+  .tech-badge {
+    font-size: 12px; font-weight: 500; padding: 6px 16px; border-radius: 6px;
+    border: 1px solid var(--border); background: var(--surface);
+    display: flex; align-items: center; gap: 6px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .tech-badge:hover { transform: scale(1.05); box-shadow: 0 4px 12px rgba(167,139,250,0.08); }
+  .tech-badge .td { width: 8px; height: 8px; border-radius: 2px; }
+
+  /* ========== TIMELINE ========== */
+  .timeline { display: flex; flex-direction: column; gap: 0; position: relative; padding-left: 28px; }
+  .timeline::before {
+    content: ''; position: absolute; left: 10px; top: 8px; bottom: 8px;
+    width: 2px; background: linear-gradient(180deg, var(--accent), var(--accent-2), var(--green));
+    border-radius: 1px;
+  }
+  .tl-step { position: relative; padding: 14px 0; }
+  .tl-dot {
+    position: absolute; left: -22px; top: 18px; width: 12px; height: 12px;
+    border-radius: 50%; border: 2px solid var(--accent);
+    background: var(--bg);
+  }
+  .tl-step:last-child .tl-dot { border-color: var(--green); }
+  .tl-step h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .tl-step p { font-size: 12px; color: var(--text-dim); line-height: 1.5; }
+
+  /* ========== PRICING ========== */
+  .pricing-grid { display: grid; grid-template-columns: 1fr 1fr 1fr; gap: 14px; margin-top: 4px; }
+  .price-card {
+    border: 1px solid var(--border); border-radius: 12px; padding: 16px 14px;
+    text-align: center; background: var(--surface); position: relative; cursor: pointer;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+  }
+  .price-card:hover { transform: scale(1.03); box-shadow: 0 8px 32px rgba(167,139,250,0.12); }
+  .price-card.featured { border-color: var(--accent); background: linear-gradient(180deg, rgba(167,139,250,0.06), var(--surface)); }
+  .price-card.featured::before {
+    content: 'POPULAR'; position: absolute; top: -10px; left: 50%; transform: translateX(-50%);
+    font-size: 9px; font-weight: 700; letter-spacing: 1.5px;
+    background: var(--accent); color: #fff; padding: 2px 12px; border-radius: 4px;
+  }
+  .price-card h4 { font-size: 14px; font-weight: 600; margin-bottom: 4px; }
+  .price-amount { font-size: 26px; font-weight: 700; margin: 4px 0; letter-spacing: -1px; }
+  .price-amount span { font-size: 14px; font-weight: 400; color: var(--text-dim); }
+  .price-features { list-style: none; text-align: left; margin-top: 14px; display: flex; flex-direction: column; gap: 6px; }
+  .price-features li { font-size: 11px; color: var(--text-dim); display: flex; align-items: center; gap: 6px; }
+  .price-features li::before { content: ''; width: 4px; height: 4px; background: var(--green); border-radius: 50%; flex-shrink: 0; }
+
+  /* ========== CTA SECTION ========== */
+  .cta-section {
+    background: linear-gradient(135deg, var(--surface), var(--surface-2));
+    border: 1px solid var(--border); border-radius: 14px; padding: 28px 24px;
+    text-align: center;
+  }
+  .cta-section h2 { font-size: 22px; font-weight: 700; margin-bottom: 6px; letter-spacing: -0.3px; }
+  .cta-section p { font-size: 13px; color: var(--text-dim); margin-bottom: 16px; max-width: 480px; margin-left: auto; margin-right: auto; }
+  .cta-btn {
+    display: inline-block; background: linear-gradient(135deg, var(--accent), var(--accent-2));
+    color: #fff; font-size: 14px; font-weight: 600; padding: 11px 28px; border-radius: 8px;
+    text-decoration: none; letter-spacing: 0.5px;
+    transition: transform 0.2s, box-shadow 0.2s;
+  }
+  .cta-btn:hover { transform: translateY(-2px); box-shadow: 0 6px 24px rgba(167,139,250,0.3); }
+
+  /* ========== FOOTER ========== */
+  .footer { text-align: center; padding: 16px 0; border-top: 1px solid var(--border); margin-top: 12px; }
+  .footer p { font-size: 12px; color: var(--text-dim); }
+  .footer a { color: var(--accent); text-decoration: none; }
+
+  /* ========== BACK TO TOP ========== */
+  .back-to-top {
+    position: fixed; bottom: 32px; right: 32px; width: 44px; height: 44px; border-radius: 50%;
+    background: rgba(167,139,250,0.15); border: 1px solid rgba(167,139,250,0.3);
+    backdrop-filter: blur(8px); color: var(--accent); font-size: 20px; cursor: pointer;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none;
+    transition: opacity 0.3s ease, transform 0.3s ease, background 0.3s ease; z-index: 999;
+  }
+  .back-to-top.visible { opacity: 1; pointer-events: auto; }
+  .back-to-top:hover { background: rgba(167,139,250,0.3); transform: translateY(-2px); }
+
+  /* ========== MODAL ========== */
+  .modal-overlay {
+    position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+    background: rgba(0,0,0,0.75); backdrop-filter: blur(6px); z-index: 2000;
+    display: flex; align-items: center; justify-content: center;
+    opacity: 0; pointer-events: none; transition: opacity 0.3s ease;
+  }
+  .modal-overlay.open { opacity: 1; pointer-events: auto; }
+  .modal-box {
+    background: var(--surface); border: 1px solid var(--border); border-radius: 16px;
+    max-width: 520px; width: 90%; max-height: 85vh; overflow-y: auto;
+    padding: 0; position: relative; transform: scale(0.95); transition: transform 0.3s ease;
+  }
+  .modal-overlay.open .modal-box { transform: scale(1); }
+  .modal-close {
+    position: absolute; top: 14px; right: 18px; background: none; border: none;
+    color: var(--text-dim); font-size: 22px; cursor: pointer; z-index: 10; transition: color 0.2s ease;
+  }
+  .modal-close:hover { color: var(--text); }
+  .modal-preview-area { height: 200px; border-radius: 16px 16px 0 0; overflow: hidden; }
+  .modal-body { padding: 24px; }
+  .modal-body h3 { font-size: 20px; font-weight: 600; margin-bottom: 8px; }
+  .modal-body .modal-desc { font-size: 12px; color: var(--text-dim); margin-bottom: 12px; line-height: 1.6; }
+  .modal-body .modal-tools { font-size: 11px; color: var(--accent); margin-bottom: 18px; }
+  .modal-body .modal-cta {
+    display: inline-flex; align-items: center; gap: 8px; font-size: 13px; font-weight: 600;
+    padding: 10px 24px; border-radius: 8px; background: var(--accent); color: #fff;
+    text-decoration: none; transition: background 0.2s ease;
+  }
+  .modal-body .modal-cta:hover { background: #9574f0; }
+
+  /* ========== PDF CTA BANNER (print only) ========== */
+  .pdf-cta-banner {
+    display: none;
+    text-align: center;
+    background: linear-gradient(135deg, rgba(167,139,250,0.15), rgba(96,165,250,0.1));
+    border: 1px solid rgba(167,139,250,0.25);
+    border-radius: 10px;
+    padding: 12px 20px;
+    margin: 8px auto 0;
+    max-width: 700px;
+  }
+  .pdf-cta-banner p { font-size: 11px; color: var(--text-dim); margin-bottom: 4px; }
+  .pdf-cta-banner a {
+    color: var(--accent);
+    font-weight: 600;
+    font-size: 13px;
+    text-decoration: none;
+    word-break: break-all;
+  }
+
+  /* ========== PRINT ========== */
+  @media print {
+    html, body {
+      background: #f5f5f8 !important;
+      color: #1a1a2e !important;
+      -webkit-print-color-adjust: exact !important;
+      print-color-adjust: exact !important;
+      padding: 0 !important; margin: 0 !important;
+    }
+    .top-nav, .back-to-top, .modal-overlay, .cover-particles { display: none !important; }
+    .fade-section { opacity: 1 !important; transform: none !important; }
+    .pdf-cta-banner {
+      display: block !important;
+      background: linear-gradient(135deg, #eee8ff, #e8f0ff) !important;
+      border-color: #c4b5fd !important;
+    }
+    .pdf-cta-banner p { color: #555 !important; }
+    .pdf-cta-banner a { color: #7c3aed !important; }
+
+    .cover {
+      min-height: 100vh !important;
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+      padding: 0 40px !important;
+      background: linear-gradient(135deg, #0f0a1e 0%, #1a1040 30%, #0d1a30 60%, #0f0a1e 100%) !important;
+      break-after: page !important;
+    }
+    .cover .page {
+      display: flex !important;
+      flex-direction: column !important;
+      align-items: center !important;
+      justify-content: center !important;
+    }
+    .cover h1 { font-size: 42px !important; margin-bottom: 14px !important; }
+    .cover h1 span { background: linear-gradient(135deg, #a78bfa, #60a5fa, #22d3ee) !important; -webkit-background-clip: text !important; -webkit-text-fill-color: transparent !important; }
+    .subtitle { font-size: 16px !important; margin-bottom: 28px !important; color: #b0b0c0 !important; }
+    .cover-badge { background: rgba(255,255,255,0.08) !important; color: #d0d0e0 !important; font-size: 12px !important; padding: 8px 16px !important; border: 1px solid rgba(255,255,255,0.12) !important; }
+    .cover-badges { gap: 12px !important; margin-bottom: 32px !important; }
+
+    .page { background: transparent !important; }
+    .section { padding: 10px 0 6px !important; }
+    .section-title { font-size: 17px !important; color: #1a1a2e !important; margin-bottom: 4px !important; }
+    .section-subtitle { font-size: 10px !important; color: #666 !important; margin-bottom: 8px !important; }
+
+    .auto-card, .stat-counter, .price-card {
+      background: #ffffff !important;
+      border: 1px solid #e2e2ea !important;
+      color: #1a1a2e !important;
+      box-shadow: 0 1px 3px rgba(0,0,0,0.08) !important;
+    }
+    .auto-card h3 { color: #1a1a2e !important; }
+    .auto-card p { color: #555 !important; }
+    .auto-preview { background: #f0eef8 !important; }
+
+    .tech-badge {
+      background: #eee8ff !important;
+      color: #5b21b6 !important;
+      border-color: #c4b5fd !important;
+      padding: 3px 8px !important;
+      font-size: 9px !important;
+    }
+
+    .price-card.featured { border: 2px solid #7c3aed !important; }
+    .price-amount { color: #7c3aed !important; }
+    .price-card li { color: #444 !important; }
+
+    .elektra-showcase {
+      background: #1a1a2e !important;
+      border-color: #3b3366 !important;
+    }
+    .elektra-visual { border-color: rgba(167,139,250,0.2) !important; }
+
+    .cta-section {
+      background: linear-gradient(135deg, #eee8ff, #e8f0ff) !important;
+      border-color: #c4b5fd !important;
+      padding: 14px !important;
+      margin-top: 8px !important;
+    }
+    .cta-section h2 { color: #1a1a2e !important; font-size: 17px !important; }
+    .cta-section p { color: #555 !important; }
+    .cta-btn { background: #7c3aed !important; }
+
+    .footer { color: #888 !important; padding: 6px 0 !important; margin-top: 4px !important; }
+    .divider { background: #e2e2ea !important; margin: 4px 0 !important; }
+
+    .auto-grid, .pricing-grid { gap: 6px !important; }
+    .auto-card, .price-card { padding: 8px !important; }
+    .auto-preview { height: 70px !important; }
+    .stat-counters { gap: 6px !important; }
+
+    * { break-inside: avoid; }
+    .auto-grid, .pricing-grid, .stat-counters { break-inside: auto; }
+    .auto-card, .price-card, .stat-counter, .elektra-showcase, .cta-section { break-inside: avoid; }
+
+    #system { break-before: page; }
+    #pricing { break-before: page; }
+  }
+  @page { size: A4; margin: 0; }
+
+  /* ========== RESPONSIVE ========== */
+  @media (max-width: 640px) {
+    .auto-grid { grid-template-columns: 1fr; }
+    .pricing-grid { grid-template-columns: 1fr; }
+    .stat-counters { grid-template-columns: 1fr 1fr; }
+    .elektra-showcase { grid-template-columns: 1fr; }
+    .elektra-visual { border-right: none; border-bottom: 1px solid rgba(167,139,250,0.15); }
+    .nav-links { gap: 14px; }
+    .nav-links a { font-size: 10px; }
+  }
+</style>
+</head>
+<body>
+
+<!-- ===== STICKY NAV ===== -->
+<nav class="top-nav" id="topNav">
+  <div class="top-nav-inner">
+    <div class="nav-brand">Yossra Benzad</div>
+    <div class="nav-links">
+      <a href="#build">Build</a>
+      <a href="#system">System</a>
+      <a href="#process">Process</a>
+      <a href="#pricing">Pricing</a>
+    </div>
+  </div>
+</nav>
+
+<!-- ===== COVER ===== -->
+<header class="cover">
+  <div class="cover-particles" id="particles"></div>
+  <div class="page">
+    <h1><span>AI Chatbot & Assistant</span></h1>
+    <div class="subtitle">Custom AI assistants that understand your business and delight your customers</div>
+    <div class="cover-badges">
+      <div class="cover-badge"><span class="dot"></span> Copenhagen, Denmark</div>
+      <div class="cover-badge">9 LLM Providers</div>
+      <div class="cover-badge">Multi-model Fallback</div>
+      <div class="cover-badge">RAG-powered</div>
+    </div>
+    <div class="pdf-cta-banner">
+      <p>View the full interactive portfolio with live demos and animations</p>
+      <a href="https://yoggi-sheandelle.github.io/Catalogue/portfolio/chatbot.html" target="_blank" style="display:inline-block;background:linear-gradient(135deg, var(--accent), var(--accent-2));color:#ffffff !important;font-size:14px;font-weight:700;padding:12px 32px;border-radius:8px;text-decoration:none;letter-spacing:0.5px;text-shadow:0 1px 2px rgba(0,0,0,0.3);">View Interactive Portfolio</a>
+    </div>
+  </div>
+</header>
+
+<div class="page">
+
+  <!-- ===== WHAT I BUILD ===== -->
+  <section class="section fade-section" id="build">
+    <div class="section-title">What I Build</div>
+    <div class="section-subtitle">Click any card to see the full breakdown.</div>
+    <div class="auto-grid">
+
+      <!-- Card 1: Customer Support Bot -->
+      <div class="auto-card" data-title="Customer Support Bot" data-desc="24/7 automated customer support that handles FAQs, routes tickets to the right team, and seamlessly hands off to human agents when needed. Reduces response time from hours to seconds while maintaining a natural, empathetic conversational tone. Supports multi-language detection and learns from past conversations to improve over time." data-tools="Groq, Anthropic, OpenAI, FastAPI, WebSockets, Zendesk API, Intercom">
+        <div class="auto-preview preview-chat">
+          <div class="chat-row user"><div class="chat-bubble">Hi, my order hasn't arrived yet</div></div>
+          <div class="chat-row bot"><div class="chat-bubble">I can help with that! Let me look up your order. Could you share your order number?</div></div>
+          <div class="chat-row user"><div class="chat-bubble">#ORD-4829</div></div>
+          <div class="chat-row bot"><div class="chat-bubble">Found it! Your package is out for delivery and should arrive by 5 PM today.</div></div>
+          <div class="typing-indicator"><span></span><span></span><span></span></div>
+        </div>
+        <div class="auto-info">
+          <h3>Customer Support Bot</h3>
+          <p>24/7 automated support, FAQ handling, ticket routing, human handoff</p>
+        </div>
+      </div>
+
+      <!-- Card 2: Knowledge Base Assistant -->
+      <div class="auto-card" data-title="Knowledge Base Assistant" data-desc="RAG-powered search assistant that indexes your entire knowledge base - docs, SOPs, wikis, PDFs - and returns precise answers with source citations. Uses vector embeddings for semantic search so users find what they need even when they don't know the exact keywords. Supports incremental indexing as your docs change." data-tools="ChromaDB, mem0, Ollama, LangChain, FastAPI, Python, OpenAI Embeddings">
+        <div class="auto-preview preview-rag">
+          <div class="rag-docs">
+            <div class="rag-doc">&#128196;</div>
+            <div class="rag-doc">&#128221;</div>
+            <div class="rag-doc">&#128218;</div>
+          </div>
+          <div class="rag-search">&#128269;</div>
+          <div class="rag-results">
+            <div class="rag-result">Section 4.2</div>
+            <div class="rag-result">HR Policy</div>
+            <div class="rag-result">API Docs</div>
+          </div>
+        </div>
+        <div class="auto-info">
+          <h3>Knowledge Base Assistant</h3>
+          <p>RAG-powered search over your docs, SOPs, wikis with citations</p>
+        </div>
+      </div>
+
+      <!-- Card 3: E-commerce Concierge -->
+      <div class="auto-card" data-title="E-commerce Concierge" data-desc="AI shopping assistant that recommends products based on browsing history and preferences, tracks orders in real-time, handles returns and exchanges, and suggests upsells at the right moment. Integrates with Shopify, WooCommerce, and custom stores. Increases average order value by surfacing relevant products during conversations." data-tools="Shopify API, WooCommerce, OpenAI, Groq, FastAPI, Redis, Stripe API">
+        <div class="auto-preview preview-concierge">
+          <div class="concierge-cart">
+            &#128722;
+            <div class="concierge-badge">2</div>
+          </div>
+          <div class="concierge-arrow"></div>
+          <div class="concierge-suggestions">
+            <div class="concierge-item">
+              <div class="concierge-thumb" style="background: linear-gradient(135deg, #f5e6d3, #e8d5c0); border-radius: 4px;"></div>
+              <div class="concierge-meta"><div class="concierge-name">Silk Scarf</div><div class="concierge-price">$48</div></div>
+            </div>
+            <div class="concierge-item">
+              <div class="concierge-thumb" style="background: linear-gradient(135deg, #c8dbe8, #a8c4d8); border-radius: 4px;"></div>
+              <div class="concierge-meta"><div class="concierge-name">Leather Bag</div><div class="concierge-price">$129</div></div>
+            </div>
+            <div class="concierge-item">
+              <div class="concierge-thumb" style="background: linear-gradient(135deg, #d8cce8, #c4b0dc); border-radius: 4px;"></div>
+              <div class="concierge-meta"><div class="concierge-name">Watch</div><div class="concierge-price">$89</div></div>
+            </div>
+          </div>
+        </div>
+        <div class="auto-info">
+          <h3>E-commerce Concierge</h3>
+          <p>Product recommendations, order tracking, returns, upselling</p>
+        </div>
+      </div>
+
+      <!-- Card 4: Lead Qualification Bot -->
+      <div class="auto-card" data-title="Lead Qualification Bot" data-desc="Conversational bot that qualifies website visitors by asking the right questions, scores them based on fit criteria, books meetings directly on your calendar, and syncs all captured information to your CRM. Replaces static contact forms with dynamic conversations that adapt based on responses. Typically increases qualified leads by 40-60%." data-tools="Cal.com API, HubSpot, Salesforce, Groq, FastAPI, WebSockets, Calendly">
+        <div class="auto-preview preview-funnel">
+          <div class="funnel-container">
+            <div class="funnel-stage">
+              <div class="funnel-bar f-visitors">Visitors <span class="funnel-count">1,240</span></div>
+            </div>
+            <div class="funnel-label">Engaged by bot</div>
+            <div class="funnel-stage">
+              <div class="funnel-bar f-qualified">Qualified <span class="funnel-count">412</span></div>
+            </div>
+            <div class="funnel-label">Meeting booked</div>
+            <div class="funnel-stage">
+              <div class="funnel-bar f-booked">Booked <span class="funnel-count">89</span></div>
+            </div>
+          </div>
+        </div>
+        <div class="auto-info">
+          <h3>Lead Qualification Bot</h3>
+          <p>Qualify visitors, book meetings, capture info, CRM sync</p>
+        </div>
+      </div>
+
+      <!-- Card 5: Internal Team Assistant -->
+      <div class="auto-card" data-title="Internal Team Assistant" data-desc="Slack or Teams bot for your team that answers HR questions, handles IT support requests, guides new hires through onboarding, and looks up company policies instantly. Reduces internal ticket volume by up to 60% and gives employees instant answers instead of waiting for email replies. Fully customizable personality and knowledge scope." data-tools="Slack API, Microsoft Teams, Notion API, Confluence, Groq, ChromaDB, FastAPI">
+        <div class="auto-preview preview-slack">
+          <div class="slack-bar">
+            <div class="slack-hash">#</div>
+            <div class="slack-channel">ask-hr-bot</div>
+          </div>
+          <div class="slack-msg">
+            <div class="slack-avatar human">&#128100;</div>
+            <div class="slack-body"><div class="slack-author human">Sarah</div><div class="slack-text">How many vacation days do I have left?</div></div>
+          </div>
+          <div class="slack-msg">
+            <div class="slack-avatar bot">&#9889;</div>
+            <div class="slack-body"><div class="slack-author bot">HR Assistant</div><div class="slack-text">You have 12 days remaining. Your next accrual is April 1.</div></div>
+          </div>
+          <div class="slack-msg">
+            <div class="slack-avatar human">&#128100;</div>
+            <div class="slack-body"><div class="slack-author human">Sarah</div><div class="slack-text">Can I request time off next Friday?</div></div>
+          </div>
+          <div class="slack-msg">
+            <div class="slack-avatar bot">&#9889;</div>
+            <div class="slack-body"><div class="slack-author bot">HR Assistant</div><div class="slack-text">Done! PTO request submitted for Mar 28. Your manager will be notified.</div></div>
+          </div>
+        </div>
+        <div class="auto-info">
+          <h3>Internal Team Assistant</h3>
+          <p>Slack/Teams bot for HR, IT, onboarding, policy lookups</p>
+        </div>
+      </div>
+
+      <!-- Card 6: Voice & Multimodal -->
+      <div class="auto-card" data-title="Voice & Multimodal" data-desc="Voice-enabled AI assistants that understand speech and respond naturally, plus image recognition for document processing, product identification, and visual search. Combines speech-to-text, text-to-speech, and vision models into one seamless experience. Perfect for hands-free use cases, accessibility needs, and workflows that involve photos or scanned documents." data-tools="Whisper, ElevenLabs, OpenAI Vision, Groq, FastAPI, WebSockets, FFmpeg">
+        <div class="auto-preview preview-voice">
+          <div class="voice-waveform">
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+            <div class="wave-bar"></div>
+          </div>
+          <div class="voice-center">
+            <div class="voice-icon">&#127908;</div>
+            <div class="voice-label">Live</div>
+          </div>
+          <div class="voice-eye">&#128065;</div>
+        </div>
+        <div class="auto-info">
+          <h3>Voice & Multimodal</h3>
+          <p>Voice-enabled assistants, image recognition, document processing</p>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== LIVE SYSTEM: ELEKTRAOS ===== -->
+  <section class="section fade-section" id="system">
+    <div class="section-title">Live System: ElektraOS</div>
+    <div class="section-subtitle">Production AI assistant with cross-session memory and multi-provider intelligence.</div>
+
+    <div class="elektra-showcase">
+      <div class="elektra-visual">
+        <div class="elektra-brand">ElektraOS</div>
+        <div class="elektra-sub">AI Chat System</div>
+        <div class="elektra-terminal">
+          <div class="term-bar"><span class="term-dot td-r"></span><span class="term-dot td-y"></span><span class="term-dot td-g"></span></div>
+          <div class="term-line">$ elektra chat --mode=rag</div>
+          <div class="term-line dim">INFO: mem0 memory loaded</div>
+          <div class="term-line dim">INFO: vault RAG indexed</div>
+          <div class="term-line">&#9679; Elektra online</div>
+        </div>
+      </div>
+      <div class="elektra-details">
+        <h3>Production AI chat with memory and RAG</h3>
+        <div class="elektra-desc">ElektraOS is a live AI assistant system featuring the Elektra chat engine with cross-session memory (mem0), vault-based RAG semantic search, multi-provider LLM fallback chains across 9 providers, and 624+ API endpoints. It remembers past conversations, searches internal knowledge bases, and gracefully falls back between models for reliability.</div>
+      </div>
+    </div>
+
+    <div class="stat-counters" style="margin-top: 14px;">
+      <div class="stat-counter"><div class="stat-num c-purple" data-target="9" data-suffix="">0</div><div class="stat-label">LLM Providers</div></div>
+      <div class="stat-counter"><div class="stat-num c-blue" data-target="1" data-suffix="">0</div><div class="stat-label">Cross-session Memory</div></div>
+      <div class="stat-counter"><div class="stat-num c-green" data-target="1" data-suffix="">0</div><div class="stat-label">RAG Search</div></div>
+      <div class="stat-counter"><div class="stat-num c-cyan" data-target="624" data-suffix="+">0</div><div class="stat-label">Endpoints</div></div>
+    </div>
+
+    <div style="margin-top: 14px;">
+      <div style="font-size: 12px; font-weight: 600; margin-bottom: 8px;">Tech Stack</div>
+      <div class="tech-badges">
+        <div class="tech-badge"><span class="td" style="background:#f55036;"></span>Groq</div>
+        <div class="tech-badge"><span class="td" style="background:#d97706;"></span>Anthropic</div>
+        <div class="tech-badge"><span class="td" style="background:#10a37f;"></span>OpenAI</div>
+        <div class="tech-badge"><span class="td" style="background:#fff;"></span>Ollama</div>
+        <div class="tech-badge"><span class="td" style="background:#8b5cf6;"></span>mem0</div>
+        <div class="tech-badge"><span class="td" style="background:#22d3ee;"></span>ChromaDB</div>
+        <div class="tech-badge"><span class="td" style="background:#009688;"></span>FastAPI</div>
+        <div class="tech-badge"><span class="td" style="background:#3776ab;"></span>Python</div>
+        <div class="tech-badge"><span class="td" style="background:#4fc08d;"></span>WebSockets</div>
+        <div class="tech-badge"><span class="td" style="background:#2c974b;"></span>LangChain</div>
+        <div class="tech-badge"><span class="td" style="background:#6366f1;"></span>DSPy</div>
+        <div class="tech-badge"><span class="td" style="background:#f97316;"></span>OpenLIT</div>
+        <div class="tech-badge"><span class="td" style="background:#2496ed;"></span>Docker</div>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== HOW IT WORKS ===== -->
+  <section class="section fade-section" id="process">
+    <div class="section-title">How It Works</div>
+    <div class="section-subtitle">From idea to live chatbot in 5 clear steps.</div>
+    <div class="timeline">
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <h4>1. Discovery</h4>
+        <p>Understand your business, users, and use cases. Identify the highest-impact conversations to automate first.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <h4>2. Design Conversation Flows</h4>
+        <p>Map intents, responses, fallback paths, and human handoff rules. Define the bot's personality and knowledge scope.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <h4>3. Build & Train</h4>
+        <p>Create a custom knowledge base, build the RAG pipeline, tune the model personality, and test with real conversation data.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <h4>4. Integrate</h4>
+        <p>Connect to your website, Slack, WhatsApp, CRM, or helpdesk. Set up monitoring, analytics, and alert hooks.</p>
+      </div>
+      <div class="tl-step">
+        <div class="tl-dot"></div>
+        <h4>5. Launch & Optimize</h4>
+        <p>Deploy to production, monitor live conversations, and improve accuracy weekly based on real user interactions.</p>
+      </div>
+    </div>
+  </section>
+
+  <div class="divider"></div>
+
+  <!-- ===== PRICING ===== -->
+  <section class="section fade-section" id="pricing">
+    <div class="section-title">Pricing</div>
+    <div class="section-subtitle">Transparent pricing. All tiers include testing, documentation, and support.</div>
+    <div class="pricing-grid">
+      <div class="price-card" onclick="window.open('https://www.upwork.com/freelancers/~01eddb5df59f03b475','_blank')">
+        <h4>FAQ Bot</h4>
+        <div class="price-amount">$200 <span>USD</span></div>
+        <ul class="price-features">
+          <li>Simple Q&A bot</li>
+          <li>Up to 50 FAQs</li>
+          <li>Website chat widget</li>
+          <li>Basic analytics</li>
+          <li>5-day delivery</li>
+        </ul>
+      </div>
+      <div class="price-card featured" onclick="window.open('https://www.upwork.com/freelancers/~01eddb5df59f03b475','_blank')">
+        <h4>Smart Assistant</h4>
+        <div class="price-amount">$800 <span>USD</span></div>
+        <ul class="price-features">
+          <li>RAG-powered knowledge base</li>
+          <li>Custom training data</li>
+          <li>Multi-channel deployment</li>
+          <li>CRM integration</li>
+          <li>Human handoff</li>
+          <li>10-day delivery</li>
+        </ul>
+      </div>
+      <div class="price-card" onclick="window.open('https://www.upwork.com/freelancers/~01eddb5df59f03b475','_blank')">
+        <h4>Enterprise AI</h4>
+        <div class="price-amount">$2000+ <span>USD</span></div>
+        <ul class="price-features">
+          <li>Multi-agent system</li>
+          <li>Voice support</li>
+          <li>Custom LLM fine-tuning</li>
+          <li>SLA guarantee</li>
+          <li>Dedicated support</li>
+          <li>Custom timeline</li>
+        </ul>
+      </div>
+    </div>
+  </section>
+
+  <!-- ===== CTA ===== -->
+  <section class="fade-section" style="text-align:center; padding: 20px 0 8px;">
+    <div class="cta-section">
+      <h2>Ready to give your customers 24/7 AI-powered support?</h2>
+      <p>Stop losing leads to slow response times. Let's build an AI assistant that works around the clock.</p>
+      <a class="cta-btn" href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank">Build My Chatbot &#8594;</a>
+      <div style="margin-top: 8px; font-size: 11px; color: var(--text-dim);">or email: yossra.benzad@gmail.com</div>
+    </div>
+  </section>
+
+  <footer class="footer" style="padding: 10px 0; margin-top: 6px;">
+    <p>Yossra Benzad - Copenhagen, Denmark - 2026</p>
+  </footer>
+
+</div>
+
+<button class="back-to-top" id="backToTop" aria-label="Back to top">&#8593;</button>
+
+<!-- ===== MODAL ===== -->
+<div class="modal-overlay" id="cardModal">
+  <div class="modal-box">
+    <button class="modal-close" id="modalClose">&times;</button>
+    <div class="modal-preview-area" id="modalPreview"></div>
+    <div class="modal-body">
+      <h3 id="modalTitle"></h3>
+      <div class="modal-desc" id="modalDesc"></div>
+      <div class="modal-tools" id="modalTools"></div>
+      <a class="modal-cta" href="https://www.upwork.com/freelancers/~01eddb5df59f03b475" target="_blank">Build This Bot &#8594;</a>
+    </div>
+  </div>
+</div>
+
+<script>
+(function() {
+  /* ===== Particles ===== */
+  var pContainer = document.getElementById('particles');
+  var colors = ['rgba(167,139,250,0.4)', 'rgba(96,165,250,0.3)', 'rgba(34,211,238,0.3)', 'rgba(52,211,153,0.3)'];
+  for (var i = 0; i < 10; i++) {
+    var dot = document.createElement('div');
+    dot.className = 'p-dot';
+    dot.style.left = Math.random() * 100 + '%';
+    dot.style.top = Math.random() * 100 + '%';
+    dot.style.width = dot.style.height = (2 + Math.random() * 4) + 'px';
+    dot.style.background = colors[Math.floor(Math.random() * colors.length)];
+    dot.style.animationDelay = (Math.random() * 6) + 's';
+    dot.style.animationDuration = (4 + Math.random() * 4) + 's';
+    pContainer.appendChild(dot);
+  }
+
+  /* ===== Scroll: nav shadow + back-to-top ===== */
+  var nav = document.getElementById('topNav');
+  var backBtn = document.getElementById('backToTop');
+  window.addEventListener('scroll', function() {
+    var y = window.scrollY || window.pageYOffset;
+    nav.classList.toggle('scrolled', y > 20);
+    backBtn.classList.toggle('visible', y > 400);
+  });
+  backBtn.addEventListener('click', function() { window.scrollTo({ top: 0, behavior: 'smooth' }); });
+
+  /* ===== Fade-in on scroll ===== */
+  var fs = document.querySelectorAll('.fade-section');
+  if ('IntersectionObserver' in window) {
+    var obs = new IntersectionObserver(function(entries) {
+      entries.forEach(function(e) { if (e.isIntersecting) { e.target.classList.add('is-visible'); obs.unobserve(e.target); } });
+    }, { threshold: 0.1 });
+    fs.forEach(function(el) { obs.observe(el); });
+  } else { fs.forEach(function(el) { el.classList.add('is-visible'); }); }
+
+  /* ===== Animated counters ===== */
+  var counters = document.querySelectorAll('.stat-num[data-target]');
+  var counterDone = false;
+  var counterObs = new IntersectionObserver(function(entries) {
+    entries.forEach(function(e) {
+      if (e.isIntersecting && !counterDone) {
+        counterDone = true;
+        counters.forEach(function(c) {
+          var target = parseInt(c.getAttribute('data-target'));
+          var suffix = c.getAttribute('data-suffix') || '';
+          var duration = 1200;
+          var startTime = null;
+          function animate(ts) {
+            if (!startTime) startTime = ts;
+            var progress = Math.min((ts - startTime) / duration, 1);
+            var ease = 1 - Math.pow(1 - progress, 3);
+            c.textContent = Math.floor(ease * target) + suffix;
+            if (progress < 1) requestAnimationFrame(animate);
+          }
+          requestAnimationFrame(animate);
+        });
+        counterObs.unobserve(e.target);
+      }
+    });
+  }, { threshold: 0.3 });
+  if (counters.length > 0) counterObs.observe(counters[0].closest('.stat-counters'));
+
+  /* ===== Card modal ===== */
+  var overlay = document.getElementById('cardModal');
+  var mClose = document.getElementById('modalClose');
+  var mPrev = document.getElementById('modalPreview');
+  var mTitle = document.getElementById('modalTitle');
+  var mDesc = document.getElementById('modalDesc');
+  var mTools = document.getElementById('modalTools');
+
+  document.querySelectorAll('.auto-card').forEach(function(card) {
+    card.addEventListener('click', function() {
+      mTitle.textContent = card.getAttribute('data-title');
+      mDesc.textContent = card.getAttribute('data-desc');
+      mTools.textContent = 'Tools: ' + card.getAttribute('data-tools');
+      mPrev.innerHTML = '';
+      var clone = card.querySelector('.auto-preview').cloneNode(true);
+      clone.style.height = '200px';
+      clone.style.borderRadius = '0';
+      mPrev.appendChild(clone);
+      overlay.classList.add('open');
+    });
+  });
+
+  function closeModal() { overlay.classList.remove('open'); }
+  mClose.addEventListener('click', closeModal);
+  overlay.addEventListener('click', function(e) { if (e.target === overlay) closeModal(); });
+  document.addEventListener('keydown', function(e) { if (e.key === 'Escape') closeModal(); });
+})();
+</script>
+</body>
+</html>
