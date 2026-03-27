@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Contact - AYLA | Esprit D'Elegance</title>
+  <meta name="description" content="Get in touch with AYLA. Custom orders, wholesale inquiries, and collaboration requests.">
+  <link rel="stylesheet" href="assets/css/style.css">
+</head>
+<body>
+
+  <!-- ═══ Navigation ═══ -->
+  <nav class="nav scrolled" id="nav">
+    <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
+      <span></span><span></span><span></span>
+    </div>
+    <ul class="nav-links">
+      <li><a href="shop.html">Shop</a></li>
+      <li><a href="about.html">Our Story</a></li>
+      <li><a href="index.html#journal">Journal</a></li>
+    </ul>
+    <div class="nav-logo">
+      <a href="index.html">
+        <span class="brand-name">AYLA</span>
+        <span class="brand-tagline">Esprit D'Elegance</span>
+      </a>
+    </div>
+    <ul class="nav-links">
+      <li><a href="about.html">About</a></li>
+      <li><a href="contact.html" class="active">Contact</a></li>
+      <li><a href="#" class="nav-icon">&#9825;</a></li>
+    </ul>
+  </nav>
+
+  <!-- ═══ Page Hero ═══ -->
+  <section class="page-hero">
+    <h1 class="page-hero-title">Contact</h1>
+  </section>
+
+  <!-- ═══ Contact Content ═══ -->
+  <div class="contact-grid">
+    <form class="contact-form fade-in" onsubmit="event.preventDefault(); this.querySelector('.form-submit').textContent='Message Sent'; this.reset();">
+      <div class="form-group">
+        <label for="name">Your Name</label>
+        <input type="text" id="name" placeholder="Full name" required>
+      </div>
+      <div class="form-group">
+        <label for="email">Email Address</label>
+        <input type="email" id="email" placeholder="your@email.com" required>
+      </div>
+      <div class="form-group">
+        <label for="subject">Subject</label>
+        <input type="text" id="subject" placeholder="How can we help?">
+      </div>
+      <div class="form-group">
+        <label for="message">Message</label>
+        <textarea id="message" placeholder="Tell us about your inquiry - custom orders, wholesale, collaborations, or just to say hello." required></textarea>
+      </div>
+      <button type="submit" class="form-submit">Send Message</button>
+    </form>
+
+    <div class="contact-info fade-in">
+      <h3>Get in Touch</h3>
+      <div class="contact-detail">
+        <h4>General Inquiries</h4>
+        <p>Aya.lahrach03@gmail.com</p>
+      </div>
+      <div class="contact-detail">
+        <h4>Custom Orders</h4>
+        <p>For bespoke pieces and personalized designs, reach out with your vision. We love bringing unique ideas to life.</p>
+      </div>
+      <div class="contact-detail">
+        <h4>Wholesale</h4>
+        <p>Interested in carrying AYLA in your boutique? We'd love to hear from you.</p>
+        <p>Aya.lahrach03@gmail.com</p>
+      </div>
+      <div class="contact-detail">
+        <h4>Phone</h4>
+        <p>+212 629 687 026</p>
+      </div>
+      <div class="contact-detail">
+        <h4>Visit Us</h4>
+        <p>Casablanca, Morocco<br>By appointment only</p>
+      </div>
+      <div class="contact-detail">
+        <h4>Follow</h4>
+        <p style="display:flex;gap:1.5rem;">
+          <a href="#" style="color:var(--gold);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;">Instagram</a>
+          <a href="#" style="color:var(--gold);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;">Pinterest</a>
+          <a href="#" style="color:var(--gold);font-size:0.8rem;letter-spacing:0.15em;text-transform:uppercase;">TikTok</a>
+        </p>
+      </div>
+    </div>
+  </div>
+
+  <!-- ═══ Footer ═══ -->
+  <footer class="footer">
+    <div class="footer-grid">
+      <div class="footer-brand">
+        <div class="brand-name">AYLA</div>
+        <div class="brand-tagline">Esprit D'Elegance</div>
+        <p>Premium minimalist jewelry. Born in Casablanca, crafted with intention.</p>
+      </div>
+      <div class="footer-column">
+        <h4>Shop</h4>
+        <ul>
+          <li><a href="index.html#collections">Luna Collection</a></li>
+          <li><a href="index.html#collections">Sahara Collection</a></li>
+          <li><a href="index.html#collections">Noor Collection</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>About</h4>
+        <ul>
+          <li><a href="about.html">Our Story</a></li>
+          <li><a href="#">Craftsmanship</a></li>
+          <li><a href="contact.html">Contact</a></li>
+        </ul>
+      </div>
+      <div class="footer-column">
+        <h4>Help</h4>
+        <ul>
+          <li><a href="#">Shipping & Returns</a></li>
+          <li><a href="#">Ring Size Guide</a></li>
+          <li><a href="#">Care Guide</a></li>
+        </ul>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <p>&copy; 2026 AYLA. All rights reserved.</p>
+      <div class="footer-social">
+        <a href="#">Instagram</a>
+        <a href="#">Pinterest</a>
+        <a href="#">TikTok</a>
+      </div>
+    </div>
+  </footer>
+
+  <script>
+    const observer = new IntersectionObserver((entries) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) entry.target.classList.add('visible');
+      });
+    }, { threshold: 0.1, rootMargin: '0px 0px -50px 0px' });
+    document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+  </script>
+</body>
+</html>
