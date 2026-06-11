@@ -1,0 +1,23 @@
+# AYLA - Esprit d'Elegance
+
+> Premium minimalist fine jewelry born in Casablanca, Morocco. Three curated collections (Luna, Sahara, Noor), crafted with intention for the modern woman. Prices in Moroccan dirham (MAD).
+
+AYLA (aylamaison.com) is a fine jewelry maison from Casablanca. The catalogue spans three collections and nine pieces in 18K gold vermeil and precious materials.
+
+## Collections
+- Luna Collection: inspired by moonlit Casablanca nights
+- Sahara Collection: born from the warmth of desert gold
+- Noor Collection: light that adorns, not overwhelms
+
+## Pages
+- [Shop](https://aylamaison.com/shop.html): full catalogue with prices and materials
+- [About](https://aylamaison.com/about.html): the maison's story
+- [Contact](https://aylamaison.com/contact.html): get in touch
+
+## Machine-readable data
+- [Product feed (JSON)](https://aylamaison.com/products.json): collections, products, prices in MAD, materials
+
+## Facts
+- Based in: Casablanca, Morocco
+- Currency: MAD (Moroccan dirham)
+- Site: https://aylamaison.com/

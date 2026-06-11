@@ -14,6 +14,61 @@
   <meta property="og:image" content="https://aylamaison.com/assets/images/thumbnail.jpg">
   <meta name="twitter:card" content="summary_large_image">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@graph": [
+      {
+        "@type": "Organization",
+        "@id": "https://aylamaison.com/#org",
+        "name": "AYLA",
+        "alternateName": "AYLA Maison",
+        "url": "https://aylamaison.com/",
+        "logo": "https://aylamaison.com/favicon.svg",
+        "description": "Premium minimalist fine jewelry born in Casablanca, crafted with intention. Three curated collections for the modern woman.",
+        "slogan": "Esprit d'Elegance",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Casablanca",
+          "addressCountry": "MA"
+        }
+      },
+      {
+        "@type": "JewelryStore",
+        "@id": "https://aylamaison.com/#store",
+        "name": "AYLA - Esprit d'Elegance",
+        "url": "https://aylamaison.com/",
+        "image": "https://aylamaison.com/assets/images/thumbnail.jpg",
+        "description": "Fine minimalist jewelry maison from Casablanca offering three signature collections: Luna, Sahara and Noor. 18K gold vermeil pieces, prices in MAD.",
+        "parentOrganization": { "@id": "https://aylamaison.com/#org" },
+        "currenciesAccepted": "MAD",
+        "address": {
+          "@type": "PostalAddress",
+          "addressLocality": "Casablanca",
+          "addressCountry": "MA"
+        },
+        "hasOfferCatalog": {
+          "@type": "OfferCatalog",
+          "name": "AYLA Collections",
+          "itemListElement": [
+            { "@type": "OfferCatalog", "name": "Luna Collection", "description": "Inspired by moonlit Casablanca nights" },
+            { "@type": "OfferCatalog", "name": "Sahara Collection", "description": "Born from the warmth of desert gold" },
+            { "@type": "OfferCatalog", "name": "Noor Collection", "description": "Light that adorns, not overwhelms" }
+          ]
+        }
+      },
+      {
+        "@type": "WebSite",
+        "@id": "https://aylamaison.com/#website",
+        "url": "https://aylamaison.com/",
+        "name": "AYLA - Esprit d'Elegance",
+        "publisher": { "@id": "https://aylamaison.com/#org" },
+        "inLanguage": "en"
+      }
+    ]
+  }
+  </script>
 </head>
 <body>
 
