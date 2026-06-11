@@ -11,7 +11,30 @@
   <meta property="og:description" content="Shop the AYLA collection. Premium minimalist jewelry - necklaces, rings, earrings, bracelets.">
   <meta property="og:url" content="https://aylamaison.com/shop.html">
   <meta property="og:type" content="website">
+  <meta property="og:image" content="https://aylamaison.com/assets/images/thumbnail.jpg">
   <link rel="stylesheet" href="assets/css/style.css">
+
+  <script type="application/ld+json">
+  {
+    "@context": "https://schema.org",
+    "@type": "ItemList",
+    "@id": "https://aylamaison.com/shop.html#catalog",
+    "name": "AYLA Shop - All Pieces",
+    "url": "https://aylamaison.com/shop.html",
+    "numberOfItems": 9,
+    "itemListElement": [
+      { "@type": "ListItem", "position": 1, "item": { "@type": "Product", "name": "Luna Crescent Pendant", "image": "https://aylamaison.com/assets/images/luna_pendant.jpg", "url": "https://aylamaison.com/shop.html#luna-crescent-pendant", "brand": { "@id": "https://aylamaison.com/#org" }, "offers": { "@type": "Offer", "price": "890", "priceCurrency": "MAD", "availability": "https://schema.org/InStock" } } },
+      { "@type": "ListItem", "position": 2, "item": { "@type": "Product", "name": "Luna Layering Chain", "image": "https://aylamaison.com/assets/images/luna_chain.jpg", "url": "https://aylamaison.com/shop.html#luna-layering-chain", "brand": { "@id": "https://aylamaison.com/#org" }, "offers": { "@type": "Offer", "price": "720", "priceCurrency": "MAD", "availability": "https://schema.org/InStock" } } },
+      { "@type": "ListItem", "position": 3, "item": { "@type": "Product", "name": "Luna Star Studs", "image": "https://aylamaison.com/assets/images/luna_studs.jpg", "url": "https://aylamaison.com/shop.html#luna-star-studs", "brand": { "@id": "https://aylamaison.com/#org" }, "offers": { "@type": "Offer", "price": "450", "priceCurrency": "MAD", "availability": "https://schema.org/InStock" } } },
+      { "@type": "ListItem", "position": 4, "item": { "@type": "Product", "name": "Sahara Stacking Ring", "image": "https://aylamaison.com/assets/images/sahara_ring.jpg", "url": "https://aylamaison.com/shop.html#sahara-stacking-ring", "brand": { "@id": "https://aylamaison.com/#org" }, "offers": { "@type": "Offer", "price": "650", "priceCurrency": "MAD", "availability": "https://schema.org/InStock" } } },
+      { "@type": "ListItem", "position": 5, "item": { "@type": "Product", "name": "Sahara Signet Ring", "image": "https://aylamaison.com/assets/images/sahara_signet.jpg", "url": "https://aylamaison.com/shop.html#sahara-signet-ring", "brand": { "@id": "https://aylamaison.com/#org" }, "offers": { "@type": "Offer", "price": "780", "priceCurrency": "MAD", "availability": "https://schema.org/InStock" } } },
+      { "@type": "ListItem", "position": 6, "item": { "@type": "Product", "name": "Sahara Open Cuff", "image": "https://aylamaison.com/assets/images/sahara_cuff.jpg", "url": "https://aylamaison.com/shop.html#sahara-open-cuff", "brand": { "@id": "https://aylamaison.com/#org" }, "offers": { "@type": "Offer", "price": "1100", "priceCurrency": "MAD", "availability": "https://schema.org/InStock" } } },
+      { "@type": "ListItem", "position": 7, "item": { "@type": "Product", "name": "Noor Drop Earrings", "image": "https://aylamaison.com/assets/images/noor_earrings.jpg", "url": "https://aylamaison.com/shop.html#noor-drop-earrings", "brand": { "@id": "https://aylamaison.com/#org" }, "offers": { "@type": "Offer", "price": "1200", "priceCurrency": "MAD", "availability": "https://schema.org/InStock" } } },
+      { "@type": "ListItem", "position": 8, "item": { "@type": "Product", "name": "Heritage Chain Bracelet", "image": "https://aylamaison.com/assets/images/heritage_bracelet.jpg", "url": "https://aylamaison.com/shop.html#heritage-chain-bracelet", "brand": { "@id": "https://aylamaison.com/#org" }, "offers": { "@type": "Offer", "price": "950", "priceCurrency": "MAD", "availability": "https://schema.org/InStock" } } },
+      { "@type": "ListItem", "position": 9, "item": { "@type": "Product", "name": "Noor Pearl Choker", "image": "https://aylamaison.com/assets/images/noor_choker.jpg", "url": "https://aylamaison.com/shop.html#noor-pearl-choker", "brand": { "@id": "https://aylamaison.com/#org" }, "offers": { "@type": "Offer", "price": "1450", "priceCurrency": "MAD", "availability": "https://schema.org/InStock" } } }
+    ]
+  }
+  </script>
   <style>
     /* Shop-specific styles */
     .shop-filters {
@@ -148,6 +171,37 @@
       text-transform: uppercase;
       color: var(--gold);
       margin-bottom: 0.3rem;
+    }
+    .shop-product-wa {
+      display: inline-block;
+      margin-top: 0.9rem;
+      padding: 0.55rem 1.3rem;
+      border: 0.5px solid var(--gold);
+      border-radius: 1px;
+      color: var(--gold);
+      font-family: var(--font-body);
+      font-size: 0.6rem;
+      font-weight: 400;
+      letter-spacing: 0.2em;
+      text-transform: uppercase;
+      transition: background 0.3s, color 0.3s;
+    }
+    .shop-product-wa:hover {
+      background: var(--gold);
+      color: var(--white);
+    }
+    .shop-product-placeholder {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-family: var(--font-display);
+      font-size: 1.4rem;
+      letter-spacing: 0.4em;
+      text-transform: uppercase;
+      color: var(--gold);
+      background: var(--cream-warm);
     }
 
     /* Product detail modal */
@@ -322,141 +376,15 @@
       <button class="filter-btn" onclick="filterProducts('bracelets', this)">Bracelets</button>
     </div>
 
-    <!-- Product Grid -->
+    <!-- Product Grid - rendered from /products.json (single source of truth) -->
     <div class="shop-grid" id="shopGrid">
-
-      <!-- Luna Collection -->
-      <div class="shop-product reveal" data-collection="luna" data-category="necklaces" onclick="openProduct(this)">
-        <div class="shop-product-img">
-          <img src="assets/images/luna_pendant.jpg" alt="Luna Crescent Pendant" loading="lazy">
-          <span class="shop-product-badge">New</span>
-          <div class="shop-product-overlay"><a>Quick View</a><a>Add to Wishlist</a></div>
-        </div>
-        <p class="shop-product-collection">Luna Collection</p>
-        <h3 class="shop-product-name">Luna Crescent Pendant</h3>
-        <div class="shop-product-info">
-          <span class="shop-product-price">890 MAD</span>
-          <span class="shop-product-material">925 Silver</span>
-        </div>
-        <div hidden class="product-data" data-desc="A crescent moon pendant inspired by the medina night sky. Delicate 14K gold chain with hand-set micro stones that catch the light as you move." data-material="925 Sterling Silver" data-weight="2.8g" data-chain="42cm adjustable"></div>
-      </div>
-
-      <div class="shop-product reveal reveal-delay-1" data-collection="luna" data-category="necklaces" onclick="openProduct(this)">
-        <div class="shop-product-img">
-          <img src="assets/images/luna_chain.jpg" alt="Luna Layering Chain" loading="lazy">
-          <div class="shop-product-overlay"><a>Quick View</a><a>Add to Wishlist</a></div>
-        </div>
-        <p class="shop-product-collection">Luna Collection</p>
-        <h3 class="shop-product-name">Luna Layering Chain</h3>
-        <div class="shop-product-info">
-          <span class="shop-product-price">720 MAD</span>
-          <span class="shop-product-material">925 Silver</span>
-        </div>
-        <div hidden class="product-data" data-desc="A fine chain designed to be layered or worn alone. The perfect everyday piece that goes from morning to evening without missing a beat." data-material="925 Sterling Silver" data-weight="1.9g" data-chain="40cm"></div>
-      </div>
-
-      <div class="shop-product reveal reveal-delay-2" data-collection="luna" data-category="earrings" onclick="openProduct(this)">
-        <div class="shop-product-img">
-          <img src="assets/images/luna_studs.jpg" alt="Luna Star Studs" loading="lazy">
-          <div class="shop-product-overlay"><a>Quick View</a><a>Add to Wishlist</a></div>
-        </div>
-        <p class="shop-product-collection">Luna Collection</p>
-        <h3 class="shop-product-name">Luna Star Studs</h3>
-        <div class="shop-product-info">
-          <span class="shop-product-price">450 MAD</span>
-          <span class="shop-product-material">925 Silver</span>
-        </div>
-        <div hidden class="product-data" data-desc="Tiny four-pointed star studs that add a subtle sparkle to your everyday look. Hypoallergenic posts, comfortable for all-day wear." data-material="925 Sterling Silver" data-weight="0.8g" data-chain="Post back"></div>
-      </div>
-
-      <!-- Sahara Collection -->
-      <div class="shop-product reveal" data-collection="sahara" data-category="rings" onclick="openProduct(this)">
-        <div class="shop-product-img">
-          <img src="assets/images/sahara_ring.jpg" alt="Sahara Stacking Ring" loading="lazy">
-          <span class="shop-product-badge">Bestseller</span>
-          <div class="shop-product-overlay"><a>Quick View</a><a>Add to Wishlist</a></div>
-        </div>
-        <p class="shop-product-collection">Sahara Collection</p>
-        <h3 class="shop-product-name">Sahara Stacking Ring</h3>
-        <div class="shop-product-info">
-          <span class="shop-product-price">650 MAD</span>
-          <span class="shop-product-material">925 Silver</span>
-        </div>
-        <div hidden class="product-data" data-desc="A textured band inspired by desert dunes. Designed to be stacked with other Sahara rings or worn as a standalone statement." data-material="925 Sterling Silver" data-weight="3.2g" data-chain="Sizes 5-9"></div>
-      </div>
-
-      <div class="shop-product reveal reveal-delay-1" data-collection="sahara" data-category="rings" onclick="openProduct(this)">
-        <div class="shop-product-img">
-          <img src="assets/images/sahara_signet.jpg" alt="Sahara Signet Ring" loading="lazy">
-          <div class="shop-product-overlay"><a>Quick View</a><a>Add to Wishlist</a></div>
-        </div>
-        <p class="shop-product-collection">Sahara Collection</p>
-        <h3 class="shop-product-name">Sahara Signet Ring</h3>
-        <div class="shop-product-info">
-          <span class="shop-product-price">780 MAD</span>
-          <span class="shop-product-material">925 Silver</span>
-        </div>
-        <div hidden class="product-data" data-desc="A modern take on the traditional signet. Smooth oval face with a matte finish, perfect for pinky or ring finger." data-material="925 Sterling Silver" data-weight="4.1g" data-chain="Sizes 5-9"></div>
-      </div>
-
-      <div class="shop-product reveal reveal-delay-2" data-collection="sahara" data-category="bracelets" onclick="openProduct(this)">
-        <div class="shop-product-img">
-          <img src="assets/images/sahara_cuff.jpg" alt="Sahara Cuff" loading="lazy">
-          <div class="shop-product-overlay"><a>Quick View</a><a>Add to Wishlist</a></div>
-        </div>
-        <p class="shop-product-collection">Sahara Collection</p>
-        <h3 class="shop-product-name">Sahara Open Cuff</h3>
-        <div class="shop-product-info">
-          <span class="shop-product-price">1,100 MAD</span>
-          <span class="shop-product-material">925 Silver</span>
-        </div>
-        <div hidden class="product-data" data-desc="An elegant open cuff with tapered ends inspired by the graceful curves of sand dunes. Adjustable for a perfect fit." data-material="925 Sterling Silver" data-weight="8.5g" data-chain="Adjustable"></div>
-      </div>
-
-      <!-- Noor Collection -->
-      <div class="shop-product reveal" data-collection="noor" data-category="earrings" onclick="openProduct(this)">
-        <div class="shop-product-img">
-          <img src="assets/images/noor_earrings.jpg" alt="Noor Drop Earrings" loading="lazy">
-          <div class="shop-product-overlay"><a>Quick View</a><a>Add to Wishlist</a></div>
-        </div>
-        <p class="shop-product-collection">Noor Collection</p>
-        <h3 class="shop-product-name">Noor Drop Earrings</h3>
-        <div class="shop-product-info">
-          <span class="shop-product-price">1,200 MAD</span>
-          <span class="shop-product-material">Sterling Silver</span>
-        </div>
-        <div hidden class="product-data" data-desc="Elongated drops that move with you, catching light from every angle. The Noor collection is named after the Arabic word for light." data-material="925 Sterling Silver" data-weight="3.6g" data-chain="Hook closure"></div>
-      </div>
-
-      <div class="shop-product reveal reveal-delay-1" data-collection="noor" data-category="bracelets" onclick="openProduct(this)">
-        <div class="shop-product-img">
-          <img src="assets/images/heritage_bracelet.jpg" alt="Heritage Chain Bracelet" loading="lazy">
-          <span class="shop-product-badge">Bestseller</span>
-          <div class="shop-product-overlay"><a>Quick View</a><a>Add to Wishlist</a></div>
-        </div>
-        <p class="shop-product-collection">Noor Collection</p>
-        <h3 class="shop-product-name">Heritage Chain Bracelet</h3>
-        <div class="shop-product-info">
-          <span class="shop-product-price">950 MAD</span>
-          <span class="shop-product-material">925 Silver</span>
-        </div>
-        <div hidden class="product-data" data-desc="A delicate chain bracelet that bridges traditional Moroccan gold work with contemporary minimalism. The clasp features a tiny crescent moon detail." data-material="925 Sterling Silver" data-weight="2.4g" data-chain="18cm + 2cm extension"></div>
-      </div>
-
-      <div class="shop-product reveal reveal-delay-2" data-collection="noor" data-category="necklaces" onclick="openProduct(this)">
-        <div class="shop-product-img">
-          <img src="assets/images/noor_choker.jpg" alt="Noor Pearl Choker" loading="lazy">
-          <div class="shop-product-overlay"><a>Quick View</a><a>Add to Wishlist</a></div>
-        </div>
-        <p class="shop-product-collection">Noor Collection</p>
-        <h3 class="shop-product-name">Noor Pearl Choker</h3>
-        <div class="shop-product-info">
-          <span class="shop-product-price">1,450 MAD</span>
-          <span class="shop-product-material">925 Silver + Pearl</span>
-        </div>
-        <div hidden class="product-data" data-desc="Freshwater pearls on a fine gold chain, sitting perfectly at the collarbone. The ultimate blend of classic elegance and modern minimalism." data-material="925 Silver, Freshwater Pearls" data-weight="5.2g" data-chain="36cm choker length"></div>
-      </div>
-
+      <noscript>
+        <p style="grid-column:1/-1;text-align:center;font-size:0.85rem;font-weight:300;color:var(--text-secondary);line-height:1.9;">
+          JavaScript is required to display the collection.
+          You can still order directly via WhatsApp at +212 629 687 026
+          or email Aya.lahrach03@gmail.com.
+        </p>
+      </noscript>
     </div>
   </section>
 
@@ -477,7 +405,7 @@
           <div class="product-modal-detail"><span>Weight</span><span id="modalWeight"></span></div>
           <div class="product-modal-detail"><span>Size</span><span id="modalSize"></span></div>
         </div>
-        <button class="product-modal-cta" onclick="alert('Coming soon! Contact us to order.')">Inquire to Purchase</button>
+        <a class="product-modal-cta" id="modalWa" href="https://wa.me/212629687026" target="_blank" rel="noopener">Order via WhatsApp</a>
       </div>
     </div>
   </div>
@@ -543,16 +471,86 @@
     let cx=0,cy=0,px=0,py=0;
     document.addEventListener('mousemove',e=>{cx=e.clientX;cy=e.clientY;});
     function ac(){px+=(cx-px)*0.12;py+=(cy-py)*0.12;cursor.style.left=px+'px';cursor.style.top=py+'px';requestAnimationFrame(ac);}ac();
-    document.querySelectorAll('a,button,.shop-product').forEach(el=>{
+    function bindCursor(el){
       el.addEventListener('mouseenter',()=>cursor.classList.add('hovering'));
       el.addEventListener('mouseleave',()=>cursor.classList.remove('hovering'));
-    });
+    }
+    document.querySelectorAll('a,button,.shop-product').forEach(bindCursor);
 
     // Scroll reveal
     const ro = new IntersectionObserver(e=>{
       e.forEach(en=>{if(en.isIntersecting)en.target.classList.add('visible');});
     },{threshold:0.1, rootMargin:'0px 0px -40px 0px'});
     document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
+
+    // Product renderer - /products.json is the single source of truth
+    const WA_NUMBER = '212629687026';
+    const BADGES = { 1: 'New', 4: 'Bestseller', 8: 'Bestseller' };
+    const DELAYS = ['', ' reveal-delay-1', ' reveal-delay-2'];
+
+    function waLink(name){
+      return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent('Hello AYLA, I would like to order: ' + name);
+    }
+    function slugify(name){
+      return String(name).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
+    }
+    function esc(s){
+      return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
+    }
+    function formatPrice(p){
+      return Number(p).toLocaleString('en-US') + ' MAD';
+    }
+    function shortMaterial(m){
+      return String(m || '').replace('925 Sterling Silver','925 Silver').replace('Freshwater Pearl','Pearl');
+    }
+
+    function renderProducts(products){
+      const grid = document.getElementById('shopGrid');
+      products.forEach((p, i) => {
+        const card = document.createElement('div');
+        card.className = 'shop-product reveal' + DELAYS[i % 3];
+        card.id = slugify(p.name);
+        card.dataset.collection = String(p.collection || '').toLowerCase();
+        card.dataset.category = String(p.category || '').toLowerCase();
+
+        const badge = BADGES[p.id] ? '<span class="shop-product-badge">' + esc(BADGES[p.id]) + '</span>' : '';
+        const imgHtml = p.image
+          ? '<img src="' + esc(p.image) + '" alt="' + esc(p.name) + '" loading="lazy">'
+          : '<div class="shop-product-placeholder" aria-hidden="true">AYLA</div>';
+
+        card.innerHTML =
+          '<div class="shop-product-img">' +
+            imgHtml + badge +
+            '<div class="shop-product-overlay"><a>Quick View</a><a>Add to Wishlist</a></div>' +
+          '</div>' +
+          '<p class="shop-product-collection">' + esc(p.collection) + ' Collection</p>' +
+          '<h3 class="shop-product-name">' + esc(p.name) + '</h3>' +
+          '<div class="shop-product-info">' +
+            '<span class="shop-product-price">' + esc(formatPrice(p.price_mad)) + '</span>' +
+            '<span class="shop-product-material">' + esc(shortMaterial(p.materials)) + '</span>' +
+          '</div>' +
+          '<a class="shop-product-wa" href="' + esc(waLink(p.name)) + '" target="_blank" rel="noopener">Order via WhatsApp</a>' +
+          '<div hidden class="product-data" data-desc="' + esc(p.description_short) + '" data-material="' + esc(p.materials) + '" data-weight="' + esc(p.weight) + '"></div>';
+
+        card.addEventListener('click', () => openProduct(card));
+        card.querySelector('.shop-product-wa').addEventListener('click', e => e.stopPropagation());
+
+        grid.appendChild(card);
+        bindCursor(card);
+        card.querySelectorAll('a').forEach(bindCursor);
+        ro.observe(card);
+      });
+    }
+
+    fetch('products.json')
+      .then(r => { if(!r.ok) throw new Error('HTTP ' + r.status); return r.json(); })
+      .then(renderProducts)
+      .catch(() => {
+        const msg = document.createElement('p');
+        msg.style.cssText = 'grid-column:1/-1;text-align:center;font-size:0.85rem;font-weight:300;color:var(--text-secondary);line-height:1.9;';
+        msg.innerHTML = 'The collection could not be loaded. Please refresh the page, or order directly via <a href="https://wa.me/212629687026" style="color:var(--gold);">WhatsApp +212 629 687 026</a>.';
+        document.getElementById('shopGrid').appendChild(msg);
+      });
 
     // Filter products
     function filterProducts(category, btn) {
@@ -580,15 +578,26 @@
       const collection = card.querySelector('.shop-product-collection').textContent;
       const data = card.querySelector('.product-data');
 
-      document.getElementById('modalImg').src = img.src;
-      document.getElementById('modalImg').alt = name;
+      const modalImg = document.getElementById('modalImg');
+      if (img) {
+        modalImg.src = img.src;
+        modalImg.alt = name;
+        modalImg.style.display = '';
+      } else {
+        modalImg.removeAttribute('src');
+        modalImg.style.display = 'none';
+      }
       document.getElementById('modalName').textContent = name;
       document.getElementById('modalPrice').textContent = price;
       document.getElementById('modalCollection').textContent = collection;
-      document.getElementById('modalDesc').textContent = data.dataset.desc;
-      document.getElementById('modalMaterial').textContent = data.dataset.material;
-      document.getElementById('modalWeight').textContent = data.dataset.weight;
-      document.getElementById('modalSize').textContent = data.dataset.chain;
+      document.getElementById('modalDesc').textContent = data.dataset.desc || '';
+      document.getElementById('modalMaterial').textContent = data.dataset.material || '';
+      document.getElementById('modalWeight').textContent = data.dataset.weight || '';
+      const chain = data.dataset.chain || '';
+      const sizeEl = document.getElementById('modalSize');
+      sizeEl.textContent = chain;
+      sizeEl.parentElement.style.display = chain ? '' : 'none';
+      document.getElementById('modalWa').href = waLink(name);
 
       document.getElementById('productModal').classList.add('open');
       document.body.style.overflow = 'hidden';
