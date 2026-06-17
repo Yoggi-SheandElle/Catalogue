@@ -1,14 +1,14 @@
 <!DOCTYPE html>
-<html lang="en">
+<html lang="fr">
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Shop - AYLA | Esprit D'Elegance</title>
-  <meta name="description" content="Shop the AYLA collection. Premium minimalist jewelry - necklaces, rings, earrings, bracelets.">
+  <title>Boutique - AYLA | Esprit d'Elegance</title>
+  <meta name="description" content="Boutique AYLA. Bijoux minimalistes premium : colliers, bagues, boucles d'oreilles, bracelets.">
   <link rel="icon" type="image/svg+xml" href="/favicon.svg">
   <link rel="canonical" href="https://aylamaison.com/shop.html">
-  <meta property="og:title" content="Shop - AYLA | Esprit D'Elegance">
-  <meta property="og:description" content="Shop the AYLA collection. Premium minimalist jewelry - necklaces, rings, earrings, bracelets.">
+  <meta property="og:title" content="Boutique - AYLA | Esprit d'Elegance">
+  <meta property="og:description" content="Boutique AYLA. Bijoux minimalistes premium : colliers, bagues, boucles d'oreilles, bracelets.">
   <meta property="og:url" content="https://aylamaison.com/shop.html">
   <meta property="og:type" content="website">
   <meta property="og:image" content="https://aylamaison.com/assets/images/thumbnail.jpg">
@@ -19,7 +19,7 @@
     "@context": "https://schema.org",
     "@type": "ItemList",
     "@id": "https://aylamaison.com/shop.html#catalog",
-    "name": "AYLA Shop - All Pieces",
+    "name": "Boutique AYLA - Toutes les pieces",
     "url": "https://aylamaison.com/shop.html",
     "numberOfItems": 9,
     "itemListElement": [
@@ -341,17 +341,17 @@
 
   <nav class="nav solid" id="nav">
     <ul class="nav-links">
-      <li><a href="shop.html" style="opacity:0.6;">Shop</a></li>
-      <li><a href="index.html#story">Story</a></li>
+      <li><a href="shop.html" style="opacity:0.6;">Boutique</a></li>
+      <li><a href="index.html#story">Histoire</a></li>
     </ul>
     <div class="nav-logo">
       <a href="index.html">
         <div class="nav-logo-text">AYLA</div>
-        <div class="nav-logo-sub">Esprit D'Elegance</div>
+        <div class="nav-logo-sub">Esprit d'Elegance</div>
       </a>
     </div>
     <ul class="nav-links">
-      <li><a href="about.html">About</a></li>
+      <li><a href="about.html">A propos</a></li>
       <li><a href="contact.html">Contact</a></li>
     </ul>
     <div class="nav-toggle" onclick="document.querySelector('.nav-links').classList.toggle('open')">
@@ -360,19 +360,19 @@
   </nav>
 
   <section class="page-hero">
-    <h1 class="page-hero-title">Shop</h1>
+    <h1 class="page-hero-title">Boutique</h1>
   </section>
 
   <section style="padding: 5rem 5%; background: var(--bg);">
     <!-- Filters -->
     <div class="shop-filters">
-      <button class="filter-btn active" onclick="filterProducts('all', this)">All</button>
+      <button class="filter-btn active" onclick="filterProducts('all', this)">Tout</button>
       <button class="filter-btn" onclick="filterProducts('luna', this)">Luna</button>
       <button class="filter-btn" onclick="filterProducts('sahara', this)">Sahara</button>
       <button class="filter-btn" onclick="filterProducts('noor', this)">Noor</button>
-      <button class="filter-btn" onclick="filterProducts('necklaces', this)">Necklaces</button>
-      <button class="filter-btn" onclick="filterProducts('rings', this)">Rings</button>
-      <button class="filter-btn" onclick="filterProducts('earrings', this)">Earrings</button>
+      <button class="filter-btn" onclick="filterProducts('necklaces', this)">Colliers</button>
+      <button class="filter-btn" onclick="filterProducts('rings', this)">Bagues</button>
+      <button class="filter-btn" onclick="filterProducts('earrings', this)">Boucles d'oreilles</button>
       <button class="filter-btn" onclick="filterProducts('bracelets', this)">Bracelets</button>
     </div>
 
@@ -380,9 +380,9 @@
     <div class="shop-grid" id="shopGrid">
       <noscript>
         <p style="grid-column:1/-1;text-align:center;font-size:0.85rem;font-weight:300;color:var(--text-secondary);line-height:1.9;">
-          JavaScript is required to display the collection.
-          You can still order directly via WhatsApp at +212 629 687 026
-          or email Aya.lahrach03@gmail.com.
+          JavaScript est necessaire pour afficher la collection.
+          Vous pouvez commander directement sur WhatsApp au +212 629 687 026
+          ou par e-mail a Aya.lahrach03@gmail.com.
         </p>
       </noscript>
     </div>
@@ -401,11 +401,11 @@
         <p class="product-modal-price" id="modalPrice"></p>
         <p class="product-modal-desc" id="modalDesc"></p>
         <div class="product-modal-details">
-          <div class="product-modal-detail"><span>Material</span><span id="modalMaterial"></span></div>
-          <div class="product-modal-detail"><span>Weight</span><span id="modalWeight"></span></div>
-          <div class="product-modal-detail"><span>Size</span><span id="modalSize"></span></div>
+          <div class="product-modal-detail"><span>Matiere</span><span id="modalMaterial"></span></div>
+          <div class="product-modal-detail"><span>Poids</span><span id="modalWeight"></span></div>
+          <div class="product-modal-detail"><span>Taille</span><span id="modalSize"></span></div>
         </div>
-        <a class="product-modal-cta" id="modalWa" href="https://wa.me/212629687026" target="_blank" rel="noopener">Order via WhatsApp</a>
+        <a class="product-modal-cta" id="modalWa" href="https://wa.me/212629687026" target="_blank" rel="noopener">Commander sur WhatsApp</a>
       </div>
     </div>
   </div>
@@ -413,12 +413,12 @@
   <!-- Newsletter -->
   <section class="newsletter">
     <div class="section-header">
-      <p class="section-label reveal">Stay Connected</p>
-      <h2 class="section-title reveal reveal-delay-1">New arrivals, first access</h2>
+      <p class="section-label reveal">Restez connectee</p>
+      <h2 class="section-title reveal reveal-delay-1">Nouveautes, acces prioritaire</h2>
     </div>
-    <form class="newsletter-form reveal reveal-delay-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Thank You'; this.querySelector('input').value='';">
-      <input type="email" class="newsletter-input" placeholder="Enter your email" required>
-      <button type="submit" class="newsletter-btn">Subscribe</button>
+    <form class="newsletter-form reveal reveal-delay-2" onsubmit="event.preventDefault(); this.querySelector('button').textContent='Merci'; this.querySelector('input').value='';">
+      <input type="email" class="newsletter-input" placeholder="Votre adresse e-mail" required>
+      <button type="submit" class="newsletter-btn">S'inscrire</button>
     </form>
   </section>
 
@@ -427,36 +427,36 @@
     <div class="footer-top">
       <div>
         <div class="footer-brand-name">AYLA</div>
-        <div class="footer-brand-sub">Esprit D'Elegance</div>
-        <p class="footer-brand-text">Premium minimalist jewelry. Born in Casablanca, crafted with intention.</p>
+        <div class="footer-brand-sub">Esprit d'Elegance</div>
+        <p class="footer-brand-text">Bijoux minimalistes premium. Nes a Casablanca, crees avec intention.</p>
       </div>
       <div class="footer-col">
-        <h4>Shop</h4>
+        <h4>Boutique</h4>
         <ul>
-          <li><a href="shop.html">All Pieces</a></li>
+          <li><a href="shop.html">Toutes les pieces</a></li>
           <li><a href="shop.html" onclick="setTimeout(()=>filterProducts('luna'),100)">Luna Collection</a></li>
           <li><a href="shop.html" onclick="setTimeout(()=>filterProducts('sahara'),100)">Sahara Collection</a></li>
           <li><a href="shop.html" onclick="setTimeout(()=>filterProducts('noor'),100)">Noor Collection</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>About</h4>
+        <h4>A propos</h4>
         <ul>
-          <li><a href="about.html">Our Story</a></li>
+          <li><a href="about.html">Notre histoire</a></li>
           <li><a href="contact.html">Contact</a></li>
         </ul>
       </div>
       <div class="footer-col">
-        <h4>Help</h4>
+        <h4>Aide</h4>
         <ul>
-          <li><a href="#">Shipping & Returns</a></li>
-          <li><a href="#">Ring Size Guide</a></li>
-          <li><a href="#">Care Guide</a></li>
+          <li><a href="#">Livraison & retours</a></li>
+          <li><a href="#">Guide des tailles</a></li>
+          <li><a href="#">Guide d'entretien</a></li>
         </ul>
       </div>
     </div>
     <div class="footer-bottom">
-      <p>&copy; 2026 AYLA. All rights reserved.</p>
+      <p>&copy; 2026 AYLA. Tous droits reserves.</p>
       <div class="footer-social">
         <a href="#">Instagram</a>
         <a href="#">Pinterest</a>
@@ -485,11 +485,11 @@
 
     // Product renderer - /products.json is the single source of truth
     const WA_NUMBER = '212629687026';
-    const BADGES = { 1: 'New', 4: 'Bestseller', 8: 'Bestseller' };
+    const BADGES = { 1: 'Nouveau', 4: 'Best-seller', 8: 'Best-seller' };
     const DELAYS = ['', ' reveal-delay-1', ' reveal-delay-2'];
 
     function waLink(name){
-      return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent('Hello AYLA, I would like to order: ' + name);
+      return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent('Salam AYLA, bghit ncommandi : ' + name);
     }
     function slugify(name){
       return String(name).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
@@ -498,10 +498,10 @@
       return String(s == null ? '' : s).replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');
     }
     function formatPrice(p){
-      return Number(p).toLocaleString('en-US') + ' MAD';
+      return Number(p).toLocaleString('fr-FR') + ' MAD';
     }
     function shortMaterial(m){
-      return String(m || '').replace('925 Sterling Silver','925 Silver').replace('Freshwater Pearl','Pearl');
+      return String(m || '').replace('925 Sterling Silver','Argent 925').replace('Freshwater Pearl','Perle');
     }
 
     function renderProducts(products){
@@ -521,7 +521,7 @@
         card.innerHTML =
           '<div class="shop-product-img">' +
             imgHtml + badge +
-            '<div class="shop-product-overlay"><a>Quick View</a><a>Add to Wishlist</a></div>' +
+            '<div class="shop-product-overlay"><a>Apercu</a><a>Ajouter aux favoris</a></div>' +
           '</div>' +
           '<p class="shop-product-collection">' + esc(p.collection) + ' Collection</p>' +
           '<h3 class="shop-product-name">' + esc(p.name) + '</h3>' +
@@ -529,7 +529,7 @@
             '<span class="shop-product-price">' + esc(formatPrice(p.price_mad)) + '</span>' +
             '<span class="shop-product-material">' + esc(shortMaterial(p.materials)) + '</span>' +
           '</div>' +
-          '<a class="shop-product-wa" href="' + esc(waLink(p.name)) + '" target="_blank" rel="noopener">Order via WhatsApp</a>' +
+          '<a class="shop-product-wa" href="' + esc(waLink(p.name)) + '" target="_blank" rel="noopener">Commander sur WhatsApp</a>' +
           '<div hidden class="product-data" data-desc="' + esc(p.description_short) + '" data-material="' + esc(p.materials) + '" data-weight="' + esc(p.weight) + '"></div>';
 
         card.addEventListener('click', () => openProduct(card));
@@ -548,7 +548,7 @@
       .catch(() => {
         const msg = document.createElement('p');
         msg.style.cssText = 'grid-column:1/-1;text-align:center;font-size:0.85rem;font-weight:300;color:var(--text-secondary);line-height:1.9;';
-        msg.innerHTML = 'The collection could not be loaded. Please refresh the page, or order directly via <a href="https://wa.me/212629687026" style="color:var(--gold);">WhatsApp +212 629 687 026</a>.';
+        msg.innerHTML = 'La collection n\'a pas pu etre chargee. Veuillez actualiser la page, ou commander directement sur <a href="https://wa.me/212629687026" style="color:var(--gold);">WhatsApp +212 629 687 026</a>.';
         document.getElementById('shopGrid').appendChild(msg);
       });
 
