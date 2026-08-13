@@ -381,7 +381,7 @@
       <noscript>
         <p style="grid-column:1/-1;text-align:center;font-size:0.85rem;font-weight:300;color:var(--text-secondary);line-height:1.9;">
           JavaScript est necessaire pour afficher la collection.
-          Vous pouvez commander directement sur <a href="https://wa.me/212629687026?text=Salam%20AYLA%2C%20bghit%20ncommandi." style="color:var(--gold);">WhatsApp</a>.
+          Vous pouvez nous ecrire via la <a href="contact.html" style="color:var(--gold);">page contact</a>.
         </p>
       </noscript>
     </div>
@@ -404,7 +404,7 @@
           <div class="product-modal-detail"><span>Poids</span><span id="modalWeight"></span></div>
           <div class="product-modal-detail"><span>Taille</span><span id="modalSize"></span></div>
         </div>
-        <a class="product-modal-cta" id="modalWa" href="https://wa.me/212629687026" target="_blank" rel="noopener">Commander sur WhatsApp</a>
+        <a class="product-modal-cta" id="modalWa" href="contact.html">Demander cette piece</a>
       </div>
     </div>
   </div>
@@ -483,13 +483,9 @@
     document.querySelectorAll('.reveal').forEach(el=>ro.observe(el));
 
     // Product renderer - /products.json is the single source of truth
-    const WA_NUMBER = '212629687026';
     const BADGES = { 1: 'Nouveau', 4: 'Best-seller', 8: 'Best-seller' };
     const DELAYS = ['', ' reveal-delay-1', ' reveal-delay-2'];
 
-    function waLink(name){
-      return 'https://wa.me/' + WA_NUMBER + '?text=' + encodeURIComponent('Salam AYLA, bghit ncommandi : ' + name);
-    }
     function slugify(name){
       return String(name).toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'');
     }
@@ -528,7 +524,7 @@
             '<span class="shop-product-price">' + esc(formatPrice(p.price_mad)) + '</span>' +
             '<span class="shop-product-material">' + esc(shortMaterial(p.materials)) + '</span>' +
           '</div>' +
-          '<a class="shop-product-wa" href="' + esc(waLink(p.name)) + '" target="_blank" rel="noopener">Commander sur WhatsApp</a>' +
+          '<a class="shop-product-wa" href="contact.html">Demander cette piece</a>' +
           '<div hidden class="product-data" data-desc="' + esc(p.description_short) + '" data-material="' + esc(p.materials) + '" data-weight="' + esc(p.weight) + '"></div>';
 
         card.addEventListener('click', () => openProduct(card));
@@ -547,7 +543,7 @@
       .catch(() => {
         const msg = document.createElement('p');
         msg.style.cssText = 'grid-column:1/-1;text-align:center;font-size:0.85rem;font-weight:300;color:var(--text-secondary);line-height:1.9;';
-        msg.innerHTML = 'La collection n\'a pas pu etre chargee. Veuillez actualiser la page, ou commander directement sur <a href="https://wa.me/212629687026" style="color:var(--gold);">WhatsApp</a>.';
+        msg.innerHTML = 'La collection n\'a pas pu etre chargee. Veuillez actualiser la page, ou nous ecrire via la <a href="contact.html" style="color:var(--gold);">page contact</a>.';
         document.getElementById('shopGrid').appendChild(msg);
       });
 
@@ -596,7 +592,6 @@
       const sizeEl = document.getElementById('modalSize');
       sizeEl.textContent = chain;
       sizeEl.parentElement.style.display = chain ? '' : 'none';
-      document.getElementById('modalWa').href = waLink(name);
 
       document.getElementById('productModal').classList.add('open');
       document.body.style.overflow = 'hidden';
